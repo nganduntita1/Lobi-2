@@ -1,0 +1,24 @@
+# Backend specific ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+.eggs/
+*.egg
+
+# Environment variables
+.env
+.env.local
+
+# Playwright
+.playwright/
+
+# Logs
+*.log
