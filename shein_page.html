@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta property="al:android:package" content="com.zzkko">
+    <meta property="al:android:app_name" content="SHEIN">
+    
+        <title>I found some great items at SHEIN!</title>
+        <meta name="description" content="These items in my shopping cart are great. I highly recommend them to everyone!">
+        <meta name="url" content="https://api-shein.shein.com/h5/sharejump/appjump?link=lbCieue0XMV_b&amp;localcountry=ZA">
+        <meta name="twitter: name" content="I found some great items at SHEIN!">
+        <meta name="twitter: description" content="These items in my shopping cart are great. I highly recommend them to everyone!">
+        <meta name="twitter: image" content="https://img.ltwebstatic.com/images3_app/2023/07/31/1690792849e96df4eb4379ccafb232a70326055400.png">
+        <meta name="twitter: url" content="https://api-shein.shein.com/h5/sharejump/appjump?link=lbCieue0XMV_b&amp;localcountry=ZA">
+        <meta property="og:title" content="I found some great items at SHEIN!">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://img.ltwebstatic.com/images3_app/2023/07/31/1690792849e96df4eb4379ccafb232a70326055400.png">
+        <meta property="og:description" content="These items in my shopping cart are great. I highly recommend them to everyone!">
+        <meta property="og:url" content="https://api-shein.shein.com/h5/sharejump/appjump?link=lbCieue0XMV_b&amp;localcountry=ZA">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+    <!-- 
+    本文件为该目录的公共模板代码，需要注意的是：
+    1、添加的代码逻辑必须为该目录下，所有业务场景的模板都用到的
+    2、禁止添加个性化逻辑，如需添加，请在对应的业务场景模板中添加，或扩展
+ -->
+
+
+
+<script src="//sheinm.ltwebstatic.com/dist/libs/ua-parser/ua-parser.min.js"></script>
+
+<!-- wing SDK 导入 -->
+<!-- 导入 Wing SDK, 修改版本请同步：super_deals/skeleton-layout.html -->
+
+
+  <script type="text/javascript" src="//sheinh5.ltwebstatic.com/sh5_dist/libs/wing/wing.compatible.prod.0.14.4.js"></script>
+
+
+
+<script>
+// wing init
+var WING_ENVS = {
+  WEB_CLIENT: 'shein',
+  IS_IOS: false || /iPhone|iPad|Mac\sOS/i.test(navigator.userAgent),
+  APP_VERSION: "" || ''
+}
+
+!function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t(require("Wing"));else if("function"==typeof define&&define.amd)define(["Wing"],t);else{var i="object"==typeof exports?t(require("Wing")):t(e.Wing);for(var o in i)("object"==typeof exports?exports:e)[o]=i[o]}}(self,e=>(()=>{"use strict";var t={7039:t=>{t.exports=e}},i={};function o(e){var r=i[e];if(void 0!==r)return r.exports;var a=i[e]={exports:{}};return t[e](a,a.exports,o),a.exports}o.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return o.d(t,{a:t}),t},o.d=(e,t)=>{for(var i in t)o.o(t,i)&&!o.o(e,i)&&Object.defineProperty(e,i,{enumerable:!0,get:t[i]})},o.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);var r=o(7039),a=o.n(r),_="shein"===("undefined"==typeof WING_ENVS?{}:WING_ENVS).WEB_CLIENT,s={Index:"/main/main",Shop:"/main/shop",Category:"/main/category",New:"/main/new"},n={Pick_List:"/goods/item_picking_list",Virtual_List:"/goods/virtuallist",Real_List:"/goods/real_goods_list",Coupon_List:"/goods/coupon_for_goods_list",Selling_List:"/goods/selling_point",Discount_List:"/goods/discount_list",DailyNew_List:"/goods/daily_new_list",FlashSale_List:"/goods/flashsale",UnderPrice_List:"/goods/under_price_list",Shop:"/goods/shop"},d={Shop_Cart:"/cart/shop_cart",Coupon_Promotion_Goods_List:"/cart/coupon_promotion_goods_list",Coupon_For_Goods_List:"/cart/coupon_for_goods_list",Common_Add_Items:"/cart/common_add_items"},c={Search_Home:"/search/search_home",Search_Super_Deals:"/sales/search_home",Search_Result_Super_Deals:"/sales/search_result",Search_Result:"/search/search_result"},g={Home_Selected:"/recommend/home_selected_list",Infoflow_List:"/recommend/infoflow_list",Similar_List:"/recommend/similar_list",NewChannel:"/recommend/new_goods_channel_list"},l={My_Wish:"/wish/my_wish_list",Wish_Board:"/wish/wish_board_list",Wish_Board_Select:"/wish/wish_board_select_list",Wish_Board_Share:"/wish/wish_board_share_list",Wish_Archives:"/wish/wish_archives_list",Wish_Recently:"/wish/recently_viewed_list"},u={Me:"/user/me",Survey:"/user/survey",Login:"/account/login",MyProFile:"/account/my_profile"},p={Page:"/web/web",Dialog:"/web/web_dialog"},h={Share:"/common/share"},m={CheckIn:"/point/check_in",Point:"/point/point",History:"/point/point_history",Archived:"/point/points_archived_list",Source:"/point/points_source_list"},f={Index:"/message/unread_message",Order:"/message/unread_message_order",News:"/message/unread_message_news",Activity:"/message/unread_message_activity",Promo:"/message/unread_message_promo",Fun_Mart:"/message/unread_message_fun_mart",Fun_Message:"/message/unread_fun_message",Notification_List:"/message/notification_list",Set_Notification:"/message/set_notification",Notification_Remind:"/message/setting_notification_remind",Set_Message_Notification:"/message/set_message_notification"},y={Index:_?"/gals/gals":"/community/community_home_page",Love_Romwe:"/community/lover",Trendy:"/gals/trendy",Feedback:"/gals/gals_feedback"},v={Detail:"/gals_picture/gals_review_detail",ShowCompetition:"/gals_picture/shein_gals_show_tag_detail"},S={Person:"/gals_person/person",Vote_Detail:"/gals_person/vote_detail"},B={Detail:"/goods_details/goods_details",SwitchSizeUnit:"/event/goods_details/switch_size_unit"},w={Detail:_?"/video/video_detail":"/community/community_video_detail"},b={Index:"/outfit/outfit_list",Select:"/outfit/gals_create",Contest:"/outfit/outfit_contest",Detail:"/outfit/outfit_detail",RunwayVideo:"/outfit/runway_video"},C={List:"/live/media_view",Detail:"/live/live_detail"},L={List:"/order/order_list",Detail:"/order/order_detail",HistoryDetail:"/order/order_history_detail",WriteReview:"/order/order_write_review",Review:"/order/order_review",EconomizeOrderDetail:"/order/economize_order_detail",ExchangeGoodsList:"/order/exchange_order_goods_list",ExchangeProductList:"/order/exchange_goods_list"},k={Trial_Center_Home:"/trial/trial_center_home",User_Free_Trail:"/trial/user_free_trail",Post_Trail_Report:"/trial/post_trail_report"},W={Gift_Card_Page:"/gift_card/gift_card_page",Gift_Card_Buy:"/gift_card/gift_card_buy",Gift_Card_CheckOut:"/gift_card/gift_card_checkout",Gift_Card_Order_Detail:"/gift_card/gift_card_order_detail"},P={Call_Service:"/customer_service/call_service",Submit_Ticket:"/customer_service/user_submit_ticket",Ticket_Preview:"/customer_service/ticket_preview"},N={Choose_Coupon:"/pay/choose_coupon",Paid_Membership:"/pay/paid_membership_checkout",Coupon:"/pay/coupon",GoSheinSaverPay:"/pay/economize_card_checkout",QuickCheckout:"/pay/quick_checkout",QuickOrderCheckout:"/pay/quick_order_detail"},I={Wallet:"/wallet/wallet"},A={Logout:"/event/common/logout"},E="undefined"!=typeof window?window.navigator.userAgent.toLowerCase():"",O=E&&E.indexOf("android")>0;E&&/iphone|ipad|ipod|ios/.test(E);function T(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}("undefined"==typeof WING_ENVS?{}:WING_ENVS).WEB_CLIENT;var G=a().WingBridge,D=function(e){for(var t=1;t<arguments.length;t++){var i=null!=arguments[t]?arguments[t]:{},o=Object.keys(i);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(i).filter(function(e){return Object.getOwnPropertyDescriptor(i,e).enumerable}))),o.forEach(function(t){T(e,t,i[t])})}return e}({},{"WingSetting/sendEmail":"to_sendemail","WingSetting/callTelephone":"to_call_telephone","WingSetting/openSystemNotifySetting":"to_system_notify_setting","WingSetting/downloadFile":"download_file","WingNavigationBar/disableSideslipGesture":"disable_sideslip_goback_proxy","WingNavigationBar/getStatusBarHeight":"get_status_bar_height","WingNavigationBar/controlStatusbar":"control_statusbar","WingImage/saveImage":"download_img",[G.NavigationBar.Close]:"close_currentpage",[G.NavigationBar.SetTitle]:"update_toolbar",[G.NavigationBar.AddBackIntervene]:"start_goback_proxy",[G.NavigationBar.SetShow]:"action_control_toolbar",[G.Setting.QueryNotifyStatus]:["get_notify_status","getNotifyStatus"],[G.Navigation.Go]:{[u.Login]:"to_login",[h.Share]:"action_share",[n.Pick_List]:"show_picking_type",[n.Discount_List]:"show_special_type",[s.Shop]:"to_main_page",[s.Index]:"to_main_page",[n.Real_List]:"show_real_type",[B.Detail]:"goods_detail",[B.SwitchSizeUnit]:"change_size_unit",[p.Page]:"open_new_web",[m.Point]:"show_my_points",[m.CheckIn]:"show_checkin",[y.Index]:{key:"type",pages:{menu:"menu_gals",home:"social_home",tag:"social_tag"}},[v.Detail]:{key:"type",pages:{show:"show_info_detail",wear:"wear_detail",review:"review_detail"}},[C.List]:{key:"media_tab",pages:{video:"video_list",live:"live_list"}},[b.Index]:"outfit_feed",[b.Contest]:"outfit_hashtag",[w.Detail]:"video_detail",[S.Vote_Detail]:"vote_detail",[S.Person]:"social_account_page",[b.Select]:"to_checkin_outfit",[v.ShowCompetition]:"show_detail",[C.Detail]:"live_detail",[b.Detail]:"outfit_detail",[b.RunwayVideo]:"outfit_runway",[k.Trial_Center_Home]:"show_trial_center",[W.Gift_Card_CheckOut]:"gift_card_checkout",[l.My_Wish]:"show_wishlist",[d.Shop_Cart]:"show_cartbag",[c.Search_Home]:"show_search",[u.Survey]:"show_survey_center",[N.Choose_Coupon]:"show_my_coupons",[W.Gift_Card_Page]:O?"gift_cart":"gift_card",[L.List]:"open_order_list",[L.Detail]:"open_order_detail",[L.HistoryDetail]:"open_history_order_detail",[I.Wallet]:"open_wallet",[A.Logout]:"logout",[P.Submit_Ticket]:"to_submit_ticket",[W.Gift_Card_Order_Detail]:"to_gift_card_detail",[P.Call_Service]:"to_phone_service",[P.Ticket_Preview]:"click_pdf",[d.Coupon_Promotion_Goods_List]:"show_coupon_promotion_goods_list",[d.Coupon_For_Goods_List]:"show_coupon_for_goods_list",[f.Set_Notification]:"to_my_subscribe",[m.History]:"to_point_history",[N.Paid_Membership]:"to_app_pay_prime",[g.Similar_List]:"show_similar_list",[n.Virtual_List]:"show_virtual_type"},"WingNavigationBar/getSafeAreaBottomHeight":["get_safe_area_bottom_height","getSafeAreaBottomHeight"],"AddressBridge/checkLocationPermission":["checkLocationPermission","checkLocationPermissionResult"],"AddressBridge/gotoLocationSetting":"gotoLocationSetting","AddressBridge/addressModifyResult":"addressModifyResult","AddressBridge/address_attention_alert":"address_attention_alert","AddressBridge/getLocation":["getLocation","getLocationResult"],"PaymentBridge/pageLoadSuccess":"load_success","PaymentBridge/webToMobileAction":"paymentBridge","PaymentBridge/c2pVerifyAccountResult":"c2p_verification_account_result","PaymentBridge/c2pClickEnterCardManually":"click_enter_card_manually","PaymentBridge/c2pClickTipsButton":"click_c2p_tips_button","PaymentBridge/c2pChangeAlertStatus":"change_alert_status","PaymentBridge/c2pSelectAreaCode":"c2p_select_area_code","PaymentBridge/reportBiEventMessage":"report_bi_event_message","PaymentBridge/setTitle":"set_title","PaymentBridge/queryPayStatus":"queryPayStatus","PaymentBridge/actionPopupToast":"action_popup_toast"},{});function R(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}function V(e){var t="";try{t=decodeURIComponent(e)}catch(i){t=e}return t||""}("undefined"==typeof WING_ENVS?{}:WING_ENVS).WEB_CLIENT;var x=["Wing.Event.APP.Active","Wing.Event.APP.Background","Wing.Event.APP.StartDisplayPage","loginResult","shareActionResult"],M="shein"===("undefined"==typeof WING_ENVS?{}:WING_ENVS).WEB_CLIENT,j=[...("undefined"==typeof WING_ENVS?{}:WING_ENVS).IS_IOS?[]:["AddressBridge/checkLocationPermission","AddressBridge/gotoLocationSetting","AddressBridge/getLocation","AddressBridge/addressModifyResult","AddressBridge/address_attention_alert"]],H=["AccountBridge/getUserInfo","AccountBridge/getTrialQualification","AccountBridge/checkInLoginState","AccountBridge/loginTokenInvalid","AccountBridge/getPayBackCache","AccountBridge/setPayBackCache","AccountBridge/getRenewMemberCache","AccountBridge/setRenewMemberCache","AccountBridge/getSession","WingCache/clear","WingStorage/get","WingStorage/put","WingStorage/remove","WingStorage/clear","WebContainer/setRefresh","SIShareBridge/getSupportChannels","SIShareBridge/shareActionWithChannel","RiskBridge/getBlackbox","WingStandardEventCenter/postNotificationToNative","RiskBridge/Geetest","AccountBridge/updateUserInfo","CartBridge/login_merge_cart","CartBridge/get_cart_info","CartBridge/guest_login_to_checkout","AccountBridge/getSupportSocialList","AccountBridge/getSocialLoginInfo","AccountBridge/isSupportOneTapLogin","AccountBridge/callOneTapLogin","WingNavigationBar/setMenu","AddressBridge/onStoreTransitAddressResult","WingVideo/shootVideo","MessageBridge/to_google_play","MessageBridge/to_apple_store","WingJsEvent/postToH5","LiveBridge/show","LiveBridge/hide","LiveBridge/sendBIEvent","LiveBridge/getOrientation","LiveBridge/setOrientation","LiveBridge/enableOrientation","LiveBridge/setStatus","LiveBridge/toast","LiveBridge/follow","LiveBridge/likeGuide","LiveBridge/popBarrage","LiveBridge/getWatchingTime","LiveBridge/showProductList","LiveBridge/hideProductList","LiveBridge/showShare","LiveBridge/hideShare","LiveBridge/showNonStandardCart","LiveBridge/hideNonStandardCart","SIServiceBridge/isSupportAddWidgetWithinApp","SIServiceBridge/addWidgetWithinApp","SIServiceBridge/guideToAddCheckInWidget","SIServiceBridge/checkInSuccess","SIServiceBridge/getCheckInData","CartBridge/getActivityAtmosphereConfig","CartBridge/getShareConfig","CartBridge/change_site","CartBridge/quick_add_cart","CartBridge/updated_site","CartBridge/showCountryListPopup","CartLureWidgetBridge/init","CartLureWidgetBridge/show","CartLureWidgetBridge/hide","UltronBridge/checkCardOcrEnable","UltronBridge/openCardOcrPage","UltronBridge/feedbackCardOcrResult","CartBridge/get_cart_pre_address","GoodsDetailBridge/get_page_param","SIServiceBridge/refreshUnReadMsgNum","CartBridge/save_mx_address_success","WingPermissions/grant","WingPermissions/revoke","CheckoutBridge/checkout_bridge_get_couponinfo","CheckoutBridge/checkout_bridge_add_bag_success","CartBridge/get_add_item_info","CartBridge/selected_coupon","BottomCartBarBridge/show","BottomCartBarBridge/topInfoflow",...M?j:[]];function U(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}var F=function(e){for(var t=1;t<arguments.length;t++){var i=null!=arguments[t]?arguments[t]:{},o=Object.keys(i);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(i).filter(function(e){return Object.getOwnPropertyDescriptor(i,e).enumerable}))),o.forEach(function(t){U(e,t,i[t])})}return e}({},{},"shein"===("undefined"==typeof WING_ENVS?{}:WING_ENVS).WEB_CLIENT?{"WingOffline/getViewInfo":{all:994},"WingBase/getWebPerformance":{all:1254}}:{"WingOffline/getViewInfo":{all:-1}});return a().initConfig({platform:("undefined"==typeof WING_ENVS?{}:WING_ENVS).WEB_CLIENT,appVersion:("undefined"==typeof WING_ENVS?{}:WING_ENVS).APP_VERSION,bridgeToEventTypeMap:D,bridgeToEventTypeParamsMap:{to_login:{login_page_type:"page_type"},download_img:{url:"img_url"},update_toolbar:{title:"title.text"},action_share:{},show_wishlist:{page_from:"from_page"},outfit_detail:{styleId:"page_id"},wear_detail:{content_id:"page_id"},review_detail:{content_id:"page_id"},show_info_detail:{content_id:"page_id"},video_detail:{media_id:"page_id"},live_detail:{live_id:"page_id"},vote_detail:{id:"page_id"},outfit_hashtag:{conver_id:"page_id"},outfit_runway:{videoId:"page_id"},to_submit_ticket:{themeid:"id",theme_name:"name"},push_to_new_ticket:{ticket_id:"id"},click_pdf:{file_url_string:"content_url",file_name_string:"file_name"},menu_gals:{tag_id:"page_id"},show_detail:{id:"page_id"},social_account_page:{member_id:"page_id"},show_similar_list:{goods_image_url:"goods_img"},show_real_type:{top_goods_id:"adp",src_type:"srctype",force_scene:"forceScene",is_from_h5_game_add_cart:"is_add_cart"},show_special_type:{page_from:"from_page",user_path:"userpath",srct_ype:"srctype",is_from_h5_game_add_cart:"is_add_cart"},show_picking_type:{page_from:"from_page",top_goods_id:"adp",select_type_id:"selectTypeId",user_path:"userpath",srct_ype:"srctype",abt_params_for_query:"abt_params",default_select_day:"daily",force_scene:"forceScene",is_from_h5_game_add_cart:"is_add_cart"},action_control_toolbar:{isShow:{key:"isShowBar",value:e=>+e},isAnimate:{key:"isAnimateBar",value:e=>+e}},social_tag:{tag_id:"page_id",game_flag:"game_browsing"}},eventToBridgeResultMap:{getNotifyStatus:e=>({status:+e})},externalCompatibleBridges:H,externalCompatibleEvents:x,appVersionCompatibleMap:F,transforms:{transformCompatibleParams:function(e){var t,i,o,{params:r}=e;return"string"==typeof r.scici&&delete(r=function(e){for(var t=1;t<arguments.length;t++){var i=null!=arguments[t]?arguments[t]:{},o=Object.keys(i);"function"==typeof Object.getOwnPropertySymbols&&(o=o.concat(Object.getOwnPropertySymbols(i).filter(function(e){return Object.getOwnPropertyDescriptor(i,e).enumerable}))),o.forEach(function(t){R(e,t,i[t])})}return e}({},r,(t=r.scici,i={},o=t.split("~~"),i.resourcepage_title=V(o[0]||""),i.resource_type=V(o[1]||""),i.resource_position=V(o[2]||""),i.resource_content=V(o[3]||""),i.test_content=V(o[4]),i.aod_name="".concat(V(o[5]||"")),i))).scici,r}}}),{}})());
+</script>
+<script>
+  !function(e,t){if("object"==typeof exports&&"object"==typeof module)module.exports=t(require("Wing"));else if("function"==typeof define&&define.amd)define(["Wing"],t);else{var r="object"==typeof exports?t(require("Wing")):t(e.Wing);for(var n in r)("object"==typeof exports?exports:e)[n]=r[n]}}(self,e=>(()=>{var t={118:function(e,t,r){var n;e.exports=(n=r(1238),r(4009),r(6973),r(745),r(6800),function(){var e=n,t=e.lib.BlockCipher,r=e.algo,i=[],o=[],a=[],s=[],c=[],p=[],u=[],d=[],f=[],l=[];!function(){for(var e=[],t=0;t<256;t++)e[t]=t<128?t<<1:t<<1^283;var r=0,n=0;for(t=0;t<256;t++){var h=n^n<<1^n<<2^n<<3^n<<4;h=h>>>8^255&h^99,i[r]=h,o[h]=r;var _=e[r],v=e[_],y=e[v],m=257*e[h]^16843008*h;a[r]=m<<24|m>>>8,s[r]=m<<16|m>>>16,c[r]=m<<8|m>>>24,p[r]=m,m=16843009*y^65537*v^257*_^16843008*r,u[h]=m<<24|m>>>8,d[h]=m<<16|m>>>16,f[h]=m<<8|m>>>24,l[h]=m,r?(r=_^e[e[e[y^_]]],n^=e[e[n]]):r=n=1}}();var h=[0,1,2,4,8,16,32,64,128,27,54],_=r.AES=t.extend({_doReset:function(){if(!this._nRounds||this._keyPriorReset!==this._key){for(var e=this._keyPriorReset=this._key,t=e.words,r=e.sigBytes/4,n=4*((this._nRounds=r+6)+1),o=this._keySchedule=[],a=0;a<n;a++)a<r?o[a]=t[a]:(p=o[a-1],a%r?r>6&&a%r==4&&(p=i[p>>>24]<<24|i[p>>>16&255]<<16|i[p>>>8&255]<<8|i[255&p]):(p=i[(p=p<<8|p>>>24)>>>24]<<24|i[p>>>16&255]<<16|i[p>>>8&255]<<8|i[255&p],p^=h[a/r|0]<<24),o[a]=o[a-r]^p);for(var s=this._invKeySchedule=[],c=0;c<n;c++){if(a=n-c,c%4)var p=o[a];else p=o[a-4];s[c]=c<4||a<=4?p:u[i[p>>>24]]^d[i[p>>>16&255]]^f[i[p>>>8&255]]^l[i[255&p]]}}},encryptBlock:function(e,t){this._doCryptBlock(e,t,this._keySchedule,a,s,c,p,i)},decryptBlock:function(e,t){var r=e[t+1];e[t+1]=e[t+3],e[t+3]=r,this._doCryptBlock(e,t,this._invKeySchedule,u,d,f,l,o),r=e[t+1],e[t+1]=e[t+3],e[t+3]=r},_doCryptBlock:function(e,t,r,n,i,o,a,s){for(var c=this._nRounds,p=e[t]^r[0],u=e[t+1]^r[1],d=e[t+2]^r[2],f=e[t+3]^r[3],l=4,h=1;h<c;h++){var _=n[p>>>24]^i[u>>>16&255]^o[d>>>8&255]^a[255&f]^r[l++],v=n[u>>>24]^i[d>>>16&255]^o[f>>>8&255]^a[255&p]^r[l++],y=n[d>>>24]^i[f>>>16&255]^o[p>>>8&255]^a[255&u]^r[l++],m=n[f>>>24]^i[p>>>16&255]^o[u>>>8&255]^a[255&d]^r[l++];p=_,u=v,d=y,f=m}_=(s[p>>>24]<<24|s[u>>>16&255]<<16|s[d>>>8&255]<<8|s[255&f])^r[l++],v=(s[u>>>24]<<24|s[d>>>16&255]<<16|s[f>>>8&255]<<8|s[255&p])^r[l++],y=(s[d>>>24]<<24|s[f>>>16&255]<<16|s[p>>>8&255]<<8|s[255&u])^r[l++],m=(s[f>>>24]<<24|s[p>>>16&255]<<16|s[u>>>8&255]<<8|s[255&d])^r[l++],e[t]=_,e[t+1]=v,e[t+2]=y,e[t+3]=m},keySize:8});e.AES=t._createHelper(_)}(),n.AES)},745:function(e,t,r){var n,i,o,a,s,c,p,u;e.exports=(u=r(1238),r(9304),r(1842),i=(n=u).lib,o=i.Base,a=i.WordArray,s=n.algo,c=s.MD5,p=s.EvpKDF=o.extend({cfg:o.extend({keySize:4,hasher:c,iterations:1}),init:function(e){this.cfg=this.cfg.extend(e)},compute:function(e,t){for(var r,n=this.cfg,i=n.hasher.create(),o=a.create(),s=o.words,c=n.keySize,p=n.iterations;s.length<c;){r&&i.update(r),r=i.update(e).finalize(t),i.reset();for(var u=1;u<p;u++)r=i.finalize(r),i.reset();o.concat(r)}return o.sigBytes=4*c,o}}),n.EvpKDF=function(e,t,r){return p.create(r).compute(e,t)},u.EvpKDF)},1238:function(e,t,r){var n;e.exports=(n=n||function(e,t){var n;if("undefined"!=typeof window&&window.crypto&&(n=window.crypto),"undefined"!=typeof self&&self.crypto&&(n=self.crypto),"undefined"!=typeof globalThis&&globalThis.crypto&&(n=globalThis.crypto),!n&&"undefined"!=typeof window&&window.msCrypto&&(n=window.msCrypto),!n&&void 0!==r.g&&r.g.crypto&&(n=r.g.crypto),!n)try{n=r(4002)}catch(e){}var i=function(){if(n){if("function"==typeof n.getRandomValues)try{return n.getRandomValues(new Uint32Array(1))[0]}catch(e){}if("function"==typeof n.randomBytes)try{return n.randomBytes(4).readInt32LE()}catch(e){}}throw new Error("Native crypto module could not be used to get secure random number.")},o=Object.create||function(){function e(){}return function(t){var r;return e.prototype=t,r=new e,e.prototype=null,r}}(),a={},s=a.lib={},c=s.Base={extend:function(e){var t=o(this);return e&&t.mixIn(e),t.hasOwnProperty("init")&&this.init!==t.init||(t.init=function(){t.$super.init.apply(this,arguments)}),t.init.prototype=t,t.$super=this,t},create:function(){var e=this.extend();return e.init.apply(e,arguments),e},init:function(){},mixIn:function(e){for(var t in e)e.hasOwnProperty(t)&&(this[t]=e[t]);e.hasOwnProperty("toString")&&(this.toString=e.toString)},clone:function(){return this.init.prototype.extend(this)}},p=s.WordArray=c.extend({init:function(e,r){e=this.words=e||[],this.sigBytes=r!=t?r:4*e.length},toString:function(e){return(e||d).stringify(this)},concat:function(e){var t=this.words,r=e.words,n=this.sigBytes,i=e.sigBytes;if(this.clamp(),n%4)for(var o=0;o<i;o++){var a=r[o>>>2]>>>24-o%4*8&255;t[n+o>>>2]|=a<<24-(n+o)%4*8}else for(var s=0;s<i;s+=4)t[n+s>>>2]=r[s>>>2];return this.sigBytes+=i,this},clamp:function(){var t=this.words,r=this.sigBytes;t[r>>>2]&=4294967295<<32-r%4*8,t.length=e.ceil(r/4)},clone:function(){var e=c.clone.call(this);return e.words=this.words.slice(0),e},random:function(e){for(var t=[],r=0;r<e;r+=4)t.push(i());return new p.init(t,e)}}),u=a.enc={},d=u.Hex={stringify:function(e){for(var t=e.words,r=e.sigBytes,n=[],i=0;i<r;i++){var o=t[i>>>2]>>>24-i%4*8&255;n.push((o>>>4).toString(16)),n.push((15&o).toString(16))}return n.join("")},parse:function(e){for(var t=e.length,r=[],n=0;n<t;n+=2)r[n>>>3]|=parseInt(e.substr(n,2),16)<<24-n%8*4;return new p.init(r,t/2)}},f=u.Latin1={stringify:function(e){for(var t=e.words,r=e.sigBytes,n=[],i=0;i<r;i++){var o=t[i>>>2]>>>24-i%4*8&255;n.push(String.fromCharCode(o))}return n.join("")},parse:function(e){for(var t=e.length,r=[],n=0;n<t;n++)r[n>>>2]|=(255&e.charCodeAt(n))<<24-n%4*8;return new p.init(r,t)}},l=u.Utf8={stringify:function(e){try{return decodeURIComponent(escape(f.stringify(e)))}catch(e){throw new Error("Malformed UTF-8 data")}},parse:function(e){return f.parse(unescape(encodeURIComponent(e)))}},h=s.BufferedBlockAlgorithm=c.extend({reset:function(){this._data=new p.init,this._nDataBytes=0},_append:function(e){"string"==typeof e&&(e=l.parse(e)),this._data.concat(e),this._nDataBytes+=e.sigBytes},_process:function(t){var r,n=this._data,i=n.words,o=n.sigBytes,a=this.blockSize,s=o/(4*a),c=(s=t?e.ceil(s):e.max((0|s)-this._minBufferSize,0))*a,u=e.min(4*c,o);if(c){for(var d=0;d<c;d+=a)this._doProcessBlock(i,d);r=i.splice(0,c),n.sigBytes-=u}return new p.init(r,u)},clone:function(){var e=c.clone.call(this);return e._data=this._data.clone(),e},_minBufferSize:0}),_=(s.Hasher=h.extend({cfg:c.extend(),init:function(e){this.cfg=this.cfg.extend(e),this.reset()},reset:function(){h.reset.call(this),this._doReset()},update:function(e){return this._append(e),this._process(),this},finalize:function(e){return e&&this._append(e),this._doFinalize()},blockSize:16,_createHelper:function(e){return function(t,r){return new e.init(r).finalize(t)}},_createHmacHelper:function(e){return function(t,r){return new _.HMAC.init(e,r).finalize(t)}}}),a.algo={});return a}(Math),n)},1842:function(e,t,r){var n,i,o,a;e.exports=(n=r(1238),o=(i=n).lib.Base,a=i.enc.Utf8,void(i.algo.HMAC=o.extend({init:function(e,t){e=this._hasher=new e.init,"string"==typeof t&&(t=a.parse(t));var r=e.blockSize,n=4*r;t.sigBytes>n&&(t=e.finalize(t)),t.clamp();for(var i=this._oKey=t.clone(),o=this._iKey=t.clone(),s=i.words,c=o.words,p=0;p<r;p++)s[p]^=1549556828,c[p]^=909522486;i.sigBytes=o.sigBytes=n,this.reset()},reset:function(){var e=this._hasher;e.reset(),e.update(this._iKey)},update:function(e){return this._hasher.update(e),this},finalize:function(e){var t=this._hasher,r=t.finalize(e);return t.reset(),t.finalize(this._oKey.clone().concat(r))}})))},3369:function(e,t,r){var n;e.exports=(n=r(1238),n.enc.Hex)},4002:()=>{},4009:function(e,t,r){var n;e.exports=(n=r(1238),function(){var e=n,t=e.lib.WordArray;function r(e,r,n){for(var i=[],o=0,a=0;a<r;a++)if(a%4){var s=n[e.charCodeAt(a-1)]<<a%4*2|n[e.charCodeAt(a)]>>>6-a%4*2;i[o>>>2]|=s<<24-o%4*8,o++}return t.create(i,o)}e.enc.Base64={stringify:function(e){var t=e.words,r=e.sigBytes,n=this._map;e.clamp();for(var i=[],o=0;o<r;o+=3)for(var a=(t[o>>>2]>>>24-o%4*8&255)<<16|(t[o+1>>>2]>>>24-(o+1)%4*8&255)<<8|t[o+2>>>2]>>>24-(o+2)%4*8&255,s=0;s<4&&o+.75*s<r;s++)i.push(n.charAt(a>>>6*(3-s)&63));var c=n.charAt(64);if(c)for(;i.length%4;)i.push(c);return i.join("")},parse:function(e){var t=e.length,n=this._map,i=this._reverseMap;if(!i){i=this._reverseMap=[];for(var o=0;o<n.length;o++)i[n.charCodeAt(o)]=o}var a=n.charAt(64);if(a){var s=e.indexOf(a);-1!==s&&(t=s)}return r(e,t,i)},_map:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="}}(),n.enc.Base64)},6145:function(e,t,r){var n;e.exports=(n=r(1238),r(6800),n.pad.Pkcs7)},6800:function(e,t,r){var n;e.exports=(n=r(1238),r(745),void(n.lib.Cipher||function(e){var t=n,r=t.lib,i=r.Base,o=r.WordArray,a=r.BufferedBlockAlgorithm,s=t.enc,c=(s.Utf8,s.Base64),p=t.algo.EvpKDF,u=r.Cipher=a.extend({cfg:i.extend(),createEncryptor:function(e,t){return this.create(this._ENC_XFORM_MODE,e,t)},createDecryptor:function(e,t){return this.create(this._DEC_XFORM_MODE,e,t)},init:function(e,t,r){this.cfg=this.cfg.extend(r),this._xformMode=e,this._key=t,this.reset()},reset:function(){a.reset.call(this),this._doReset()},process:function(e){return this._append(e),this._process()},finalize:function(e){return e&&this._append(e),this._doFinalize()},keySize:4,ivSize:4,_ENC_XFORM_MODE:1,_DEC_XFORM_MODE:2,_createHelper:function(){function e(e){return"string"==typeof e?g:y}return function(t){return{encrypt:function(r,n,i){return e(n).encrypt(t,r,n,i)},decrypt:function(r,n,i){return e(n).decrypt(t,r,n,i)}}}}()}),d=(r.StreamCipher=u.extend({_doFinalize:function(){return this._process(!0)},blockSize:1}),t.mode={}),f=r.BlockCipherMode=i.extend({createEncryptor:function(e,t){return this.Encryptor.create(e,t)},createDecryptor:function(e,t){return this.Decryptor.create(e,t)},init:function(e,t){this._cipher=e,this._iv=t}}),l=d.CBC=function(){var t=f.extend();function r(t,r,n){var i,o=this._iv;o?(i=o,this._iv=e):i=this._prevBlock;for(var a=0;a<n;a++)t[r+a]^=i[a]}return t.Encryptor=t.extend({processBlock:function(e,t){var n=this._cipher,i=n.blockSize;r.call(this,e,t,i),n.encryptBlock(e,t),this._prevBlock=e.slice(t,t+i)}}),t.Decryptor=t.extend({processBlock:function(e,t){var n=this._cipher,i=n.blockSize,o=e.slice(t,t+i);n.decryptBlock(e,t),r.call(this,e,t,i),this._prevBlock=o}}),t}(),h=(t.pad={}).Pkcs7={pad:function(e,t){for(var r=4*t,n=r-e.sigBytes%r,i=n<<24|n<<16|n<<8|n,a=[],s=0;s<n;s+=4)a.push(i);var c=o.create(a,n);e.concat(c)},unpad:function(e){var t=255&e.words[e.sigBytes-1>>>2];e.sigBytes-=t}},_=(r.BlockCipher=u.extend({cfg:u.cfg.extend({mode:l,padding:h}),reset:function(){var e;u.reset.call(this);var t=this.cfg,r=t.iv,n=t.mode;this._xformMode==this._ENC_XFORM_MODE?e=n.createEncryptor:(e=n.createDecryptor,this._minBufferSize=1),this._mode&&this._mode.__creator==e?this._mode.init(this,r&&r.words):(this._mode=e.call(n,this,r&&r.words),this._mode.__creator=e)},_doProcessBlock:function(e,t){this._mode.processBlock(e,t)},_doFinalize:function(){var e,t=this.cfg.padding;return this._xformMode==this._ENC_XFORM_MODE?(t.pad(this._data,this.blockSize),e=this._process(!0)):(e=this._process(!0),t.unpad(e)),e},blockSize:4}),r.CipherParams=i.extend({init:function(e){this.mixIn(e)},toString:function(e){return(e||this.formatter).stringify(this)}})),v=(t.format={}).OpenSSL={stringify:function(e){var t=e.ciphertext,r=e.salt;return(r?o.create([1398893684,1701076831]).concat(r).concat(t):t).toString(c)},parse:function(e){var t,r=c.parse(e),n=r.words;return 1398893684==n[0]&&1701076831==n[1]&&(t=o.create(n.slice(2,4)),n.splice(0,4),r.sigBytes-=16),_.create({ciphertext:r,salt:t})}},y=r.SerializableCipher=i.extend({cfg:i.extend({format:v}),encrypt:function(e,t,r,n){n=this.cfg.extend(n);var i=e.createEncryptor(r,n),o=i.finalize(t),a=i.cfg;return _.create({ciphertext:o,key:r,iv:a.iv,algorithm:e,mode:a.mode,padding:a.padding,blockSize:e.blockSize,formatter:n.format})},decrypt:function(e,t,r,n){return n=this.cfg.extend(n),t=this._parse(t,n.format),e.createDecryptor(r,n).finalize(t.ciphertext)},_parse:function(e,t){return"string"==typeof e?t.parse(e,this):e}}),m=(t.kdf={}).OpenSSL={execute:function(e,t,r,n){n||(n=o.random(8));var i=p.create({keySize:t+r}).compute(e,n),a=o.create(i.words.slice(t),4*r);return i.sigBytes=4*t,_.create({key:i,iv:a,salt:n})}},g=r.PasswordBasedCipher=y.extend({cfg:y.cfg.extend({kdf:m}),encrypt:function(e,t,r,n){var i=(n=this.cfg.extend(n)).kdf.execute(r,e.keySize,e.ivSize);n.iv=i.iv;var o=y.encrypt.call(this,e,t,i.key,n);return o.mixIn(i),o},decrypt:function(e,t,r,n){n=this.cfg.extend(n),t=this._parse(t,n.format);var i=n.kdf.execute(r,e.keySize,e.ivSize,t.salt);return n.iv=i.iv,y.decrypt.call(this,e,t,i.key,n)}})}()))},6973:function(e,t,r){var n;e.exports=(n=r(1238),function(e){var t=n,r=t.lib,i=r.WordArray,o=r.Hasher,a=t.algo,s=[];!function(){for(var t=0;t<64;t++)s[t]=4294967296*e.abs(e.sin(t+1))|0}();var c=a.MD5=o.extend({_doReset:function(){this._hash=new i.init([1732584193,4023233417,2562383102,271733878])},_doProcessBlock:function(e,t){for(var r=0;r<16;r++){var n=t+r,i=e[n];e[n]=16711935&(i<<8|i>>>24)|4278255360&(i<<24|i>>>8)}var o=this._hash.words,a=e[t+0],c=e[t+1],l=e[t+2],h=e[t+3],_=e[t+4],v=e[t+5],y=e[t+6],m=e[t+7],g=e[t+8],w=e[t+9],P=e[t+10],S=e[t+11],O=e[t+12],b=e[t+13],E=e[t+14],C=e[t+15],A=o[0],k=o[1],x=o[2],B=o[3];A=p(A,k,x,B,a,7,s[0]),B=p(B,A,k,x,c,12,s[1]),x=p(x,B,A,k,l,17,s[2]),k=p(k,x,B,A,h,22,s[3]),A=p(A,k,x,B,_,7,s[4]),B=p(B,A,k,x,v,12,s[5]),x=p(x,B,A,k,y,17,s[6]),k=p(k,x,B,A,m,22,s[7]),A=p(A,k,x,B,g,7,s[8]),B=p(B,A,k,x,w,12,s[9]),x=p(x,B,A,k,P,17,s[10]),k=p(k,x,B,A,S,22,s[11]),A=p(A,k,x,B,O,7,s[12]),B=p(B,A,k,x,b,12,s[13]),x=p(x,B,A,k,E,17,s[14]),A=u(A,k=p(k,x,B,A,C,22,s[15]),x,B,c,5,s[16]),B=u(B,A,k,x,y,9,s[17]),x=u(x,B,A,k,S,14,s[18]),k=u(k,x,B,A,a,20,s[19]),A=u(A,k,x,B,v,5,s[20]),B=u(B,A,k,x,P,9,s[21]),x=u(x,B,A,k,C,14,s[22]),k=u(k,x,B,A,_,20,s[23]),A=u(A,k,x,B,w,5,s[24]),B=u(B,A,k,x,E,9,s[25]),x=u(x,B,A,k,h,14,s[26]),k=u(k,x,B,A,g,20,s[27]),A=u(A,k,x,B,b,5,s[28]),B=u(B,A,k,x,l,9,s[29]),x=u(x,B,A,k,m,14,s[30]),A=d(A,k=u(k,x,B,A,O,20,s[31]),x,B,v,4,s[32]),B=d(B,A,k,x,g,11,s[33]),x=d(x,B,A,k,S,16,s[34]),k=d(k,x,B,A,E,23,s[35]),A=d(A,k,x,B,c,4,s[36]),B=d(B,A,k,x,_,11,s[37]),x=d(x,B,A,k,m,16,s[38]),k=d(k,x,B,A,P,23,s[39]),A=d(A,k,x,B,b,4,s[40]),B=d(B,A,k,x,a,11,s[41]),x=d(x,B,A,k,h,16,s[42]),k=d(k,x,B,A,y,23,s[43]),A=d(A,k,x,B,w,4,s[44]),B=d(B,A,k,x,O,11,s[45]),x=d(x,B,A,k,C,16,s[46]),A=f(A,k=d(k,x,B,A,l,23,s[47]),x,B,a,6,s[48]),B=f(B,A,k,x,m,10,s[49]),x=f(x,B,A,k,E,15,s[50]),k=f(k,x,B,A,v,21,s[51]),A=f(A,k,x,B,O,6,s[52]),B=f(B,A,k,x,h,10,s[53]),x=f(x,B,A,k,P,15,s[54]),k=f(k,x,B,A,c,21,s[55]),A=f(A,k,x,B,g,6,s[56]),B=f(B,A,k,x,C,10,s[57]),x=f(x,B,A,k,y,15,s[58]),k=f(k,x,B,A,b,21,s[59]),A=f(A,k,x,B,_,6,s[60]),B=f(B,A,k,x,S,10,s[61]),x=f(x,B,A,k,l,15,s[62]),k=f(k,x,B,A,w,21,s[63]),o[0]=o[0]+A|0,o[1]=o[1]+k|0,o[2]=o[2]+x|0,o[3]=o[3]+B|0},_doFinalize:function(){var t=this._data,r=t.words,n=8*this._nDataBytes,i=8*t.sigBytes;r[i>>>5]|=128<<24-i%32;var o=e.floor(n/4294967296),a=n;r[15+(i+64>>>9<<4)]=16711935&(o<<8|o>>>24)|4278255360&(o<<24|o>>>8),r[14+(i+64>>>9<<4)]=16711935&(a<<8|a>>>24)|4278255360&(a<<24|a>>>8),t.sigBytes=4*(r.length+1),this._process();for(var s=this._hash,c=s.words,p=0;p<4;p++){var u=c[p];c[p]=16711935&(u<<8|u>>>24)|4278255360&(u<<24|u>>>8)}return s},clone:function(){var e=o.clone.call(this);return e._hash=this._hash.clone(),e}});function p(e,t,r,n,i,o,a){var s=e+(t&r|~t&n)+i+a;return(s<<o|s>>>32-o)+t}function u(e,t,r,n,i,o,a){var s=e+(t&n|r&~n)+i+a;return(s<<o|s>>>32-o)+t}function d(e,t,r,n,i,o,a){var s=e+(t^r^n)+i+a;return(s<<o|s>>>32-o)+t}function f(e,t,r,n,i,o,a){var s=e+(r^(t|~n))+i+a;return(s<<o|s>>>32-o)+t}t.MD5=o._createHelper(c),t.HmacMD5=o._createHmacHelper(c)}(Math),n.MD5)},7039:t=>{"use strict";t.exports=e},7121:function(e,t,r){var n;e.exports=(n=r(1238),n.enc.Utf8)},9304:function(e,t,r){var n,i,o,a,s,c,p,u;e.exports=(u=r(1238),i=(n=u).lib,o=i.WordArray,a=i.Hasher,s=n.algo,c=[],p=s.SHA1=a.extend({_doReset:function(){this._hash=new o.init([1732584193,4023233417,2562383102,271733878,3285377520])},_doProcessBlock:function(e,t){for(var r=this._hash.words,n=r[0],i=r[1],o=r[2],a=r[3],s=r[4],p=0;p<80;p++){if(p<16)c[p]=0|e[t+p];else{var u=c[p-3]^c[p-8]^c[p-14]^c[p-16];c[p]=u<<1|u>>>31}var d=(n<<5|n>>>27)+s+c[p];d+=p<20?1518500249+(i&o|~i&a):p<40?1859775393+(i^o^a):p<60?(i&o|i&a|o&a)-1894007588:(i^o^a)-899497514,s=a,a=o,o=i<<30|i>>>2,i=n,n=d}r[0]=r[0]+n|0,r[1]=r[1]+i|0,r[2]=r[2]+o|0,r[3]=r[3]+a|0,r[4]=r[4]+s|0},_doFinalize:function(){var e=this._data,t=e.words,r=8*this._nDataBytes,n=8*e.sigBytes;return t[n>>>5]|=128<<24-n%32,t[14+(n+64>>>9<<4)]=Math.floor(r/4294967296),t[15+(n+64>>>9<<4)]=r,e.sigBytes=4*t.length,this._process(),this._hash},clone:function(){var e=a.clone.call(this);return e._hash=this._hash.clone(),e}}),n.SHA1=a._createHelper(p),n.HmacSHA1=a._createHmacHelper(p),u.SHA1)}},r={};function n(e){var i=r[e];if(void 0!==i)return i.exports;var o=r[e]={exports:{}};return t[e].call(o.exports,o,o.exports,n),o.exports}n.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return n.d(t,{a:t}),t},n.d=(e,t)=>{for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t);return(()=>{"use strict";var e=n(118),t=n(6145),r=n.n(t),i=n(1238),o=n.n(i),a=n(4009),s=n.n(a),c=n(7121),p=n.n(c),u=n(3369),d=n.n(u),f=p().parse("Y7GgzFQq3FasznJC");function l(t){return(0,e.decrypt)(s().stringify(d().parse(t)),f,{mode:o().mode.CBC,padding:r(),iv:p().parse("7BaujFMhLdZVTXer")}).toString(s())}var h=n(7039),_=n.n(h);function v(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function y(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{},n=Object.keys(r);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(r).filter(function(e){return Object.getOwnPropertyDescriptor(r,e).enumerable}))),n.forEach(function(t){v(e,t,r[t])})}return e}function m(e,t){return t=null!=t?t:{},Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):function(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),r.push.apply(r,n)}return r}(Object(t)).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))}),e}function g(){var{type:e,message:t,activityName:r,reportList:n=[],headers:i={}}=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if("undefined"!=typeof window){var o=gbCommonInfo.REPORT_URL.SA_REPORT_URL;window.ErrorJs&&window.ErrorJs.sendError("wingError","".concat(o,"/unusual"),{appName:"app_h5",type:"ClientLogger",client_url:window.location.href,userAgent:window.navigator.userAgent,errorType:e,error:JSON.stringify(t),referer:encodeURIComponent(window.location.href),activity_name:r,reportList:n},{headers:i})}}function w(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"unknown";if("undefined"!=typeof window&&"undefined"!=typeof gbCommonInfo){var r=gbCommonInfo.REPORT_URL.SA_REPORT_URL,n=e.detail||e.param||e||{},i=n.armorToken?"has_armor_token":"no_armor_token";window.ErrorJs&&window.ErrorJs.sendError("error","".concat(r,"/unusual"),{errorMark:"common_info_changed",errorInfo:JSON.stringify(m(y({status:i},e),{keys:Object.keys(n)})),source:t})}}function P(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function S(e,t){return t=null!=t?t:{},Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(t)):function(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),r.push.apply(r,n)}return r}(Object(t)).forEach(function(r){Object.defineProperty(e,r,Object.getOwnPropertyDescriptor(t,r))}),e}var O={__CDN_PAGE_LIST__:[],__NODE_SERVER_ENV__:"",__SERVER_APP_COM_PARAMS__:{},__SA_REPORT_URL:"",__EXCLUDE_APP_HEADERS_FROM_LOCAL_STORAGE_PATHS__:[],__CLOSE_APP_HEADER_TRACE_LOG__:0};function b(){return O}function E(){var{__CDN_PAGE_LIST__:e}=b();return e.some(e=>new RegExp(e).test(window.location.pathname))}function C(){var e="production"===b().__NODE_SERVER_ENV__,t=location.search.includes("wing-debug");return!e&&t}function A(e){var t=new RegExp("(^|&)"+e+"=([^&]*)(&|$)","i"),r=window.location.search.substr(1).match(t);return r?decodeURIComponent(r[2]):null}function k(e){var t,{__CLOSE_APP_HEADER_TRACE_LOG__:r}=b();1!=r&&"undefined"!=typeof window&&void 0!==window.__APP_VERSION_SNAP_SHOT__&&((null===(t=window.__APP_VERSION_SNAP_SHOT__)||void 0===t?void 0:t.length)&&window.__APP_VERSION_SNAP_SHOT__.push(e),function(){try{if("undefined"==typeof window||"undefined"===window.__APP_VERSION_SNAP_SHOT__)return;var e=window.__APP_VERSION_SNAP_SHOT__||[];if(!(null==e?void 0:e.length))return;var t=[];if(e.forEach(e=>{var[r,n]=e.split(":");n&&t.push(n)}),!t.length)return;new Set(t).size>1&&g({type:"Server_Headers_Deviceid_Error",message:{snapshots:e,deviceid:appComParams.deviceid}})}catch(e){console.log("[appComParams]: log app headers deviceid error",JSON.stringify(e))}}())}function x(){var e,t={};if(function(){var{__EXCLUDE_APP_HEADERS_FROM_LOCAL_STORAGE_PATHS__:e}=b(),t=!e.some(e=>window.location.pathname===e),r=-1!==j().indexOf("android")&&925===function(){try{return+((j().match(/shein\/([\d.]*)/)||[])[1]||"").replace(/\./g,"")}catch(e){return 0}}();return!C()&&t&&!(null!==j().match(/romwe/)||window.location.host.includes("romwe"))&&!r}()&&(e=window.localStorage.getItem("SHEIN_APP_HEADERS"),window.localStorage.removeItem("SHEIN_APP_HEADERS"),t=R(e)),function(e){if("[object Object]"===toString.call(e)&&Object.keys(e).length&&e.token)return!0;return!1}(t))console.log("[appComParams]: use localStorage app headers"),window.appComParams=D(t),k("localStorageHeaders:".concat(window.appComParams.deviceid));else if(C()||E()&&function(){if(["^/h5/address$"].some(e=>new RegExp(e).test(window.location.pathname)))return!1;return _().isAvailable}())window.appComParams={},function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:5e3;return new Promise((t,r)=>{var n=setTimeout(()=>{r("WingRequestTimeout")},e);_().header.get().then(e=>{var r=e?e.headers:{};clearTimeout(n),t(r)}).catch(e=>{clearTimeout(n),r("WingRequestError")})})}().then(e=>{console.log("[appComParams]: use wing app headers success"),window.appComParams=D(e),k("wingHeaders:".concat(window.appComParams.deviceid)),window.headerEmitter.emit("update")}).catch(()=>{console.log("[appComParams]: use wing app headers failed, use server appComParams"),window.appComParams=B(),k("serverAppComParamsAfterWing:".concat(window.appComParams.deviceid))});else{console.log("[appComParams]: use server appComParams"),window.appComParams=B(),k("serverAppComParamsDefault:".concat(window.appComParams.deviceid));try{"undefined"!=typeof window&&g({type:"Use_Server_AppComParams",message:appComParams})}catch(e){}}document.addEventListener("commonInfoChanged",function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};!function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t={smdeviceid:"smDeviceId",sessionId:"sessionId"};Object.entries(e).forEach(e=>{var[r,n]=e;window.appComParams[t[r]]=n}),window.headerEmitter.emit("update")}(e.param||e||{}),w(e,"document")}),window.addEventListener("commonInfoChanged",function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};try{var t=e.detail||e.param||e||{},r={armorToken:"armorToken"};Object.entries(t).forEach(e=>{var[t,n]=e;window.appComParams[r[t]]=n}),w(e,"window")}catch(e){}})}function B(){return b().__SERVER_APP_COM_PARAMS__}function R(e){try{var t=z(e),r=l(t["s-header"]);return z((n=r,s().parse(n).toString(p())).replace(t["s-random"],""))}catch(e){return console.warn("[appComParams]: app headers decrypt failed: ".concat(JSON.stringify(e))),{}}var n}function D(e){var t=function(e){return function(t){return"string"==typeof t?e[t]:Array.isArray(t)?t.reduce((t,r)=>(null!==t&&e[r]&&(t=e[r]),t),null):void 0}}(e),r={apptype:e.apptype||e.AppType||t(["app","sitefrom","site_from","app_from","appfrom","app-from"]),devtype:e.devtype||e.Devtype||t(["app_equip","device_type"]),devType:t("device_type")||A("device_type"),clientid:e.clientid,appcountry:e.appcountry||e.AppCountry,localcountry:e.localcountry||e.LocalCountry||t("country"),currency:t("currency")||e.Currency||e.appcurrency,appversion:e.appversion||e.AppVersion||t(["app_version","appVersion"]),deviceid:e.deviceid,SmDeviceId:e.SmDeviceId||e.smdeviceid,appname:e.appname||e.AppName,token:e.token||t(["token","app_token"]),newuid:e.newuid||e.NewUid||t("userId")||"",nickname:e.nickname||t("nickname")||"",applanguage:e.applanguage||e.AppLanguage||t("app_language"),language:t("language")||e.Language||"en",device:e.device||e.Device,siteuid:e["paltform-app-siteuid"]||t(["siteUID","siteuid","site_uid"]),"network-type":e["network-type"],"system-language":e["system-language"],sessionId:e["session-id"]||e.sessionID,"page-from":decodeURIComponent(e["page-from"]||t("pageFrom")||""),"login-state":e["login-state"]||t(["login_state","isLogin","is_new_user"]),"old-siteuid":e.siteuid||e.SiteUID,editionType:t("edition_type"),cid:t("cid"),iscdn:e.iscdn||"",branch:e.branch,aaid:e.deviceaaid||e.deviceAaid||"",idfa:e.deviceidfa||e.deviceIdfa||"",idfv:e.deviceidfv||e.deviceIdfv||"",serverTime:e.servertime||e.serverTime,deviceName:e["device-name"]||"",deviceModel:e["device-model"]||"",ugid:e.ugid||"",statusBarHeight:e["status-bar-height"]||0,armorToken:e.armortoken||e.armorToken||e.ArmorToken||"",arCurrencyStatus:"1"===e.arCurrencyStatus||"1"===e.arcurrencystatus?1:0,xAdFlag:e["x-ad-flag"]||"","X-Wy-Dt":e["X-Wy-Dt"]||""};return Object.keys(r).forEach(e=>{var t=r[e];"string"!=typeof t||"undefined"!==t&&"null"!==t||(r[e]="")}),r}function j(){return window.navigator.userAgent.toLowerCase()}function z(e){var t=e;if("string"==typeof e)try{t=JSON.parse(e)}catch(r){t=e}return t}window.headerEmitter={list:{},on:function(e,t){return E()&&window.appComParams.deviceid&&t&&t(),(this.list[e]||(this.list[e]=[])).push(t),this},emit:function(){var e=[].shift.call(arguments),t=[...this.list[e]||[]];return!(!t||0===t.length)&&(t.forEach(e=>{e.apply(this,arguments)}),this)}},window.initAppComParamsEnvs=function(e){!function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};Object.assign(O,e)}(e),x()},window.updateAppCompParams=function(e){window.appComParams=D(e),k("wingUpdateAppCompParams:".concat(window.appComParams.deviceid)),window.headerEmitter.emit("update")},window.decryptAppHeaders=R,function(){try{var e;null===_()||void 0===_()||null===(e=_().on)||void 0===e||e.call(_(),"ugid_changed",e=>{try{var{ugid:t}=e||{};updateAppCompParams(S(function(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{},n=Object.keys(r);"function"==typeof Object.getOwnPropertySymbols&&(n=n.concat(Object.getOwnPropertySymbols(r).filter(function(e){return Object.getOwnPropertyDescriptor(r,e).enumerable}))),n.forEach(function(t){P(e,t,r[t])})}return e}({},window.appComParams||{}),{ugid:t}))}catch(e){console.log("update appComParams guid error: ",e)}})}catch(e){console.log(e)}}()})(),{}})());
+
+  var SA_REPORT_URL = 'https://www.srmdata.com'
+
+  window.__APP_VERSION_SNAP_SHOT__ = ["headers:","localsAppComParams:"]
+
+  // 初始化appComParams
+  window.initAppComParamsEnvs({
+    __CDN_PAGE_LIST__: ["/campaign/.*","/campaigns/.*","/newChannel/home","^/h5/address(/store)?$","^/h5/game/twelve-grids","^/h5/game/flip-card","^/h5/game/happy-flip","^/h5/game/free-item","^/h5/game/nine-grids","^/h5/game/new-user-only","^/h5/super-deals","^/h5/pay/c2p/sdk","/check_in"],
+    __NODE_SERVER_ENV__:  'production',
+    __SERVER_APP_COM_PARAMS__: {"apptype":"shein","devType":"","clientid":"","appcountry":"","localcountry":"","currency":"USD","appversion":"","deviceid":"","token":"MDEwMDE.eyJiIjo3LCJnIjoxNzY4NTg2MDgzLCJyIjoiR2wwVDNLIiwidCI6MX0.96adc56e9844b7d9","newuid":"","language":"en","device":"","siteuid":"","page-from":"","login-state":"","email":"","nickname":"","cccAbtParams":"","SmDeviceId":"","iscdn":"","branch":"","aaid":"","idfa":"","idfv":"","deviceName":"","deviceModel":"","ugid":"","regionId":"","activityFrom":"","sceneType":"","h5_supplier_params":"","eventType":"","addressId":"","billno":"","pageSource":"","isAddNewComerAddress":"0","scene":"","uberctx-armortoken":"","xAdFlag":"","statusBarHeight":"","arCurrencyStatus":0},
+    __SA_REPORT_URL: SA_REPORT_URL,
+    __EXCLUDE_APP_HEADERS_FROM_LOCAL_STORAGE_PATHS__:  ["/h5/address","/h5/address/rw"] ,
+    __CLOSE_APP_HEADER_TRACE_LOG__: 0,
+  })
+
+  // 注册 wing logger
+  Wing.registerLogger(function (logMessage){
+    if (logMessage && logMessage.tag) {
+      var sampleRate = 0.1
+      if (logMessage.tag === 'web_wing_on_success' && !logMessage.event) return
+      if (!logMessage.errorType && sampleRate < 1 && (Math.random() > sampleRate)) return
+      logMessage.metricName = logMessage.tag
+      window.ErrorJs && window.ErrorJs.monitor_proxy(logMessage)
+    }
+  })
+</script>
+
+
+
+<script>
+    var IOSREG = /iPhone|iPad|Mac\sOS/i;
+    var GB_ANALYSIS_GA = 'app_shein'
+    var GB_ANALYSIS_GA_SEND = 'app_shein.send'
+    var gbCommonInfo = {
+        PLATFORM: 'H5',
+        lang: 'en',
+        appLanguage: 'en',
+        LAYOUT: 'layout',
+        host: "https://api-shein.shein.com",
+        langPath: "/h5",
+        PUBLIC_CDN: '//sheinh5.ltwebstatic.com',
+        SiteUID: '',
+        csrf_token: 'JO8NrMJ8-cWCxAE-MybS3F5TgopzexQbVn10',
+        WEB_CLIENT: 'shein',
+        appversion: appComParams.appversion || '',
+        currency: appComParams.currency || '',
+        IS_LOGIN: ['1', '2'].indexOf(appComParams['login-state']) > -1,
+        IS_RW: appComParams.apptype=='romwe',
+        IS_IOS: appComParams.devType == 'ios' || IOSREG.test(navigator.userAgent),
+        IS_WEBP: isSupportWebp(),
+        IS_US_SHEIN_LITE: ['iosshuslt', 'andshuslt'].indexOf(appComParams.siteuid) > -1,
+        GB_cssRight: false,
+        localcountry: '',
+        IMG: '//img.shein.com/',
+        templateType: "",
+        UG_PAGE: "",
+		    PROD_HAS_SECRET_KEY: true,
+        NODE_SERVER_ENV: 'production',
+        SHOP_TRANSIT: {"site":["tw","fr","de","uk","es","au","ru","pl","nl","it","pt","euqs","se","sesv","eur","sg","ar","mar","pwaren","pwar","maren","andshother","iosshother"],"countries":[209,74,82,225,198,13,178,172,150,106,173,21,206,58,191,186,110]},
+        currencies: {"USD":{"currency_id":2,"currency_code":"USD","title":"US Dollar","exchange_rate":1,"reverse_exchange_rate":1,"symbol_left":"$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":1,"currency_flag":"image/currency/USD.jpg","is_default":1,"is_available":1,"last_update_time":"2023-01-12 18:28:29","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"USD","value":1,"date_modified":"2023-01-12 18:28:29","status":1,"default":1,"country_flag":"image/currency/USD.jpg"},"EUR":{"currency_id":3,"currency_code":"EUR","title":"Euro","exchange_rate":0.8574,"reverse_exchange_rate":1.166317,"symbol_left":"","symbol_right":"€","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":2,"currency_flag":"image/currency/EUR.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[{"language_flag":"pt-pt","dec_point":"44","thousands_sep":"46","dec_point_symbol":",","thousands_sep_symbol":"."},{"language_flag":"es","dec_point":"44","thousands_sep":"46","dec_point_symbol":",","thousands_sep_symbol":"."},{"language_flag":"fr","dec_point":"44","thousands_sep":"46","dec_point_symbol":",","thousands_sep_symbol":"."},{"language_flag":"sv","dec_point":"46","thousands_sep":"44","dec_point_symbol":".","thousands_sep_symbol":","},{"language_flag":"de","dec_point":"44","thousands_sep":"46","dec_point_symbol":",","thousands_sep_symbol":"."}],"code":"EUR","value":0.8574,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/EUR.jpg"},"GBP":{"currency_id":1,"currency_code":"GBP","title":"Pound Sterling","exchange_rate":0.7444,"reverse_exchange_rate":1.343364,"symbol_left":"£","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":3,"currency_flag":"image/currency/GBP.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"GBP","value":0.7444,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/GBP.jpg"},"NOK":{"currency_id":15,"currency_code":"NOK","title":"Norwegian Krone","exchange_rate":10.0765,"reverse_exchange_rate":0.099241,"symbol_left":"","symbol_right":"kr","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":4,"currency_flag":"image/currency/NOK.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"NOK","value":10.0765,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/NOK.jpg"},"AUD":{"currency_id":11,"currency_code":"AUD","title":"Australian Dollar","exchange_rate":1.4921,"reverse_exchange_rate":0.670196,"symbol_left":"AU$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":5,"currency_flag":"image/currency/AUD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"AUD","value":1.4921,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/AUD.jpg"},"CHF":{"currency_id":13,"currency_code":"CHF","title":"Swiss franc","exchange_rate":0.7978,"reverse_exchange_rate":1.253447,"symbol_left":"CHF","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":",","thousands_sep":".","sort":6,"currency_flag":"image/currency/CHF.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":",","thousands_sep_symbol":".","separator_multi_resp_list":[],"code":"CHF","value":0.7978,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/CHF.jpg"},"CAD":{"currency_id":10,"currency_code":"CAD","title":"Canadian Dollar","exchange_rate":1.3892,"reverse_exchange_rate":0.719839,"symbol_left":"CA$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":7,"currency_flag":"image/currency/CAD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"CAD","value":1.3892,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/CAD.jpg"},"SEK":{"currency_id":16,"currency_code":"SEK","title":"Swedish Krona","exchange_rate":9.1829,"reverse_exchange_rate":0.108898,"symbol_left":"","symbol_right":"kr","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":"","sort":8,"currency_flag":"image/currency/SEK.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":"","separator_multi_resp_list":[],"code":"SEK","value":9.1829,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/SEK.jpg"},"BRL":{"currency_id":21,"currency_code":"BRL","title":"Brazilian Real","exchange_rate":5.3664,"reverse_exchange_rate":0.186345,"symbol_left":"R$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":",","thousands_sep":"","sort":9,"currency_flag":"image/currency/BRL.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":",","thousands_sep_symbol":"","separator_multi_resp_list":[],"code":"BRL","value":5.3664,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/BRL.jpg"},"PLN":{"currency_id":18,"currency_code":"PLN","title":"Polish Zloty","exchange_rate":3.6124,"reverse_exchange_rate":0.276824,"symbol_left":"","symbol_right":"zł","decimal_place":2,"special_rule":"1","dec_point":",","thousands_sep":"","sort":10,"currency_flag":"image/currency/PLN.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":",","thousands_sep_symbol":"","separator_multi_resp_list":[],"code":"PLN","value":3.6124,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/PLN.jpg"},"RUB":{"currency_id":8,"currency_code":"RUB","title":"Russian Ruble","exchange_rate":79.5882,"reverse_exchange_rate":0.012565,"symbol_left":"","symbol_right":"₽","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":"","sort":11,"currency_flag":"image/currency/RUB.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 10:26:03","dec_point_symbol":"","thousands_sep_symbol":"","separator_multi_resp_list":[],"code":"RUB","value":79.5882,"date_modified":"2026-01-12 10:26:03","status":1,"default":"","country_flag":"image/currency/RUB.jpg"},"MXN":{"currency_id":14,"currency_code":"MXN","title":"Mexican Peso","exchange_rate":17.9541,"reverse_exchange_rate":0.055698,"symbol_left":"$MXN","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":12,"currency_flag":"image/currency/MXN.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"MXN","value":17.9541,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/MXN.jpg"},"DKK":{"currency_id":17,"currency_code":"DKK","title":"Danish Krona","exchange_rate":6.4066,"reverse_exchange_rate":0.156089,"symbol_left":"","symbol_right":"kr.","decimal_place":2,"special_rule":"1","dec_point":",","thousands_sep":".","sort":13,"currency_flag":"image/currency/DKK.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":",","thousands_sep_symbol":".","separator_multi_resp_list":[],"code":"DKK","value":6.4066,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/DKK.jpg"},"SAR":{"currency_id":19,"currency_code":"SAR","title":"Saudi Arabian Riyal","exchange_rate":3.7504,"reverse_exchange_rate":0.266638,"symbol_left":"SR","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":15,"currency_flag":"image/currency/SAR.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"SAR","value":3.7504,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/SAR.jpg"},"JPY":{"currency_id":9,"currency_code":"JPY","title":"Japanese Yen","exchange_rate":157.6,"reverse_exchange_rate":0.006345,"symbol_left":"¥","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":",","sort":16,"currency_flag":"image/currency/JPY.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"JPY","value":157.6,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/JPY.jpg"},"HKD":{"currency_id":12,"currency_code":"HKD","title":"Hongkong Dollar","exchange_rate":7.7938,"reverse_exchange_rate":0.128307,"symbol_left":"HK$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":18,"currency_flag":"image/currency/HKD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"HKD","value":7.7938,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/HKD.jpg"},"SGD":{"currency_id":22,"currency_code":"SGD","title":"Singapore Dollar","exchange_rate":1.2849,"reverse_exchange_rate":0.778271,"symbol_left":"S$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":19,"currency_flag":"image/currency/SGD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"SGD","value":1.2849,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/SGD.jpg"},"KWD":{"currency_id":23,"currency_code":"KWD","title":"Kuwait Dinar","exchange_rate":0.30757,"reverse_exchange_rate":3.251292,"symbol_left":"KWD","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":20,"currency_flag":"image/currency/KWD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"KWD","value":0.30757,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/KWD.jpg"},"AED":{"currency_id":24,"currency_code":"AED","title":"United Arab Emirates Dirham","exchange_rate":3.673,"reverse_exchange_rate":0.272257,"symbol_left":"AED","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":21,"currency_flag":"image/currency/AED.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-05 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"AED","value":3.673,"date_modified":"2026-01-05 09:33:19","status":1,"default":"","country_flag":"image/currency/AED.jpg"},"QAR":{"currency_id":25,"currency_code":"QAR","title":"Qatar Riyal","exchange_rate":3.647,"reverse_exchange_rate":0.274198,"symbol_left":"QR","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":22,"currency_flag":"image/currency/QAR.jpg","is_default":0,"is_available":1,"last_update_time":"2025-12-29 09:33:18","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"QAR","value":3.647,"date_modified":"2025-12-29 09:33:18","status":1,"default":"","country_flag":"image/currency/QAR.jpg"},"BHD":{"currency_id":27,"currency_code":"BHD","title":"Bahrain Dinar","exchange_rate":0.377,"reverse_exchange_rate":2.65252,"symbol_left":"BD","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":24,"currency_flag":"image/currency/BHD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"BHD","value":0.377,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/BHD.jpg"},"NZD":{"currency_id":28,"currency_code":"NZD","title":"New Zealand Dollar","exchange_rate":1.7406,"reverse_exchange_rate":0.574515,"symbol_left":"NZ$","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":25,"currency_flag":"image/currency/NZD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"NZD","value":1.7406,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/NZD.jpg"},"TWD":{"currency_id":29,"currency_code":"TWD","title":"New Taiwan Dollar","exchange_rate":31.626,"reverse_exchange_rate":0.03162,"symbol_left":"NT$","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":",","sort":26,"currency_flag":"images2/pics/currency//TWD-intl.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"TWD","value":31.626,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"images2/pics/currency//TWD-intl.jpg"},"INR":{"currency_id":30,"currency_code":"INR","title":"Indian Rupee","exchange_rate":90.1661,"reverse_exchange_rate":0.011091,"symbol_left":"₹","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":",","sort":27,"currency_flag":"image/currency/INR.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"INR","value":90.1661,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/INR.jpg"},"IDR":{"currency_id":33,"currency_code":"IDR","title":"Indonesian Rupiah","exchange_rate":16823,"reverse_exchange_rate":0.000059,"symbol_left":"Rp","symbol_right":"","decimal_place":0,"special_rule":"100","dec_point":"","thousands_sep":".","sort":30,"currency_flag":"image/currency/IDR.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":".","separator_multi_resp_list":[],"code":"IDR","value":16823,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/IDR.jpg"},"TRY":{"currency_id":34,"currency_code":"TRY","title":"Turkish Lira","exchange_rate":43.1596,"reverse_exchange_rate":0.02317,"symbol_left":"","symbol_right":"TL","decimal_place":2,"special_rule":"1","dec_point":",","thousands_sep":".","sort":31,"currency_flag":"image/currency/TRY.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":",","thousands_sep_symbol":".","separator_multi_resp_list":[],"code":"TRY","value":43.1596,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/TRY.jpg"},"MAD":{"currency_id":41,"currency_code":"MAD","title":"Moroccan Dirham","exchange_rate":9.2461,"reverse_exchange_rate":0.108154,"symbol_left":"DH","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":63,"currency_flag":"images2/pics/currency/MAD.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"MAD","value":9.2461,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"images2/pics/currency/MAD.jpg"},"ZAR":{"currency_id":43,"currency_code":"ZAR","title":"South African Rand","exchange_rate":16.4618,"reverse_exchange_rate":0.060747,"symbol_left":"R","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":",","sort":0,"currency_flag":"images2/pics/currency/ZAR.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"ZAR","value":16.4618,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"images2/pics/currency/ZAR.jpg"},"PHP":{"currency_id":44,"currency_code":"PHP","title":"Philippine Peso","exchange_rate":59.277,"reverse_exchange_rate":0.01687,"symbol_left":"₱","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":",","sort":0,"currency_flag":"images2/pics/currency/PHP.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"PHP","value":59.277,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"images2/pics/currency/PHP.jpg"},"EGP":{"currency_id":48,"currency_code":"EGP","title":"Egyptian Pound","exchange_rate":47.2641,"reverse_exchange_rate":0.021158,"symbol_left":"EGP","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":"","sort":0,"currency_flag":"images2/pics/currency/EGP.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":"","separator_multi_resp_list":[],"code":"EGP","value":47.2641,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"images2/pics/currency/EGP.jpg"},"COP":{"currency_id":49,"currency_code":"COP","title":"Colombian Peso","exchange_rate":3718.68,"reverse_exchange_rate":0.000269,"symbol_left":"$","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":"","thousands_sep":".","sort":0,"currency_flag":"images2/pics/currency/COP.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":".","separator_multi_resp_list":[],"code":"COP","value":3718.68,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"images2/pics/currency/COP.jpg"},"JOD":{"currency_id":51,"currency_code":"JOD","title":"Jordanian Dinar","exchange_rate":0.71,"reverse_exchange_rate":1.408451,"symbol_left":"JOD","symbol_right":"","decimal_place":2,"special_rule":"1","dec_point":".","thousands_sep":",","sort":0,"currency_flag":"images2/pics/currency/JOD.jpg","is_default":0,"is_available":1,"last_update_time":"2025-12-29 09:33:18","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"JOD","value":0.71,"date_modified":"2025-12-29 09:33:18","status":1,"default":"","country_flag":"images2/pics/currency/JOD.jpg"},"VND":{"currency_id":35,"currency_code":"VND","title":"Vietnamese Dong","exchange_rate":26268,"reverse_exchange_rate":0.000038,"symbol_left":"","symbol_right":"₫","decimal_place":0,"special_rule":"100","dec_point":"","thousands_sep":".","sort":32,"currency_flag":"image/currency/VND.jpg","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":"","thousands_sep_symbol":".","separator_multi_resp_list":[],"code":"VND","value":26268,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":"image/currency/VND.jpg"},"NGN":{"currency_id":53,"currency_code":"NGN","title":"Nigerian Naira","exchange_rate":1427.06,"reverse_exchange_rate":0.000701,"symbol_left":"₦","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":".","thousands_sep":",","sort":80,"currency_flag":"","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"NGN","value":1427.06,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":""},"PKR":{"currency_id":173,"currency_code":"PKR","title":"PAKISTANI RUPEE","exchange_rate":280.24,"reverse_exchange_rate":0.003568,"symbol_left":"Rs","symbol_right":"","decimal_place":0,"special_rule":"1","dec_point":".","thousands_sep":",","sort":189,"currency_flag":"","is_default":0,"is_available":1,"last_update_time":"2026-01-12 09:33:19","dec_point_symbol":".","thousands_sep_symbol":",","separator_multi_resp_list":[],"code":"PKR","value":280.24,"date_modified":"2026-01-12 09:33:19","status":1,"default":"","country_flag":""}},
+        REPORT_URL: {"SA_REPORT_URL":"https://www.srmdata.com"},
+        ANTIIN_URLS: ["/api/game/giftBoxRain/indexInfo/get","/api/game/giftBoxRain/prizeList/query","/api/game/giftBoxRain/lottery/update","/api/game/flyBird/indexInfo/get","/api/game/flyBird/gameStatusByStart/update","/api/game/flyBird/gameStatusByOver/update","/api/game/flyBird/luckyDraw/update","/api/game/flyBird/prizeList/query","/api/game/flyBird/selfUserRank/query","/api/game/flyBird/allUserRank/query","/api/game/flyBird/contactInfo/createOrUpdate","/api/game/flyBird/borderJson/get","/api/game/flyBird/obstacleJson/get","/api/game/flyBird/localResource/get","/api/game/luckyGame/indexInfo/get","/api/game/luckyGame/luckyLottery/createAndUpdate","/api/game/luckyGame/contactInfo/createOrUpdate","/api/game/csrFlower/indexInfo/get","/api/game/csrFlower/answer/update","/api/game/csrFlower/combine/createAndUpdate","/api/game/csrFlower/question/query","/api/game/cardCollection/indexInfo/get","/api/game/cardCollection/prizeList/query","/api/game/cardCollection/cardCombine/createAndUpdate","/api/game/cardCollection/openCard/createAndUpdate","/api/game/cardCollection/give/update","/api/game/cardCollection/giveCodeVerify/update","/api/game/cardCollection/receive/update","/api/game/cardCollection/cancelGive/update","/api/game/cardCollection/reGive/update","/api/game/cardCollection/giveTakeRecordList/query","/api/game/cardCollection/divvyPoint/update","/api/game/cardCollection/drawCard/update","/api/game/playGopher/indexInfo/get","/api/game/playGopher/prizeList/query","/api/game/playGopher/leaderboard/query","/api/game/playGopher/contactInfo/createOrUpdate","/api/game/playGopher/gameStatusByStart/update","/api/game/playGopher/gameStatusByOver/update","/api/game/pickFruit/indexInfo/get","/api/game/pickFruit/prizeList/query","/api/game/pickFruit/leaderboard/query","/api/game/pickFruit/contactInfo/createOrUpdate","/api/game/pickFruit/gameStatusByOver/update","/api/game/matching/indexInfo/get","/api/game/matching/friendLeaderboard/query","/api/game/matching/prizeList/query","/api/game/matching/matchData/get","/api/game/matching/slideList/query","/api/game/matching/gameStatusByStart/update","/api/game/matching/gameStatusByOver/update","/api/game/matching/contactInfo/createOrUpdate","/ltspc/account/refund/sendVerifyCode","/api/game/nineGrids/index","/api/game/nineGrids/share","/api/game/nineGrids/luckyDraw","/api/game/nineGrids/help","/api/check_in/checkIn/get","/api/productInfo/sellerInfo/get","/api/orders/return/partReturnGoodsInfo/query","/api/ccc/campaignsPageConfig/sharePrizeGeeTest/get","/api/ccc/campaignsPageConfig/sharePrize/get","/user/survey/answerSubmit","/api/risk/pushReviewData/update","/api/risk/getReviewRisk/get","/risk/verify/identity/validation/send","/api/user/privacy_request/sendCode/create","/api/user/privacy_request/sendNoCheckCode/create","/api/risk/flow_check","/api/productInfo/attr/get","/api/checkout/recommendProducts/get","/api/store/items/get","/api/user/tickets/deliveryNotReceived/create","/api/robot/gwotk/dulyDeliver/create","/api/robot/gwotk/create","/api/robot/cstk/create","/api/robot/gwotk/quality/create","/api/user/tickets/complaint/create","/api/robot/gwotk/dsa/create","/api/user/addressbook/address/risk/get","/api/live/postOpenRedPacket/update","/api/live/postTaskClaimStar/update","/api/live/getTaskActionLists/get","/product/get_goods_review_detail","/api/ranking_list/query","/h5/point","api/point/get_activity_info/get","api/point/claim_task","api/point/get_cart_info/get","api/point/get_history_info/get","api/point/get_task_info/get","/product/get_goods_detail_realtime_data","/product/get_goods_detail_static_data","/category/real_category_goods_list","/category/get_select_product_list","/product/get_products_by_keywords","/api/productInfo/quickViewRealTime/query","/api/productInfo/assist/get","/product/get_goods_detail_static_data_v2","/user-api/privacy/send_risk_code","/user-api/privacy/verify_risk_code","/user-api/privacy/create_dsr_ticket","/user-api/horus/export_apply/get_file","/api/recommend/rank/rank_home","/recommend/rank/rank_home","/product/recommend/get_similar_list","/products-api/getCalcCartPriceInfo","/ccc/store/home_page","/risk/verify/identity/validation/token","/risk/verify/identity/validation/passive/token","/risk/verify/identity/validation/question","/risk/verify/identity/validation/send","/risk/verify/identity/validation/prefetch","/risk/verify/identity/validation/resources","/risk/verify/identity/validation/check","/risk/verify/identity/validation/feedback","/risk/verify/identity/validation/flow_check","/order/order_onekey_addtocart","/product/recommend/product_card_list","/product/recommend/ccc_component_common","/channel/brand/products_feeds","/product/recommend/information_flow","/channel/brand/products_feeds","/cart-api/mall/cart/base_info","/category-api/super-deal/products","/products-api/get_size_guide_info","cart-api/cart/lure_info","product/get_goods_detail_image","channel/brand/list","user/phone-bind","user/phone-change"],
+        SITE_US_INDEPENDENT_SWITCH: 1,
+        OLD_MAIN_ORDER: 0,
+        ROW_SITE_INDEPENDENT_SWITCH: 1,
+        ROE_SITE_INDEPENDENT_SWITCH: 0,
+        RU_SITE_INDEPENDENT_SWITCH: 0,
+        CND_SITE_INDEPENDENT_SWITCH: 1,
+        GIFT_CARD_ADDRESS_SWITCH: 0,
+        STORAGE_LIMIT_REPORT_RATE: '0.01',
+        IS_US_INDEPENDENT: ['iosshus', 'andshus', 'iosrwus', 'andrwus'].indexOf(appComParams.siteuid) > -1,
+        languageVersion:"H5_Minor-260113-R1_Major-260113-R1",
+        errorCodeLanguageVersion:"Major-250804-R1",
+        SITE_EUR_INDEPENDENT_SWITCH: 1,
+        INDEPENDENT_SITE_COUNTRIES: {"us":[["iosshus","andshus","iosrwus","andrwus"],["226","174"]],"eur":[["iossheur","andsheur","iosshfr","andshfr","iosshgb","andshgb","iosshde","andshde","iosshes","andshes","iosshit","andshit","iosshnl","andshnl","iosshse","andshse","iosshpl","andshpl","iosshpt","andshpt","iosshch","andshch","iosshroe","andshroe","iosshro","andshro","iosshat","andshat","iosrwfr","andrwfr","iosrwde","andrwde","iosrwgb","andrwgb","iosrwes","andrwes","iosrwit","andrwit","iossheuqs","andsheuqs","iosshtr","andshtr"],["2","5","11","14","21","27","33","54","56","57","58","68","73","74","81","82","85","98","99","104","106","116","121","122","123","131","140","143","150","125","161","172","173","139","177","184","187","192","193","198","206","207","225","231","252"]]},
+        IS_EUR_DATA_CENTER: ["iossheur","andsheur","iosshfr","andshfr","iosshgb","andshgb","iosshde","andshde","iosshes","andshes","iosshit","andshit","iosshnl","andshnl","iosshse","andshse","iosshpl","andshpl","iosshpt","andshpt","iosshch","andshch","iosshroe","andshroe","iosshro","andshro","iosshat","andshat","iosrwfr","andrwfr","iosrwde","andrwde","iosrwgb","andrwgb","iosrwes","andrwes","iosrwit","andrwit","iossheuqs","andsheuqs","iosshtr","andshtr"].indexOf(appComParams.siteuid) > -1,
+        GEE_TEST_OPEN: true ,
+        REPORT_BY_WING_SWITCH: '1',
+        OPEN_SIGNATURE: true,
+        SIG_FILE_NAME: "https://common.ltwebstatic.com/dist_bundle/xjqHR52UWJdjKJ0x6QrCsus66rNXR9/2.0.13/1/main.js",
+        CDN_PAGE_LIST_CONFIG:  ["/campaign/.*","/campaigns/.*","/newChannel/home","^/h5/address(/store)?$","^/h5/game/twelve-grids","^/h5/game/flip-card","^/h5/game/happy-flip","^/h5/game/free-item","^/h5/game/nine-grids","^/h5/game/new-user-only","^/h5/super-deals","^/h5/pay/c2p/sdk","/check_in"],
+        US_OLD_MAIN_NO_WITHDRAW: {"countryIdList":["226"],"paymentMethodList":["afterpay_card","klarna-sliceitdirect","klarna-sliceit","zip-quadpay"]},
+        QUESTIONS_SDK_CODE: [{"question_code":"OD76315248","language_key":"SHEIN_KEY_H5_18823"},{"question_code":"OD58712930","language_key":"SHEIN_KEY_H5_18817"},{"question_code":"OD49053718","language_key":"SHEIN_KEY_H5_18825"},{"question_code":"OD91783054","language_key":"SHEIN_KEY_H5_18833"},{"question_code":"OD61785309","language_key":"SHEIN_KEY_H5_18827"},{"question_code":"OD20756891","language_key":"SHEIN_KEY_H5_18836"},{"question_code":"OD96340512","language_key":"SHEIN_KEY_H5_18821"},{"question_code":"OD86530427","language_key":"SHEIN_KEY_H5_18818"},{"question_code":"OD58630241","language_key":"SHEIN_KEY_H5_18831"},{"question_code":"OD18453296","language_key":"SHEIN_KEY_H5_18837"},{"question_code":"OD96807321","language_key":"SHEIN_KEY_H5_18826"},{"question_code":"OD35964187","language_key":"SHEIN_KEY_H5_18832"},{"question_code":"OD37584016","language_key":"SHEIN_KEY_H5_18820"},{"question_code":"OD38197420","language_key":"SHEIN_KEY_H5_18830"},{"question_code":"OD97160248","language_key":"SHEIN_KEY_H5_18834"},{"question_code":"PS26917540","language_key":"SHEIN_KEY_H5_18829"},{"question_code":"PS58362497","language_key":"SHEIN_KEY_H5_18824"},{"question_code":"PS64810352","language_key":"SHEIN_KEY_H5_18819"},{"question_code":"BH96385207","language_key":"SHEIN_KEY_H5_18835"},{"question_code":"BH04176589","language_key":"SHEIN_KEY_H5_18828"},{"question_code":"BH82174539","language_key":"SHEIN_KEY_H5_18822","verify_level":1},{"question_code":"BH03584716","language_key":"SHEIN_KEY_H5_54799"},{"question_code":"BH82536147","language_key":"SHEIN_KEY_H5_54800"}],
+        PHONE_SUPPORT_COUNTRYS: ["AU","AT","BH","BE","BR","BG","CA","CL","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IL","IT","JO","KZ","KW","LV","LT","LU","MY","MT","MX","MA","NL","NZ","OM","PH","PL","QA","PT","RO","RU","SA","SG","SK","SI","ZA","ES","SE","CH","TH","AE","GB","VN","LI","TW"],
+        SERVER_TYPE: 'central',
+        UPDATE_SHIPPED_ADDRESS: [{"13":["country","state","newState"],"17":["country"],"30":{"expedited_shipping":["country"]},"38":["country","state","newState"],"43":{"expedited_shipping":["country"]},"47":["country"],"97":["country"],"105":{"stand_shipping":["country"],"express_shipping":["country"],"expedited_shipping":["country"]},"108":["country","state","newState"],"113":["country"],"128":{"stand_shipping":["country","fname","lname","middleName","fatherName","englishName","fullName","state","newState","city","newCity","street","taxNumber","address1","address2","nationalId","postcode","standbyTel","type","isDefault","zone","newPostcode","email","newDistrict","district"]},"137":{"express_shipping":["country","state","newState","city","newCity"],"stand_shipping":["country"]},"140":{"express_shipping":["country"]},"153":["country","state","newState"],"162":["country"],"170":{"stand_shipping":["country","fname","lname","middleName","fatherName","englishName","fullName","state","newState","city","newCity","street","taxNumber","address1","address2","nationalId","postcode","standbyTel","type","isDefault","zone","newPostcode","email","newDistrict","district"]},"175":["country"],"186":{"stand_shipping":["country","city","newCity","tel"]},"191":["country","state","newState"],"196":{"stand_shipping":["country"]},"197":["country","state","newState"],"198":{"stand_shipping":["country"]},"209":{"stand_shipping":["country"]},"212":{"express_shipping":["country"],"stand_shipping":["country"]},"224":{"stand_shipping":["country","city","newCity","tel"]},"226":{"stand_shipping":["country","state","newState","city","newCity"],"express_shipping":["country","state","newState","city","newCity"]},"233":{"expedited_shipping":["country"]}}],
+        QUICK_ADDRESR_USER_WRITE_COUNT: 2,
+        QUICK_ADDRESR_POPUP_SWITCH: 1,
+        COUNTRY_SPECIAL_POSTCODE: {"38":"on","57":"on","85":"on","104":"on","150":"on","172":"on","173":"on","192":"on"},
+        STUDENT_DISCOUNT:  ["unidays","studentbeans"],
+        BR_ACCOUNT_REFUND_TYPE: "dlocal",
+        USER_AUTHENTICATION_SWITCH: "on",
+        BR_PAYMENT_METHOD_CONFIG: [],
+        COUNTRY_PAYMENT_METHOD_CONFIG: {"Brazil":["ebanx-boleto","dlocal-boleto","adyen-boleto"],"Mexico":["dlocal-oxxo","ebanx-oxxo"],"Japan":["adyen-konbini","nuvei-konbini","routepay-konbini"]},
+        SHEIN_SAVER_ARTICLE_IDS: {"iosshus":1818,"andshus":1818,"iosshid":1825,"andshid":1825,"pwus":1818,"mid":1825,"us":1818,"id":1825,"uk":2019,"pwuk":2019,"iosshgb":2019,"andshgb":2019,"iosshsa":1825,"andshsa":1825,"iosshde":2019,"andshde":2019,"pwar":1825,"pwde":2019,"ar":1825,"de":2019,"pwaren":1825,"mx":1825,"pwmx":1825,"jp":1825,"mjp":1825,"ph":1825,"mph":1825},
+        RETURN_ORDER_STORE_CODE: [],
+        RETURN_CHANNEL_CONFIG_LIST: {},
+        UNSUBSCRIBE_IN_PRIVACY_CENTER_EMAIL: [],
+        UNSUBSCRIBE_IN_PRIVACY_CENTER_SMS: [],
+        SHOP_COUNTRY_CONFIGS: {"13":{"country":"au","latLng":{"lat":-35.282128,"lng":149.12877}},"21":{"country":"be","latLng":{"lat":50.8551286,"lng":4.2195296}},"57":{"country":"cz","latLng":{"lat":50.088,"lng":14.42}},"58":{"country":"dk","latLng":{"lat":55.6713366,"lng":12.5114242}},"74":{"country":"fr","latLng":{"lat":48.878503,"lng":2.329555}},"82":{"country":"de","latLng":{"lat":52.520008,"lng":13.404954}},"98":{"country":"hu","latLng":{"lat":47.4979,"lng":19.0402}},"110":{"country":"kz","latLng":{"lat":48.227366677072986,"lng":67.73921329453223}},"172":{"country":"pl","latLng":{"lat":52.13,"lng":21}},"173":{"country":"pt","latLng":{"lat":38.8026178,"lng":-9.6600585}},"178":{"country":"ru","latLng":{"lat":55.916666666666664,"lng":37.61666666666667}},"186":{"country":"sa","latLng":{"lat":24.7136,"lng":46.6753}},"191":{"country":"sg","latLng":{"lat":1.3521,"lng":103.8198}},"198":{"country":"es","latLng":{"lat":40.416775,"lng":-3.70379}},"206":{"country":"se","latLng":{"lat":59.3259449,"lng":17.6702654}},"225":{"country":"uk","latLng":{"lat":51.507351,"lng":-0.127758}}},
+        SHOP_TRANSIT_GOOGLE_DATA_MAP: {"13":{"country":"au"},"57":{"country":"cz"},"74":{"country":"fr","fields":[["locality","City"],["postal_code","PostalCode"],["country","countryCode","short_name"]]},"82":{"country":"de"},"98":{"country":"hu"},"106":{"country":"it"},"110":{"country":"kz"},"150":{"country":"nl"},"173":{"country":"pt"},"186":{"country":"sa"},"191":{"country":"sg"},"198":{"country":"es"},"206":{"country":"se","fields":[["postal_code","PostalCode"]]},"225":{"country":"uk"}},
+        SHEIN_SUGGESTED_SALE_PRICE: {},
+        WALLET_BALANCE_LIMIT_SITE: [],
+        USER_AGENT_BLACK_LIST: [],
+        REPORT_APP_COM_PARAMS_SAMPLE_RATE: 0.0001,
+        ADDRESS_FIELD_REPLACE_CONFIG: {"change":{"38":{"postcode":["capitalize"]},"137":{"national_id":["capitalize"],"tax_number":["capitalize"]}},"blur":{"2":{"tel":["removeSpaces"]},"10":{"tel":["removeSpaces"]},"21":{"tel":["removeSpaces"]},"30":{"tel":["removeSpaces"]},"33":{"tel":["removeSpaces"]},"43":{"tel":["removeSpaces"]},"47":{"tel":["removeSpaces"]},"65":{"tel":["removeSpaces"]},"73":{"tel":["removeSpaces"]},"74":{"tel":["removeSpaces"]},"82":{"tel":["removeSpaces"]},"85":{"tel":["removeSpaces"]},"87":{"tel":["removeSpaces"]},"88":{"tel":["removeSpaces"]},"93":{"tel":["removeSpaces"]},"104":{"tel":["removeSpaces"]},"123":{"tel":["removeSpaces"]},"150":{"tel":["removeSpaces"]},"192":{"tel":["removeSpaces"]},"198":{"tel":["removeSpaces"]},"225":{"tel":["removeSpaces"]}}},
+        NEW_BFF_VERSION_SWTICH: {"address_cohesion_v1":["OPENALL"]},
+        SSR_BFF_SWITCH: {},
+        NEW_BFF_DETAIL_MAIN: {},
+        CLOSE_C2P_PROD_LOG: 0,
+        COD_ORDER_REFUND_METHOD_CONFIG: ["224","186","113","175","162","17","109"],
+        ASSETS_CACHE_JUDGE_THRESHOLD: 50,
+        SINGLE_ASSET_REPORT_REGEX: "request_thrifty_find|thrifty_find|schttp-chunk|vue.3.5.13.min.js",
+        ENABLE_ORDER_REVIEW_MONITOR_RANDOM: "on",
+        bffEnv: "",
+        WEB_VERSION: "14.1.4",
+        transformImg: function(img) {
+            if (!img) img = "";
+            img = img.replace('http:', '').replace('https:', '');
+            return (/^\/\/.*/.test(img) ? img : '//img.shein.com/' + img);
+        },
+        dateLangMap: {"Monday":"Monday","Tuesday":"Tuesday","Wednesday":"Wednesday","Thursday":"Thursday","Friday":"Friday","Saturday":"Saturday","Sunday":"Sunday","Jan":"Jan","Feb":"Feb","Mar":"Mar","Apr":"Apr","May":"May","Jun":"Jun","Jul":"Jul","Aug":"Aug","Sep":"Sep","Oct":"Oct","Nov":"Nov","Dec":"Dec"},
+        language:{
+            lang_quick_add_bag: {
+                SHEIN_KEY_H5_14418: "Details",
+                SHEIN_KEY_H5_13745: "Color",
+                SHEIN_KEY_H5_13790: "Size",
+                SHEIN_KEY_H5_13743: "ADD TO CART",
+                SHEIN_KEY_H5_13754: "SOLD OUT",
+                SHEIN_KEY_H5_13746: "Add to bag successfully",
+                SHEIN_KEY_H5_13744: "Please select a size",
+                SHEIN_KEY_H5_13741: "Out of Stock",
+                SHEIN_KEY_H5_13747: "limit quantity",
+                SHEIN_KEY_H5_13749: "You have reached the Max Qty of flash sale",
+                SHEIN_KEY_H5_13748: "Please review your shopping cart as the item count has reached the limit.",
+                SHEIN_KEY_H5_13740: "error",
+                SHEIN_KEY_H5_14755: "Sorry, you do not qualify for the birthday gift.",
+                SHEIN_KEY_H5_14789: "Sorry, this product has sold out.",
+                SHEIN_KEY_H5_14776: "S3 Exclusive",
+                SHEIN_KEY_H5_14786: "The promotion is only for S3 members. Level up to S3 and explore more rewards.",
+                SHEIN_KEY_H5_14756: "Next Step",
+                SHEIN_KEY_H5_13724: "Ok",
+                SHEIN_KEY_H5_14779: "Coming Soon",
+                SHEIN_KEY_H5_15062: "FIND SIMILAR",
+            },
+            "SHEIN_KEY_H5_15026": "Completed",
+            "SHEIN_KEY_H5_15240": "Curve + Plus",
+            "SHEIN_KEY_H5_14886": "New",
+            "SHEIN_KEY_H5_13315": "View More",
+            "SHEIN_KEY_H5_17085": "Local Seller",
+            "SHEIN_KEY_H5_18479": "QuickShip",
+            "SHEIN_KEY_H5_18200": "Exclusive",
+            "SHEIN_KEY_H5_18196": "New Users Price",
+            "SHEIN_KEY_H5_13724": "Ok",
+            "SHEIN_KEY_H5_15977": "Click to buy",
+            "SHEIN_KEY_H5_23688": "FINISHED",
+            "SHEIN_KEY_H5_23689": "VIEW PRODUCT",
+            "SHEIN_KEY_H5_18479": "QuickShip",
+            "SHEIN_KEY_H5_23547": "Save {0}",
+            "SHEIN_KEY_H5_23614": "Daily price",
+            "SHEIN_KEY_H5_23615": "Buy Now",
+            "SHEIN_KEY_H5_24176": "SOLD OUT",
+            "SHEIN_KEY_H5_25150": "{0} sold recently",
+            'SHEIN_KEY_H5_18479_En': "QuickShip",
+        },
+        queryString:{
+            parse: function(str) {
+                // Create an object with no prototype
+                // https://github.com/sindresorhus/query-string/issues/47
+                var ret = Object.create(null)
+
+                if (typeof str !== 'string') {
+                    return ret
+                }
+
+                str = str.trim().replace(/^(\?|#|&)/, '')
+
+                if (!str) {
+                    return ret
+                }
+
+                str.split('&').forEach(function(param) {
+                    var parts = param.replace(/\+/g, ' ').split('=')
+                    // Firefox (pre 40) decodes `%3D` to `=`
+                    // https://github.com/sindresorhus/query-string/pull/37
+                    var key = parts.shift()
+                    var val = parts.length > 0 ? parts.join('=') : undefined
+
+                    key = decodeURIComponent(key)
+
+                    // missing `=` should be `null`:
+                    // http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+                    val = val === undefined ? null : decodeURIComponent(val)
+
+                    if (ret[key] === undefined) {
+                        ret[key] = val
+                    } else if (Array.isArray(ret[key])) {
+                        ret[key].push(val)
+                    } else {
+                        ret[key] = [ret[key], val]
+                    }
+                })
+                return ret
+            },
+        },
+        toLocaleLowerCase:function(txt) {
+            // 设置首字母大写的方法，如果默认情况是全大写，无法转换成首字母大写，所以将默认内容改成小写在用css改成首字母大写
+            return txt.toLocaleLowerCase();
+        },
+        //物流运费展示
+        GB_S_SHIPPING_COST: {
+            SHEIN_KEY_H5_14413: "Free Shipping Sitewide", //Free Shipping Sitewide
+            SHEIN_KEY_H5_14799: "Free - orders over {0}", //Free - orders over {0}
+            SHEIN_KEY_H5_14804: "Free-Over {0}", //Free—Over {0} (重量)
+            SHEIN_KEY_H5_14807: "Free-Over {0} pieces", //Free—Over {0} pieces
+            SHEIN_KEY_H5_14808: "Each additional item is {0}", //Each additional item is {0}
+            SHEIN_KEY_H5_14809: "{0} Item(s) for {1}, and {2} for each additional item", //{0} Item(s) for {1}, and {2} for each additional item
+            SHEIN_KEY_H5_14805: "{0}-Less than {1} pieces", //{0}—Less than {1} pieces
+            SHEIN_KEY_H5_14806: "{0}-Between {1} and {2} pieces", //{0}—Between {1} and {2} pieces
+            SHEIN_KEY_H5_14802: "{0}-Less than {1}", //{0}—Less than {1}(重量)
+            SHEIN_KEY_H5_14803: "{0}-between {1} and {2}", //{0}—between {1} and {2}(重量)
+            SHEIN_KEY_H5_14800: "{0}-spend below {1}", //{0}—spend below {1}
+            SHEIN_KEY_H5_14801: "{0}-spend over {1} but below {2}", //{0}—spend over {1} but below {2}
+            SHEIN_KEY_H5_14810: "{0}-Over {1} pieces", //{0}—Over {1} pieces
+            SHEIN_KEY_H5_14811: "{0}-Over {1}", //{0}—Over {1}(重量/金额)
+            SHEIN_KEY_H5_22344: "Free orders over {0}", //Free-orders over  {0}
+            SHEIN_KEY_H5_25821: "FREE (orders ≥ {0})",  //FREE (orders ≥ {0})
+            SHEIN_KEY_H5_67394: "Free - orders over {0}",
+            SHEIN_KEY_H5_79874: "New User",
+        },
+        openNewWeb: function (data) {
+            /*
+                openNewWeb({
+                    title: '', //app头部标题
+                    url: ``, //h5跳转路径
+                    params: 1, //是否带当前url参数
+                    header: 1 //是否带当前请求头
+                })
+            */
+            if (!data) data = {};
+            var title = data.title || '',
+                url = data.url || '',
+                params = data.params || 0,
+                header = data.header || 0
+            if (url.indexOf('/h5') == 0) {
+                // 调app方法url必须要带域名，如果是langPath方法传进来没有域名手动加一个
+                url = location.origin+url
+            }
+
+            Wing.navigation('/web/web', {
+                title: title,
+                url: url,
+                add_params: params,
+                add_header: header
+            })
+        },
+        // 判断当前手机型号是否为全面屏
+        judgeBigScreen: function() {
+            // window.screen.height为屏幕高度
+            var rate = window.screen.height / window.screen.width
+            //  window.screen.availHeight 为浏览器 可用高度
+            var limit =  window.screen.height == window.screen.availHeight ? 1.8 : 1.65 // 临界判断值
+            return rate > limit
+        },
+        VERIFY_UPLOAD_IMAGE_CONFIG: [{"id":"0","verify":1},{"id":"2","verify":0},{"id":"3","verify":0},{"id":"3","verify":1},{"id":"4","verify":1},{"id":"5","verify":1},{"id":"9","verify":1},{"id":"0301","verify":1},{"id":"12","verify":1},{"id":"16","verify":1}],
+        TW_SERIVE_STORE_SEARCH_SWITCH: 1,
+        SHOP_TRANSIT_GEOCODE_COUNTRIES: [82,225,13,110],
+        GOOGLE_LAT_LNG_ACCURACY: {"21":6,"74":6,"150":6,"198":6},
+        RU_STORE_LAST_LOGISTICS: {"3":"https://img.shein.com/images3/2022/12/21/4fbbd278c3394ad389ccc6a1ffa8ed2e.png","4":"https://img.ltwebstatic.com/images3_acp/2023/06/26/1687744916f5fd9dcce129d4052b2860ed462277e0.png","6":"https://img.shein.com/images3/2023/01/06/82c0a4df5d0cb0997d36bcc60079b.png","7":"https://img.ltwebstatic.com/images3_acp/2023/10/24/9d/1698134340ce49a2b55f7840f1e97c5f6d4169487a.png","16":"https://img.shein.com/images3/2022/12/21/4fbbd278c3394ad389ccc6a1ffa8ed2e.png","17":"https://img.ltwebstatic.com/images3_acp/2023/06/26/1687744916f5fd9dcce129d4052b2860ed462277e0.png","18":"https://img.shein.com/images3/2023/04/18/168179770160da241ec56f14ab1cd64086b030e628.png","19":"https://img.shein.com/images3/2023/05/29/168535204526f8a450b3f6851d2bad762d96c191f5.png","20":"https://img.shein.com/images3/2023/02/01/2023214b3c5eaca90e4a1da06fe34177b0efa9.png","21":"https://img.ltwebstatic.com/images3_acp/2023/08/21/1a/1692610086f9e296719f797f968be0cbae4e560eb4.png","22":"https://img.ltwebstatic.com/images3_ach/2023/04/06/168077548987a0aecde941f1469fab9c7a55ca9f8c.png","23":"https://img.ltwebstatic.com/images3_ach/2023/04/06/168077548987a0aecde941f1469fab9c7a55ca9f8c.png","25":"https://img.ltwebstatic.com/images3_acp/2023/10/25/04/169821406816b6000a97eb89988c67b2cd3baf5ae5.png","26":"https://img.ltwebstatic.com/images3_acp/2023/09/12/7e/16945074376d0816485a4b4e99eed9adafc23a3545.png","27":"https://img.ltwebstatic.com/images3_acp/2023/09/15/0b/16947451085074830dec132e7a40db8610874ab291.png","28":"https://img.ltwebstatic.com/images3_acp/2023/10/24/73/1698114298f18ceadc1927cec4858ae8f17e99bb2c.png","29":"https://img.ltwebstatic.com/images3_acp/2023/09/20/11/1695190595892e710bfff74b74e3648881e27ced26.png","30":"https://img.ltwebstatic.com/images3_acp/2023/09/20/11/1695190595892e710bfff74b74e3648881e27ced26.png","31":"https://img.shein.com/images3/2022/12/21/4fbbd278c3394ad389ccc6a1ffa8ed2e.png","32":"https://img.ltwebstatic.com/images3_acp/2023/10/19/fb/16976958664d95821ef1b8edde38bbd21777e8b13d.png","33":"https://img.ltwebstatic.com/images3_acp/2023/10/19/1e/1697695826caf630ea6e65d71db4af47ec2812c1ac.png","34":"https://img.ltwebstatic.com/images3_acp/2023/10/19/1e/1697695826caf630ea6e65d71db4af47ec2812c1ac.png","35":"https://img.ltwebstatic.com/images3_acp/2023/10/31/53/1698732128da9212f519b23892a63f634cfb99df8e.png","36":"https://img.ltwebstatic.com/images3_acp/2023/10/31/70/16987321423b0b032c226803aeda0d7fa509d5bef2.png","37":"https://img.ltwebstatic.com/images3_acp/2023/10/24/14/169811433604204956607fc011715ae591ca275bc9.png","38":"https://img.ltwebstatic.com/images3_acp/2023/10/31/90/16987321133515e555331eab86cd4de0799d5acb75.png","39":"https://img.ltwebstatic.com/images3_acp/2023/10/24/df/16981143246021b23bea38131373ecf5f7aa175fab.png","fivepost":"https://img.shein.com/images3/2021/10/20/5post.png","sberlogistics":"https://img.shein.com/images3/2021/10/20/sebr.png","DPD":"https://img.shein.com/images3/2021/10/20/dpd.png","cainiaoruPUDO":"https://img.shein.com/images3/2021/10/20/CAINIAO.png","cdek":"https://img.shein.com/images3/2021/10/20/CDEK.png","CDEK_self-pickup":"https://img.shein.com/images3/2021/10/20/CDEK.png"},
+        MERGE_ORDER_ADDRESS_COUNTRY: ["191","197","30","43"],
+        RISK_SDK_CONFIG: {"sm":"2.7","anti":"1.6.2","infp":"3.1.0","csrandom":{"interval":86400000}},
+        ANTIIN_URLS_MORE: [],
+        FM_SIGN_URLS: [],
+        FM_UPGRADE: "on",
+        RISK_SDK_DOWNGRADE: {},
+        RISK_SDK_TYPE: {"903":"js_challenge","904":"slide","905":"click","909":"one_pass","910":"nine_captcha"},
+        WY_DT_URLS: [],
+        CS_RANDOM_URLS: ["ALL"],
+    }
+
+    /**
+     *  @param {String} event_type h5与app交互事件类型
+     *  @param {Object} data h5与app交互事件参数
+     */
+    function newSendToApp(json) {
+        var IS_RW = gbCommonInfo.IS_RW
+        var IS_IOS = gbCommonInfo.IS_IOS
+        var content = JSON.stringify(json)
+        var action = {
+            ios: function() {
+                var app = IS_RW ? 'RWAPP' : 'SIAPP'
+                window.webkit && window.webkit.messageHandlers[app].postMessage(content)
+            },
+            android: function() {
+                var app = IS_RW ? 'romweapp' : 'sheinapp'
+                window[app] && window[app].webToMobileAction(content)
+            }
+        }
+        action[IS_IOS ? 'ios' : 'android']()
+    }
+
+    function getAppVersions(v) {
+		if (v) {
+			return /^[vV]/.test(v) ? v : ('v' + v)
+		}
+		return v
+    }
+
+    function newSendMessageToApp(data, communityTypes) {
+        // newTypes是区分新老app的目前大多数方法都带这个一些很老的方法就不需要这个communityTypes入参了
+        var IS_IOS = gbCommonInfo.IS_IOS
+        //一定要带域名可以使用location.origin
+        var newTypes = ['show_picking_type','post_abt_params', 'show_special_type', 'open_new_web', 'hide_load_view', 'show_real_type', 'show_virtual_type'].concat(communityTypes)
+        var isNewWay = newTypes.indexOf(data.event_type) > -1;
+        // fix: 兼容appversion可能为undefined的情况
+        var app_version = appComParams.appversion ? (appComParams.appversion.replace(/\./g, '') - 0) : 646;
+        var isRWAPP = appComParams.apptype == 'romwe';
+
+        if(app_version < 646 && !isRWAPP && data && data.data && data.data.url) {
+            //老的版本没有这个方法所以还是自己跳
+            location.href = data.data.url;
+        } else {
+          try {
+            if (IS_IOS) {
+              isRWAPP ? window.webkit.messageHandlers.RWAPP.postMessage(JSON.stringify(data)) :
+                window.webkit.messageHandlers.SIAPP.postMessage(JSON.stringify(data))
+            } else {
+              isRWAPP ?
+                isNewWay ? romweapp.webToMobileAction(JSON.stringify(data)) :
+                  RWAPP.webToMobileAction(JSON.stringify(data)) :
+                isNewWay ? sheinapp.webToMobileAction(JSON.stringify(data)) :
+                  theyub.webToMobileAction(JSON.stringify(data))
+            }
+          }catch (e) {
+            console.log(e);
+            if(data && data.data && data.data.url) {
+                location.href = data.data.url;
+            }
+          }
+        }
+    }
+
+    function isSupportWebp () {
+        //是否支持webp图片
+        try {
+            return document.createElement('canvas').toDataURL('image/webp', 0.5).indexOf('data:image/webp') === 0;
+        } catch(err) {
+            return false;
+        }
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    /**
+     *  @param {String} deeplink 跳转app页面的链接
+     *  @param {Object} data 跳转app页面的参数
+     */
+    function jumpDeeplink (deeplink, data) {
+        var appdeeplinkData = data || {}
+        var appdeeplink = deeplink
+        if (deeplink && typeof deeplink === 'string') {
+            if (getQueryString('url_from')) appdeeplinkData.url_from = getQueryString('url_from')
+            if (getQueryString('utm_campaign')) appdeeplinkData.utm_campaign = getQueryString('utm_campaign')
+            if (getQueryString('sclid')) appdeeplinkData.sclid = getQueryString('sclid')
+        }
+        if (Object.keys(appdeeplinkData).length > 0) {
+            appdeeplink += '?data='+ encodeURIComponent(JSON.stringify(appdeeplinkData))
+        }
+        if (gbCommonInfo.IS_US_SHEIN_LITE) {
+            appdeeplink = appdeeplink.replace('sheinlink', 'sheinlitelink')
+        }
+        if (appdeeplink) location.href = appdeeplink
+    }
+
+    // 拼接营销参数
+    function spliceUrl(link) {
+        var url = link || ''
+        var query = []
+        if (typeof url === 'string' && url) {
+            if (getQueryString('url_from')) query.push('url_from='+getQueryString('url_from'))
+            if (getQueryString('utm_campaign')) query.push('utm_campaign='+getQueryString('utm_campaign'))
+            if (getQueryString('sclid')) query.push('sclid='+getQueryString('sclid'))
+            if (query.length > 0) {
+                url += url.indexOf('?') > -1 ? '&'+query.join('&') : '?'+query.join('&')
+            }
+        }
+        return url
+    }
+    // 加车成功后app回返回结果
+    window.sendGaAddToBag = function(result) {}
+
+    //仅用于非生产环境输出分支信息
+    
+
+</script>
+
+<!-- 错误上报 -->
+<script>
+  window.replaceMonitorSamePath = (() => {
+    const samePathnameReg = [
+      /(\/h5\/vote\/)[^/]+/i,
+      /(\/h5\/orders\/(association|refundLabel|return|returnLabelNew|returnRefundLabel|returnSuccess)\/)[^/]+/i,
+      /(\/h5\/user\/order_return\/)[^/]+/i,
+      /(\/h5\/user\/order_return\/(return_modify|return_refund_list)\/)[^/]+/i,
+      /(\/h5\/user\/orders\/(combinedOrder|customsInterception|rejectReason)\/)[^/]+/i,
+      /(\/h5\/user\/tickets\/(detail|reply)\/)[^/]+/i,
+      /(\/h5\/user\/order_invoices\/)[^/]+/i,
+      /(\/h5\/ltspc\/pay\/paidy\/card\/)[^/]+/i
+    ];
+    return (pathname) => {
+      for (let i = 0; i < samePathnameReg.length; i++) {
+        const reg = samePathnameReg[i];
+        if (reg.test(pathname)) {
+          return pathname.replace(reg, (_, p1) => p1 + '*');
+        }
+      }
+      return pathname;
+    }
+  })()
+</script>
+
+<script>
+  var clientMonitorLight=function(e){"use strict";var r,a,t=e=>{void 0===e&&(e=21);var r=crypto.getRandomValues(new Uint8Array(e));return Array.from(r,e=>(e%36).toString(36)).join("")},o=()=>{var{connection:e}=navigator;return e&&e.effectiveType},n=Object.assign,i=JSON.stringify,s=e=>"object"==typeof e&&null!==e,c=(e,r)=>Object.keys(e).forEach(a=>r(e[a],a)),d=(e,r)=>{var a=n({},e);return c(r,(e,r)=>{s(e)&&(e=n({},a[r],e),c(e,(r,a)=>{s(r)&&(e[a]=i(r).slice(0,500))})),a[r]=e}),a},m=(e,r)=>{var a,t;for(var[o,n,i]of r)if(e.includes(o)){a=n;var s=i&&e.match(i);t=s?s[1].replace(/_/g,"."):void 0;break}return[a,t]},v=(e,r,a,n)=>{var{userAgent:i}=navigator,[s,c,d,v,l]=(e=>{var[r,a]=m(e,[["Edg","Edge",/Edg\/([\d.]+)/],["Chrome","Chrome",/Chrome\/([\d.]+)/],["Firefox","Firefox",/Firefox\/([\d.]+)/],["Safari","Safari",/Version\/([\d.]+)/],["AppleWebKit","Safari",/AppleWebKit\/([\d.]+)/]]),[t,o]=m(e,[["Android","Android",/Android ([\d.]+)/],["iPhone OS","iOS",/iPhone OS ([\d_]+)/],["iPad; CPU OS","iOS",/CPU OS ([\d_]+)/],["Mac OS X","Mac OS",/Mac OS X ([\d_]+)/],["Windows NT","Windows"],["Linux","Linux"]]);return[r,a,t,o,/(Tablet|iPad)/i.test(e)?2:/(Mobi|Android|iPhone)/i.test(e)?0:1]})(i);return{sdk_version:"1.0.0",network_type:o(),browser_name:s,browser_versions:c,os_name:d,os_versions:v,device_level:l,user_agent:i,app_name:"shein",language:e,money_type:r,sub_site:a,device_type:n,session_id:t()}},l=(e,o,i,s,m)=>{var{screen:v}=window,{pathname:l,host:u,href:g}=location,p=(e=>{void 0===e&&(e={});var r={};return c(e,(e,a)=>{r[a]="function"==typeof e?e():e}),r})(i),f=new Date;return r&&r===l||(r=l,a=t()),d(n({timestamp:f.getTime(),local_time:f.toLocaleString(),params:{env:e,pathname:l,page:l,url:g,host:u,screen:v.width+"*"+v.height,uemId:o,pvID:a,sdk_light_version:"0.2.17"}},s,m&&m(p)),p)},u=e=>{var{server_type:r="central",env:a="production",language:t,currency:o,site_uid:s,device_type:c,uemId:m,fields:u}=e,g=v(t,o,s,c),p="https://www.srmdata"+("central"===r?"":"-"+r)+".com",f=(e,r)=>{var t,o,n,s=(r,a)=>{var t=p+e,o=i({data:r});a||!navigator.sendBeacon?fetch(t,{method:"POST",body:o}):navigator.sendBeacon(t,o)},[c,v]=(t=s,n=[],[(e,r)=>{n.push(e),clearTimeout(o);var a=()=>{var e=n.splice(0,20);t(e,r)};o=setTimeout(a,5e3),n.length>=20&&(clearTimeout(o),a())},()=>{clearTimeout(o),n.length&&(t(n),n=[])}]);return window.addEventListener("beforeunload",v),(e,t)=>{if(void 0===t&&(t={}),"localhost"!==a){var o,n=l(a,m,u,g,r),i=(o=e,Array.isArray(o)?o:[o]).map(e=>d(n,e));if(t.immediate)return s(i,t.useFetch);i.forEach(e=>c(e,t.useFetch))}}};return{logInfo:f("/app-track/log-info"),metricInfo:f("/app-track/metric-info",e=>({tags:n({env:a},e.params),type:1,value:1}))}},g="web_js_error",p="web_unreject_error",f="web_resource_error",h="whiteScreen",_="vueJsError",y=3e3,w=(e,r,a,t,o)=>(void 0===a&&(a=""),{msg:r,src:a,errorType:e&&e.name,stackTrace:e&&e.stack,row:t,column:o}),E=(e,r,a)=>{var t,{roots:o=["html","body"],ssr:n,time:s=y}=void 0===a?{}:a,c=[],d=n?1e3:s,m=!1,v=e=>e&&o.some(r=>e.matches(r));return a=>{var{innerWidth:o,innerHeight:l}=e;m||a.tagName&&"SCRIPT"!==a.tagName||o<=0||l<=0||(c.push(a),clearTimeout(t),t=setTimeout(()=>{(n||"complete"===document.readyState)&&(((e,a)=>{for(var t=0,o=1;o<=9;o+=1){var n=document.elementFromPoint(e*o/10,a/2);if(!v(n))break;if(t+=1,5!==o){var s=document.elementFromPoint(e/2,a*o/10);if(!v(s))break;t+=1}}t>=17&&(r({tag:h,level:"ERROR",params:{errorType:h,errList:i(c),errLength:c.length}}),m=!0),c=[]})(o,l),d=s)},d))}};return e.createMonitor=e=>{var r=window,{logInfo:a,metricInfo:t}=u(e),o={vueError:[],baseError:[],whiteScreen:[]},s=(e,r)=>{var a;null==(a=o[e])||a.forEach(e=>e(r))},c=(r,a,t)=>{var o=[g,p,f];r===_?s("vueError",{tag:r,message:a,params:t}):o.includes(r)&&s("baseError",{tag:r,message:a,params:t}),((e,r,a,t)=>(void 0===e&&(e=[]),e.some(e=>"function"==typeof e?e(r,a,t):e.test(a))))(e.ignore_error,r,a,t)||(l(t),d({tag:r,message:a,level:"ERROR",params:t}))},d=e=>{var r;e.tag===h&&s("whiteScreen",e),a(e),t(n({metric_name:(r=e).tag},r))};((e,r)=>{var a=e.onerror;e.onerror=(t,o,n,i,s)=>{a&&a.call(e,t,o,n,i,s);var c="string"==typeof t?t:t.type;r(g,c,w(s,c,o,n,i))},e.addEventListener("error",e=>{var{target:a}=e,t=a instanceof HTMLScriptElement||a instanceof HTMLImageElement?a.src:a instanceof HTMLLinkElement?a.href:void 0;if(!t)return!1;var{id:o,tagName:n,className:i}=a;r(f,t,{errorType:"resourceError",src:t,id:o,tagName:n,className:i})},!0);var t=e.onunhandledrejection;e.onunhandledrejection=a=>{t&&t.call(e,a);var o=a.reason,n=o instanceof Error?o.message:"string"==typeof o?o:i(o);r(p,n,w(o,n))}})(r,c);var m,v=(m=c,e=>{console.error(e);var{message:r,stack:a=""}=e,t=a.match(":(\\d+):(\\d+)");m(_,r,{errorType:_,msg:r,row:t&&+t[1],column:t&&+t[2],stackTrace:a})}),l=E(r,d,e.white_screen);return{triggerError:c,logInfo:a,metricInfo:t,vueErrorHandler:v,on:(e,r)=>{o[e]&&o[e].push(r)},emit:s}},e}({});
+
+  var NODE_SERVER_ENV = "production";
+  var appComParams = window.appComParams || {"apptype":"shein","devType":"","clientid":"","appcountry":"","localcountry":"","currency":"USD","appversion":"","deviceid":"","token":"MDEwMDE.eyJiIjo3LCJnIjoxNzY4NTg2MDgzLCJyIjoiR2wwVDNLIiwidCI6MX0.96adc56e9844b7d9","newuid":"","language":"en","device":"","siteuid":"","page-from":"","login-state":"","email":"","nickname":"","cccAbtParams":"","SmDeviceId":"","iscdn":"","branch":"","aaid":"","idfa":"","idfv":"","deviceName":"","deviceModel":"","ugid":"","regionId":"","activityFrom":"","sceneType":"","h5_supplier_params":"","eventType":"","addressId":"","billno":"","pageSource":"","isAddNewComerAddress":"0","scene":"","uberctx-armortoken":"","xAdFlag":"","statusBarHeight":"","arCurrencyStatus":0};
+  var UG_PAGE = "";
+  var whiteScreenTime = "";
+  var ssr = "0";
+  var siteUID = appComParams.siteuid;
+
+  window.monitorLight = clientMonitorLight.createMonitor({
+    server_type: 'central',
+    brand: appComParams.apptype,
+    device_type: UG_PAGE ? 'pc' : 'h5',
+    language: appComParams.language,
+    currency: appComParams.currency || '',
+    env: NODE_SERVER_ENV === 'production' ? 'production' : NODE_SERVER_ENV === 'localhost' ? 'debug' : 'debug',
+    site_uid: siteUID,
+    uemId: 'fdf304b4-9e52-56e1-b9be-159baeafb0b9',
+    ignore_error: [
+      /Script error/i, 
+      (tag) => tag === 'web_resource_error' && Math.random() > 0.2,
+      (tag, message, params) => {
+        var stackTrace = (params && params.stackTrace) || ''
+        // 1. 当堆栈信息为空时，不上报错误
+        if (!stackTrace || stackTrace.trim() === '') {
+          return true
+        }
+        
+        // 2. 堆栈里面有 chrome-extension 时，为谷歌插件引起时，不上报错误
+        if (stackTrace.includes('chrome-extension://')) {
+          return true
+        }
+        
+        // 3. 当堆栈信息为第三方非 shein 域名 js 时，不上传错误
+        var sheinDomains = ['shein', 'Itwebstatic']
+        var hasSheinDomain = false
+        for (var i = 0; i < sheinDomains.length; i++) {
+          if (stackTrace.indexOf(sheinDomains[i]) !== -1) {
+            hasSheinDomain = true
+            break
+          }
+        }
+        if (hasSheinDomain) {
+          return false
+        }
+        
+        return true
+      }
+    ],
+    fields: {
+      device_id: () => appComParams.deviceid || '',
+      app_versions: () => String(appComParams.appversion || ''),
+      web_versions: () => "14.1.4",
+      params() {
+        return {
+          server_from: UG_PAGE  ? 'ug-h5' : 'aidc-web-h5', // 日志是多个终端（app，web-pc,pwa,h5, ug）使用，增加字段筛选方便查看
+          page_name: window.SaPageInfo && window.SaPageInfo.page_name || 'other',
+          site_uid: siteUID,
+          page: window.replaceMonitorSamePath(location.pathname),
+        }
+      }
+    },
+    white_screen: {
+      time: Number(whiteScreenTime) || 1000,
+      isSSR: Boolean(Number(ssr)),
+    },
+  })
+  window.monitorLight.on('baseError', (data) => {
+    console.log('====baseError====', data)
+  })
+  window.monitorLight.on('vueError', (data) => {
+    console.log('====vueError====', data)
+  })
+  window.monitorLight.on('whiteScreen', (data) => {
+    console.log('====whiteScreen====', data)
+  })
+</script>
+<script>
+  ;(function() {
+    window.ErrorJs = {
+      sendError: function(errorType, url, data, other) {
+        if (data) {
+          data.page_type = window.pageTypeForMonitor || 'other';
+        }
+        try {
+          // 变量控制是否可以切换（因为要不影响第三方包业务）如：@shein-risk/si_verify，他们上报引入的对象是当前主站的对象
+          if (url.indexOf('/unusual') > -1) {
+            // 判断是否是监控指标
+            // 1. 日志类型 -> monitor-core 上报
+            // 2. 监控类型 -> sa 上报 -> 分流 monitor-core 上报到sls（用于观察还有多少指标没有迁移）
+            if (data.reportList && data.reportList.length) {
+              if (data.server_name === 'skynet') {
+                data.reportList.forEach(function(item) {
+                  if (item.metricName) {
+                    if (data.client_pathname) {
+                      item.client_pathname = data.client_pathname
+                    }
+                    if (data.client_url) {
+                      item.client_url = data.client_url
+                    }
+                    // 对应的监控指标上报
+                    window.ErrorJs.monitor_proxy(item)
+                  }
+                })
+              } else {
+                // 没有迁移的（维持旧逻辑指标上报）
+                if (window.sa) {
+                  window.sa(errorType, url, data, other);
+                }
+              }
+            }
+            // 上报到 monitor-core 日志
+            window.ErrorJs.log_proxy(data)
+            return
+          }
+
+          if (window.sa) {
+            window.sa(errorType, url, data, other);
+          }
+        } catch (error) {
+          console.warn('window.sendError report error: ' + JSON.stringify(error));
+        }
+      },
+      // 日志代理
+      log_proxy: function(data) {
+        const tag = data.tag || data.errorMark || data.type || data.errorType
+
+        const info = {
+          tag: tag,
+          message: tag,
+          params: data,
+        }
+
+        if (window.monitorLight) {
+          window.monitorLight.logInfo(info)
+        }
+      },
+      // 监控代理
+      monitor_proxy: function(data, message, options) {
+        const info = {
+          metric_name: data.metricName,
+          tags: Object.assign({
+            sys_name: 'app_h5',
+            os_name: appComParams.devType,
+            client_url: window.location.pathname,
+            client_pathname: window.replaceMonitorSamePath(window.location.pathname),
+            page_name: window.SaPageInfo && window.SaPageInfo.page_name || 'other',
+            sub_site: appComParams.siteuid,
+          }, data),
+          message: message || '',
+          value: data.stepCount || data.counterKey || 1,
+        }
+
+        if (window.monitorLight) {
+          window.monitorLight.metricInfo(info, options)
+        }
+      }
+    };
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+    <script src="//sheinh5.ltwebstatic.com/sh5_dist/libs/zepto/zepto.min.js"></script>
+    
+
+  <script type="text/javascript" src="https://common.ltwebstatic.com/dist_bundle/xjqHR52UWJdjKJ0x6QrCsus66rNXR9/2.0.13/1/main.js" ></script>
+
+    <script>
+  var PageGroupOverview = PageGroupOverview||'other';
+  var PageGroup= PageGroup || 'other';
+  var PageGroupEmarsys = PageGroupEmarsys || 'other';
+  var ScarabQueue = ScarabQueue || [];
+  window.__noop__ = function() {}
+  window.ga = __noop__
+  window.GBGaSend = __noop__
+</script>
+    <script>
+    /**
+     * @description 待废弃，实际上运维在具体的服务器上会做重定向
+     */
+    var SITE_MAP = [
+        {
+            siteUrl: 'm.shein.com/us',
+            site: ['us']
+        },
+        {
+            siteUrl: 'm.shein.com.mx',
+            site: ['mx']
+        },
+        {
+            siteUrl: 'm.shein.com/es',
+            site: ['es']
+        },
+        {
+            siteUrl: 'm.shein.com/it',
+            site: ['it']
+        },
+        {
+            siteUrl: 'm.shein.com/fr',
+            site: ['fr']
+        },
+        {
+            siteUrl: 'm.shein.com/de',
+            site: ['de', 'at', 'lu']
+        },
+        {
+            siteUrl: 'm.shein.in',
+            site: ['in']
+        },
+        {
+            siteUrl: 'm.shein.tw',
+            site: ['tw']
+        },
+        {
+            siteUrl: 'm.shein.co.uk',
+            site: ['gb']
+        },
+        {
+            siteUrl: 'm.shein.com/au',
+            site: ['au']
+        },
+        {
+            siteUrl: 'm.shein.com/ru',
+            site: ['ru', 'by', 'kz']
+        },
+        {
+            siteUrl: 'm.shein.com/ar',
+            site: ['sa', 'kw', 'ae', 'qa', 'om', 'bh']
+        },
+        {
+            siteUrl: 'm.shein.com.vn',
+            site: ['vn']
+        },
+        {
+            siteUrl: 'm.shein.com.hk',
+            site: ['hk']
+        },
+        {
+            siteUrl: 'm.shein.com/th',
+            site: ['th']
+        },
+        {
+            siteUrl: 'm.shein.com/il',
+            site: ['il']
+        },
+        {
+            siteUrl: 'm.shein.com/ca',
+            site: ['ca']
+        },
+        {
+            siteUrl: 'm.shein.se',
+            site: ['se']
+        },
+        {
+            siteUrl: 'm.shein.com/eur',
+            site: ['be', 'bg', 'cz', 'dk', 'ee', 'fi', 'gr', 'hu', 'lv', 'lt', 'ro', 'sk', 'si', 'ie', 'cy', 'mt', 'hr']
+        },
+        {
+            siteUrl: 'm.shein.com/cl',
+            site: ['cl']
+        },
+        {
+            siteUrl: 'm.shein.com/ma',
+            site: ['ma']
+        },
+        {
+            siteUrl: 'm.shein.com/br',
+            site: ['br']
+        },
+        {
+            siteUrl: 'm.shein.com/za',
+            site: ['za']
+        },
+        {
+            siteUrl: 'm.shein.com/sg',
+            site: ['sg']
+        },
+        {
+            siteUrl: 'm.shein.com/nz',
+            site: ['nz']
+        },
+        {
+            siteUrl: 'm.shein.com/my',
+            site: ['my']
+        },
+        {
+            siteUrl: 'm.shein.com/pl',
+            site: ['pl']
+        },
+        {
+            siteUrl: 'm.shein.com/asia',
+            site: ['tr', 'bn', 'kh', 'tl', 'la', 'mo', 'mv', 'mm', 'kr', 'lk', 'gu']
+        },
+        {
+            siteUrl: 'm.shein.com/id',
+            site: ['id']
+        },
+        {
+            siteUrl: 'm.shein.com/ph',
+            site: ['ph']
+        },
+        {
+            siteUrl: 'm.shein.com/pt',
+            site: ['pt']
+        },
+        {
+            siteUrl: 'm.shein.com/roe',
+            site: ['al', 'ad', 'am', 'ba', 'ge', 'is', 'mc', 'me', 'mk', 'no', 'md', 'sm', 'rs', 'va']
+        },
+        {
+            siteUrl: 'm.shein.com',
+            site: ['other']
+        }
+    ]
+
+
+
+
+</script>
+    <script>
+        // ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 为了渐进重构该分享组件，请严格遵守一下规则 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+        // 1、后面新增的分享场景，涉及到链接的编写，需取顶部的常量，禁止在代码逻辑中写链接字符串
+        // 2、deeplink 由于每一个业务方可能会有多个落地场景，故这里使用一个普通Map对象进行管理，使用 getDeepLink 函数获取对应场景的 deeplink
+        // 3、尽量使用策略模式优化代码，避免过多的if else
+        // 4、接入每一个场景，需单独拎出来一个函数，以 toXXXPage 的方式命名，方便后续维护，禁止在核心流程的 if else 里面写过多场景逻辑
+
+        // ===================== 全局变量 =====================
+
+        var GB_appLinkLock = false;
+        var shareInfo = {"status":0,"shareTitle":"I found some great items at SHEIN!","shareComment":"These items in my shopping cart are great. I highly recommend them to everyone!","shareImg":"https://img.ltwebstatic.com/images3_app/2023/07/31/1690792849e96df4eb4379ccafb232a70326055400.png","shareId":"629363735","shareType":11,"sign":"","formUid":0,"groupIdToken":"","groupName":"","language":"","catId":"","productSelectId":0,"productSelectUrlId":"","trendWordId":0,"deepLink":"","id":"629363735","uid":0,"nickname":"","img_url":"https://img.ltwebstatic.com/images3_app/2023/07/31/1690792849e96df4eb4379ccafb232a70326055400.png","title":"I found some great items at SHEIN!","cat_id":"","localcountry":"ZA","originalUrl":"https://api-shein.shein.com/h5/sharejump/appjump?link=lbCieue0XMV_b&localcountry=ZA","url_from":"","tr_ssrc":"share_app_b","cart_share":1,"share_type":"cart","comment":"These items in my shopping cart are great. I highly recommend them to everyone!"};
+        var resData =  {};
+
+        var os = UAParser().os.name;
+        var id = shareInfo.id;
+        var liveId = shareInfo.id;
+        var share_type = shareInfo.share_type;
+        var sub_type = shareInfo.sub_type;
+        var status = shareInfo.status;
+        var url = shareInfo.magazine_url;
+        var region = shareInfo.region;
+        var deeplink = shareInfo.deeplink || shareInfo.deepLink;
+        // var img = new Image()
+        // img.src = "https://www.google-analytics.com/collect?v=1&t=event&dl=https://m.shein.com/us/&cid=1157855575.1509346508&tid=UA-22263122-1&ec=扫码进入&ea=" + encodeURIComponent(location.href)
+        // 加个异步的就解决了facebook打开sheinlink链接报错回弹的bug
+        var isSuccessLanuch = false;
+
+        // ===================== 全局常量 =====================
+
+        // UG-313218
+        var APP_INDEX_LINK = 'sheinlink://shein.com/main/shop'
+        // var SOCIAL_INDEX_LINK = 'sheinlink://applink/sheinGals'
+
+        var DEEP_LINK_MAP = {
+            'store': function (scene) {
+                var defaultLink = 'sheinlink://applink/store_home/'
+                var linkMap = {}
+                return linkMap[scene] || defaultLink
+            },
+            'cart': function (scene) {
+                var defaultLink = 'sheinlink://applink/share_receiver/'
+                var linkMap = {}
+                return linkMap[scene] || defaultLink
+            },
+            'live': function (scene) {
+                var defaultLink = APP_INDEX_LINK
+                var linkMap = {
+                    // 直播预告
+                    0: 'sheinlink://applink/upcominglive/',
+                    // 直播进行中
+                    1: 'sheinlink://applink/live/',
+                    // 录像回放
+                    2: 'sheinlink://applink/replaylive/',
+                }
+                return linkMap[scene] || defaultLink
+            },
+            'show_detail': function (scene) {
+                var defaultLink = 'sheinlink://applink/show_detail/'
+                var linkMap = {}
+                return linkMap[scene] || defaultLink
+            },
+            'trend': function (scene) {
+                var defaultLink = APP_INDEX_LINK
+                var linkMap = {
+                    'trend_channel': 'sheinlink://shein.com/sales/trend_channel',
+                    'trend_landing': 'sheinlink://shein.com/sales/trend_landing_page',
+                }
+                return linkMap[scene] || defaultLink
+            },
+            'brand': function (scene) {
+                var defaultLink = APP_INDEX_LINK
+                var linkMap = {
+                    brand_channel_page: deeplink,
+                    brand_on_sale_page: deeplink,
+                }
+                return linkMap[scene] || defaultLink
+            }
+        }
+
+        var PC_INDEX_URL = 'https://www.shein.com';
+        var MOBILE_INDEX_URL = 'https://m.shein.com';
+        var IOS_DEFAULT_URL = 'https://itunes.apple.com/cn/app/shein-fashion-shopping/id878577184';
+        var ANDROID_DEFAULT_URL = 'https://play.google.com/store/apps/details?id=com.zzkko';
+
+        // ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ end ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️ 
+
+
+
+        // ===================== utils函数 =====================
+
+        function getIosVersion() {
+            try {
+                return navigator.userAgent.toLowerCase().match(/cpu iphone os (.*?) like mac os/)[1].replace(/_/g,".").split('.')[0]
+            } catch (e) {
+                return 0
+            }
+        }
+        function jumpPage() {
+            if (/Safari/.test(navigator.userAgent) && getIosVersion() >= 12) {
+                setTimeout(function () {
+                    console.log(status)
+                    if (!isMobile()) {
+                        location.href = spliceUrl(PC_INDEX_URL);
+                    } else {
+                        if (os == 'iOS') {
+                            window.requestAnimationFrame && window.requestAnimationFrame(function() {
+                                location.href = IOS_DEFAULT_URL
+                            });
+                        } else if (os == 'Android') {
+                            location.href = ANDROID_DEFAULT_URL
+                        }
+                    }
+                }, 3500)
+            } else {
+                setTimeout(function () {
+                    if (!isMobile()) {
+                        location.href = spliceUrl(PC_INDEX_URL);
+                    } else {
+                        if (os == 'iOS') {
+                            location.href = IOS_DEFAULT_URL
+                        } else if (os == 'Android') {
+                            location.href = ANDROID_DEFAULT_URL
+                        }
+                    }
+                }, 500)
+            }
+        }
+        function isMobile() {
+            var isMobile = navigator.userAgent.toLowerCase().match(/phone|pad|pod|iphone|ipod|ios|ipad|android/);
+            if (!isMobile && navigator.platform === "MacIntel" && typeof navigator.standalone !== "undefined") {
+                isMobile = true
+            }
+            return isMobile
+        }
+        function getGoodsUrl(name, id, catId) {
+            //拼接商品详情路由
+            var name = (name || '').replace(/[><#@$\s'"%+&]|[\u4e00-\u9fa5]/g, '');
+            return '/' + name.replace('\/', '-').split(' ').join('-') + '-p-' + id + '-cat-' + catId +'.html'
+        }
+        var is_mobile = isMobile()
+        function sendPoints(callback) {
+            var uid = shareInfo.uid;
+            var video_id = shareInfo.id;
+            var nickname = shareInfo.nickname;
+         
+            window.schttp && window.schttp({
+				url: "/sharejump/getRewards",
+				params: { 
+                    uid: uid,
+                    video_id: video_id,
+                    nickname: nickname,
+                },
+			}).then(() => {
+                callback && callback()
+			})
+        }
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+        // @param1: 业务方 @param2: 场景(可选)
+        function getDeepLink (business, scene) {
+            return DEEP_LINK_MAP[business](scene)
+        }
+
+        function watchVisibility() {
+            window.addEventListener('visibilitychange', () => {
+                console.log('【visibilitychange】=> ', document.hidden)
+                isSuccessLanuch = !!document.hidden
+            })
+        }
+
+        function generateMSiteURL () {
+            var localcountry = (getUrlParam('localcountry') || 'other').toLowerCase();
+            var currentCountryMSiteURL = MOBILE_INDEX_URL;
+            SITE_MAP.forEach(item => {
+                if (item.site.indexOf(localcountry) > -1) {
+                    currentCountryMSiteURL = 'https://' + item.siteUrl;
+                }
+            })
+            return currentCountryMSiteURL
+        }
+        
+        function handleJumpDeeplink (deepLink, data) {
+            let params = data || {};
+            // 处理跳转deepLink，所需的公共参数
+            params.tr_ssrc = shareInfo.tr_ssrc;
+            params.share_channel = shareInfo.share_channel;
+            console.log('【jumpDeeplink】=> ', deepLink, params)
+            jumpDeeplink(deepLink, params);
+        }
+        // ===================== 各个场景 =====================
+
+        function toDefaultPage() {
+            if (isSuccessLanuch) return;
+
+            console.log('【launch fail】=> ', is_mobile)
+
+            setTimeout(function () {
+                if (!is_mobile) {
+                    location.href = spliceUrl(PC_INDEX_URL);
+                    return
+                }
+                if (os == 'iOS') {
+                    location.href = IOS_DEFAULT_URL
+                } else if (os == 'Android') {
+                    location.href = ANDROID_DEFAULT_URL
+                }
+            }, 3000)
+        }
+
+        function toStorePage() {
+            console.log('【pre launch】=> ', is_mobile)
+            if (is_mobile) {
+                handleJumpDeeplink(getDeepLink('store'), { "store_code": id });
+                setTimeout(function(){ location.href = generateMSiteURL() + `/store/home?store_code=${id}`; }, 500)
+            } else {
+                location.href = spliceUrl(PC_INDEX_URL + `/store/home?store_code=${id}`);
+            }
+        }
+
+        function toCartPage() {
+            var local_country = shareInfo.localcountry;
+            var url_from = shareInfo.url_from;
+            const cart_share = shareInfo.cart_share || '';
+            if (is_mobile) {
+                const shareParams = {
+                    group_id: id,
+                    local_country,
+                    url_from,
+                }
+                if (cart_share) {
+                    shareParams.cart_share = cart_share;
+                }
+                handleJumpDeeplink(getDeepLink('cart'), shareParams);
+                setTimeout(function(){
+                    location.href = generateMSiteURL() + `/cart/share/landing?group_id=${id}&local_country=${local_country}&url_from=${url_from}${cart_share ? `&cart_share=${cart_share}` : ''}`;
+                }, 500)
+            } else {
+                // 购物车分享场景落地页暂时没有pc，兜底首页
+                location.href = spliceUrl(PC_INDEX_URL);
+            }
+        }
+
+        function toLivePage () {
+            var callbackWithLive = function () {
+                handleJumpDeeplink(getDeepLink('live', status) + liveId);
+                toDefaultPage()
+            };
+            share_type === 'live' ? sendPoints(callbackWithLive) : callbackWithLive();
+        }
+
+        function toShowDetailPage () {
+            if (status == -1 || status == -2) {
+                handleJumpDeeplink(APP_INDEX_LINK);
+            } else {
+                handleJumpDeeplink(getDeepLink('show_detail') + id, {
+                    "content_id": id,
+                    "sub_type": sub_type
+                });
+            }
+            toDefaultPage()
+        }
+
+        function toTrendPage () {
+            if (status != 0) {
+                handleJumpDeeplink(APP_INDEX_LINK);
+                toDefaultPage()
+                return
+            }
+
+            var trend_word_id = shareInfo.trend_word_id;
+            var productSelectId_goodsId = shareInfo.productSelectId_goodsId;
+            var productSelectId_scUrlId = shareInfo.productSelectId_scUrlId;
+            var params = {
+                trend_word_id,
+                productSelectId_goodsId,
+            }
+
+            if (share_type === 'trend_landing') {
+                params = {
+                    trend_word_id,
+                    productSelectId_scUrlId,
+                }
+            }
+            handleJumpDeeplink(getDeepLink('trend', share_type), params);
+            
+            toDefaultPage()
+        }
+
+        function toBrandPage () {
+            if (status != 0) {
+                handleJumpDeeplink(APP_INDEX_LINK);
+                toDefaultPage()
+                return
+            }
+            handleJumpDeeplink(getDeepLink('brand', share_type));
+        }
+
+
+        // ===================== 核心流程 =====================
+        function mainProcess () {
+            watchVisibility();
+
+            if (/video|outfit|runway/.test(share_type)) {
+                if (status == -1) {
+                    // 链接失效跳app 首页
+                    handleJumpDeeplink(APP_INDEX_LINK);
+                } else {
+                    if (share_type === 'video') {
+                        handleJumpDeeplink('sheinlink://applink/videodetail/' + id, { "video_id": id });
+                    } else if (share_type === 'outfit') {
+                        handleJumpDeeplink('sheinlink://applink/outfitdetail/' + id, { "style_id": id });
+                    } else if(share_type === 'outfit_theme_video'){
+                        handleJumpDeeplink(APP_INDEX_LINK);
+                    } else if(sub_type === 'runway_new') {
+                        handleJumpDeeplink('sheinlink://applink/outfit_singel_video/' + id, { "conver_id": id });
+                    } else if (share_type === 'runway') {
+                        handleJumpDeeplink('sheinlink://applink/runwayList/' + id);
+                    } else if(share_type === 'outfit_singel_video'){
+                        handleJumpDeeplink('sheinlink://applink/outfit_singel_video/' + id);
+                    } 
+                }
+                jumpPage()
+            } else if (share_type === 'magazine') {
+                handleJumpDeeplink('sheinlink://applink/magazineDetail/' + id);
+
+                setTimeout(function () {
+                    location.href = url;
+                }, 500)
+            } else if (/live/.test(share_type)) {
+                toLivePage()
+            } else if(/goods/.test(share_type)){
+                if (!isMobile()) {
+                    if (status != -1 && typeof getGoodsUrl != 'undefined' &&  id) {
+                        location.href = spliceUrl(PC_INDEX_URL+ getGoodsUrl(shareInfo.title, id, shareInfo.cat_id)+'?share_from=' + getUrlParam('site'))
+                    } else {
+                        location.href = spliceUrl(PC_INDEX_URL)
+                    }
+                } else {
+                    if (status == -1) {
+                        // 链接失效跳app 首页
+                        handleJumpDeeplink(APP_INDEX_LINK);
+                    } else {
+                        handleJumpDeeplink('sheinlink://applink/goods/'+  id, { goods_id: id });
+                    }
+                    setTimeout(function () {
+                        if(typeof getGoodsUrl != 'undefined' &&  id){
+                            location.href = spliceUrl(MOBILE_INDEX_URL + getGoodsUrl(shareInfo.title, id, shareInfo.cat_id)+'?share_from=' + getUrlParam('site'))
+                        }else{
+                            if (os == 'iOS') {
+                                location.href = IOS_DEFAULT_URL
+                            } else if (os == 'Android') {
+                                location.href = ANDROID_DEFAULT_URL
+                            }
+                        }
+                    }, 500)
+                }
+            } else if (/show_detail/.test(share_type)){
+                toShowDetailPage()
+            } else if (/store/.test(share_type)) {
+                toStorePage()
+            } else if (/cart/.test(share_type)) {
+                toCartPage()
+            } else if (/trend/.test(share_type)) {
+                toTrendPage()
+            } else if (/brand/.test(share_type)) {
+                toBrandPage()
+            } else {
+                // 不匹配类型统一跳转社区
+                handleJumpDeeplink(APP_INDEX_LINK);
+                toDefaultPage()
+            }
+        }
+
+        // 分享访问监控上报
+        function reportLandingPageView(status, error) {
+            if (window.ErrorJs && window.ErrorJs.monitor_proxy) {
+                const message = error ? (error.message || 'unknown error') : 'h5 share middle page view report';
+
+                const reportParams = { 
+                    metricName: 'share_visit_h5_middle_page',
+                    tr_ssrc: shareInfo.tr_ssrc,
+                    share_type,
+                    share_channel: shareInfo.share_channel,
+                    share_result: status,
+                    page_name: 'shein_sharejump_app',
+                    params: {
+                        error: error ? {
+                            message,
+                            stack: error.stack || 'No stack trace available'
+                        } : null
+                    }
+                }
+                
+                window.ErrorJs.monitor_proxy(reportParams, message, {
+                    immediate: true,
+                    useFetch: true,
+                })
+            } else {
+                console.error('window.ErrorJs is not defined')
+            }
+        }
+
+        // 页面访问时立即上报监控
+        reportLandingPageView(shareInfo.status);
+
+        function safeMainProcess() {
+            try {
+                mainProcess();
+            } catch (error) {
+                console.error('mainProcess error:', error);
+                reportLandingPageView(100, error);
+            }
+        }
+
+        setTimeout(safeMainProcess, 500)
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bef7acd0cf57414',t:'MTc2ODU4NjA4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
