@@ -126,23 +126,42 @@ async def scrape_shein_cart(url: str) -> List[CartItem]:
         page = await context.new_page()
         
         try:
-            # Load page
-            await page.goto(url, wait_until='domcontentloaded', timeout=30000)
-            await asyncio.sleep(5)  # Wait for JS to execute
+            # Load page with increased timeout
+            print(f"Loading URL: {url}")
+            try:
+                await page.goto(url, wait_until='load', timeout=90000)
+            except Exception as e:
+                print(f"Page load warning: {e}")
+                # Try to continue anyway if partially loaded
             
-            # Try to extract from JavaScript
+            # Wait longer for dynamic content to fully render
+            print("Waiting for content to render...")
+            await asyncio.sleep(15)
+            
+            # Save HTML for debugging
+            html = await page.content()
+            with open('debug_cart.html', 'w', encoding='utf-8') as f:
+                f.write(html)
+            print(f"Saved HTML content ({len(html)} chars)")
+            
+            # Try to extract from JavaScript (simplified)
             cart_data = await page.evaluate('''() => {
                 if (window.__NUXT__) return { source: 'NUXT', data: window.__NUXT__ };
                 if (window.__INITIAL_STATE__) return { source: 'STATE', data: window.__INITIAL_STATE__ };
+                if (window.gbRaidData) return { source: 'RAID', data: window.gbRaidData };
                 return null;
             }''')
             
-            if cart_data and cart_data.get('data'):
+            if cart_data:
+                print(f"Found JS data source: {cart_data.get('source')}")
                 items = parse_cart_data(cart_data['data'])
+                print(f"Parsed {len(items)} items from JS")
             
             # Try DOM extraction if no items found
             if not items:
+                print("No items from JS, trying DOM extraction...")
                 items = await extract_from_dom(page)
+                print(f"Found {len(items)} items from DOM")
             
         except Exception as e:
             print(f"Error scraping: {e}")
@@ -153,85 +172,168 @@ async def scrape_shein_cart(url: str) -> List[CartItem]:
 
 
 async def extract_from_dom(page) -> List[CartItem]:
-    """Extract items from DOM"""
+    """Extract items from DOM with improved SKU and deduplication"""
     items = []
-    seen = set()  # Track unique items
+    seen_skus = set()  # Track by SKU primarily
+    seen_names = set()  # Fallback to name if no SKU
     
     # Try comprehensive selectors
     selectors = [
         '[class*="cart-item"]',
         '[class*="goods-item"]',
         '[class*="product-item"]',
+        '[class*="CartItem"]',
     ]
     
     for selector in selectors:
         elements = await page.query_selector_all(selector)
+        print(f"Selector '{selector}': found {len(elements)} elements")
         if not elements:
             continue
         
         for elem in elements:
             item_data = {}
             
-            # Check element size - skip small nested elements
+            # Check element size - skip tiny nested elements
             try:
                 box = await elem.bounding_box()
-                if box and box['height'] < 50:
+                if box and box['height'] < 80:  # Increased threshold
                     continue
             except:
                 pass
             
-            # Name - prioritize main product name elements
+            # Extract SKU first (most important for ordering)
+            sku_selectors = [
+                '[class*="goods-id"]',
+                '[class*="product-id"]',
+                '[class*="sku"]',
+                '[data-goods-id]',
+                '[data-product-id]',
+                '[data-sku]',
+            ]
+            for sku_sel in sku_selectors:
+                sku_elem = await elem.query_selector(sku_sel)
+                if sku_elem:
+                    sku = await sku_elem.inner_text() or await sku_elem.get_attribute('data-goods-id') or await sku_elem.get_attribute('data-sku')
+                    if sku and sku.strip():
+                        item_data['sku'] = sku.strip()
+                        break
+            
+            # Try to extract SKU from element attributes if not found
+            if not item_data.get('sku'):
+                for attr in ['data-goods-id', 'data-product-id', 'data-sku', 'data-id']:
+                    val = await elem.get_attribute(attr)
+                    if val:
+                        item_data['sku'] = val
+                        break
+            
+            # Try to extract SKU from product links
+            if not item_data.get('sku'):
+                link_elem = await elem.query_selector('a[href*="goods_id"], a[href*="product"], a[href*="-p-"]')
+                if link_elem:
+                    href = await link_elem.get_attribute('href')
+                    if href:
+                        import re
+                        # Try to extract goods_id from URL patterns
+                        # Pattern 1: goods_id=123456
+                        match = re.search(r'goods_id=(\d+)', href)
+                        if match:
+                            item_data['sku'] = match.group(1)
+                        else:
+                            # Pattern 2: -p-123456
+                            match = re.search(r'-p-(\d+)', href)
+                            if match:
+                                item_data['sku'] = match.group(1)
+            
+            # Extract name
             name_selectors = [
                 '[class*="goods-name"]',
                 '[class*="product-name"]', 
                 '[class*="goods-title"]',
-                'h2', 'h3',
-                '[class*="name"]'
+                'h3',
+                'h2',
             ]
             for name_sel in name_selectors:
                 name_elem = await elem.query_selector(name_sel)
                 if name_elem:
                     text = await name_elem.inner_text()
-                    if text and len(text.strip()) > 10:  # Only longer names
+                    if text and len(text.strip()) > 10:
                         item_data['name'] = text.strip()
                         break
             
-            # Price - get main price only
-            price_elems = await elem.query_selector_all('[class*="price"]')
-            for price_elem in price_elems:
+            # Extract price - get ONLY the current/sale price (first price element)
+            price_elem = await elem.query_selector('[class*="sale-price"], [class*="current-price"], [class*="price"]:first-child')
+            if price_elem:
                 text = await price_elem.inner_text()
-                # Check if contains currency and numbers
-                if text and any(c in text for c in ['R', '$', '€', '£', '¥']) and any(c.isdigit() for c in text):
-                    # Clean up extra whitespace
-                    item_data['price'] = ' '.join(text.split())
-                    break
+                # Extract only numbers and currency
+                if text:
+                    import re
+                    # Match price pattern: R123.45 or R123
+                    match = re.search(r'[R$€£¥]\s*\d+(?:\.\d{2})?', text)
+                    if match:
+                        item_data['price'] = match.group(0).strip()
             
-            # Image - skip placeholder images
-            img = await elem.query_selector('img[src*="img"], img[data-src]')
-            if img:
-                src = await img.get_attribute('src') or await img.get_attribute('data-src')
-                if src and 'placeholder' not in src.lower() and 'loading' not in src.lower():
-                    if not src.startswith('http'):
-                        src = 'https:' + src if src.startswith('//') else 'https://img.shein.com' + src
-                    item_data['image'] = src
+            # Extract image - prefer main product image
+            img_selectors = [
+                'img[class*="goods-img"]',
+                'img[class*="product-img"]',
+                'img[src*="thumbnail"]',
+                'img:first-of-type',
+            ]
+            for img_sel in img_selectors:
+                img = await elem.query_selector(img_sel)
+                if img:
+                    src = await img.get_attribute('src') or await img.get_attribute('data-src')
+                    if src and 'placeholder' not in src.lower() and src.strip():
+                        # Convert thumbnail to larger image
+                        src = src.replace('_thumbnail_', '_').replace('240x', '480x')
+                        if not src.startswith('http'):
+                            src = 'https:' + src if src.startswith('//') else 'https://img.shein.com' + src
+                        item_data['image'] = src
+                        break
             
-            # Quantity
-            qty_elem = await elem.query_selector('input[type="number"], [class*="quantity"] input')
+            # Extract quantity
+            qty_elem = await elem.query_selector('input[type="number"], [class*="quantity"] input, [class*="num"] input')
             if qty_elem:
                 qty = await qty_elem.get_attribute('value')
-                if qty and int(qty) > 0:
-                    item_data['quantity'] = qty
+                if qty:
+                    try:
+                        item_data['quantity'] = str(int(qty))
+                    except:
+                        item_data['quantity'] = "1"
             
-            # Only add if we have a name and it's unique
+            # Extract color and size if available
+            color_elem = await elem.query_selector('[class*="color"], [class*="Color"]')
+            if color_elem:
+                color_text = await color_elem.inner_text()
+                if color_text:
+                    item_data['color'] = color_text.strip()
+            
+            size_elem = await elem.query_selector('[class*="size"], [class*="Size"]')
+            if size_elem:
+                size_text = await size_elem.inner_text()
+                if size_text:
+                    item_data['size'] = size_text.strip()
+            
+            # Deduplicate: prioritize SKU, fallback to name
             if item_data.get('name'):
-                # Create unique key
-                unique_key = (item_data.get('name', '') + 
-                             item_data.get('price', '') + 
-                             item_data.get('image', '')).lower()
+                sku = item_data.get('sku')
+                name = item_data.get('name')
                 
-                if unique_key not in seen:
-                    seen.add(unique_key)
-                    items.append(CartItem(**item_data))
+                # Check if already seen
+                if sku and sku in seen_skus:
+                    continue
+                if not sku and name in seen_names:
+                    continue
+                
+                # Add to seen sets
+                if sku:
+                    seen_skus.add(sku)
+                seen_names.add(name)
+                
+                # Add item
+                items.append(CartItem(**item_data))
+                print(f"Added item: {name[:50]}... | SKU: {sku or 'N/A'} | Price: {item_data.get('price', 'N/A')} | Size: {item_data.get('size', 'N/A')} | Color: {item_data.get('color', 'N/A')}")
         
         if items:
             break
