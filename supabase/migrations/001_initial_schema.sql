@@ -282,5 +282,5 @@ CREATE POLICY "Only admins can modify settings"
 -- Insert default settings
 INSERT INTO settings (key, value, description) VALUES
     ('service_fee_percentage', '15', 'Service fee percentage added to order total'),
-    ('app_name', 'Shein Affiliate', 'Application name'),
-    ('contact_email', 'support@sheinaffiliate.com', 'Contact email for support');
+    ('app_name', 'Lobi', 'Application name'),
+    ('contact_email', 'support@lobi.com', 'Contact email for support');
