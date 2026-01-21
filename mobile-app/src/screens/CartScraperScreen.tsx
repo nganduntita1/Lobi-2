@@ -9,18 +9,33 @@ import {
   FlatList,
   Platform,
   Alert,
+  SafeAreaView,
 } from 'react-native';
 import { CartItem } from '../types/cart';
 import CartItemCard from '../components/CartItemCard';
 import SizeSelectionModal from '../components/SizeSelectionModal';
+import DeliveryAddressModal from '../components/DeliveryAddressModal';
+import OrderReviewModal from '../components/OrderReviewModal';
 import { scrapeCart } from '../services/api';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
+
+interface DeliveryAddress {
+  id: string;
+  address_line1: string;
+  address_line2?: string;
+  city: string;
+  province: string;
+  postal_code?: string;
+}
 
 export default function CartScraperScreen() {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showSizeModal, setShowSizeModal] = useState(false);
+  const [showAddressModal, setShowAddressModal] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState<DeliveryAddress | null>(null);
 
   const handleScrapeWithBackend = async () => {
     if (!url.trim()) {
@@ -61,16 +76,37 @@ export default function CartScraperScreen() {
   const handleSizeConfirm = (itemsWithSizes: CartItem[]) => {
     setCartItems(itemsWithSizes);
     setShowSizeModal(false);
-    // TODO: Navigate to order confirmation/address selection
+    // Open address selection modal
+    setShowAddressModal(true);
+  };
+
+  const handleAddressSelect = (address: DeliveryAddress) => {
+    setSelectedAddress(address);
+    setShowAddressModal(false);
+    // Open order review modal
+    setShowReviewModal(true);
+  };
+
+  const handleOrderPlaced = () => {
+    // Clear cart and reset state
+    setCartItems([]);
+    setUrl('');
+    setSelectedAddress(null);
+    setShowReviewModal(false);
+    
     if (Platform.OS !== 'web') {
-      Alert.alert('Success', 'Sizes updated! Order placement coming soon...');
+      Alert.alert(
+        'Order Placed! 🎉',
+        'Thank you for your order. You can track its status in the Orders tab.',
+        [{ text: 'OK' }]
+      );
     }
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Shein Cart Scraper</Text>
+        <Text style={styles.title}>Lobi</Text>
         <Text style={styles.subtitle}>Extract items from shared cart URLs</Text>
       </View>
 
@@ -129,6 +165,23 @@ export default function CartScraperScreen() {
         onConfirm={handleSizeConfirm}
       />
 
+      <DeliveryAddressModal
+        visible={showAddressModal}
+        onClose={() => setShowAddressModal(false)}
+        onSelectAddress={handleAddressSelect}
+      />
+
+      {selectedAddress && (
+        <OrderReviewModal
+          visible={showReviewModal}
+          items={cartItems}
+          cartUrl={url}
+          deliveryAddress={selectedAddress}
+          onClose={() => setShowReviewModal(false)}
+          onOrderPlaced={handleOrderPlaced}
+        />
+      )}
+
       {cartItems.length === 0 && !loading && (
         <View style={styles.emptyState}>
           <Text style={styles.emptyText}>
@@ -140,7 +193,7 @@ export default function CartScraperScreen() {
           </Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

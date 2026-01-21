@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Platform } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
 
 // Screens
@@ -31,7 +32,11 @@ function CustomerTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#000',
         tabBarInactiveTintColor: '#999',
-        tabBarStyle: { paddingBottom: 5, paddingTop: 5, height: 60 },
+        tabBarStyle: {
+          height: Platform.OS === 'ios' ? 85 : 60,
+          paddingBottom: Platform.OS === 'ios' ? 25 : 5,
+          paddingTop: 5,
+        },
         headerShown: false,
       }}
     >
@@ -69,7 +74,11 @@ function AdminTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#000',
         tabBarInactiveTintColor: '#999',
-        tabBarStyle: { paddingBottom: 5, paddingTop: 5, height: 60 },
+        tabBarStyle: {
+          height: Platform.OS === 'ios' ? 85 : 60,
+          paddingBottom: Platform.OS === 'ios' ? 25 : 5,
+          paddingTop: 5,
+        },
         headerShown: false,
       }}
     >

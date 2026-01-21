@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   RefreshControl,
   TextInput,
+  SafeAreaView,
 } from 'react-native';
 import { orderService } from '../services/orderService';
 import { Order, OrderStatus } from '../types/database';
@@ -135,7 +136,7 @@ export default function AdminOrdersScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Order Management</Text>
         <Text style={styles.subtitle}>{filteredOrders.length} orders</Text>
@@ -190,7 +191,7 @@ export default function AdminOrdersScreen() {
           }
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -207,7 +208,6 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#fff',
     padding: 20,
-    paddingTop: 60,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },

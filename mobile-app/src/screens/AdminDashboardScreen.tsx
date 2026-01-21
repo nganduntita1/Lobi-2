@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   RefreshControl,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 import { orderService } from '../services/orderService';
 
@@ -52,7 +53,7 @@ export default function AdminDashboardScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Admin Dashboard</Text>
         <Text style={styles.subtitle}>Business Overview</Text>
@@ -109,7 +110,7 @@ export default function AdminDashboardScreen() {
           </Text>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -126,7 +127,6 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#fff',
     padding: 20,
-    paddingTop: 60,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
   },

@@ -6,15 +6,20 @@ export const orderService = {
    * Create a new order
    */
   async createOrder(data: CreateOrderData): Promise<Order> {
+    // Generate order number
+    const { data: orderNumber, error: orderNumError } = await supabase
+      .rpc('generate_order_number');
+
+    if (orderNumError) throw orderNumError;
+
     const { data: order, error } = await supabase
       .from('orders')
       .insert({
+        order_number: orderNumber,
         user_id: data.user_id,
         delivery_address_id: data.delivery_address_id,
         cart_url: data.cart_url,
-        subtotal: data.subtotal,
-        service_fee: data.service_fee || data.subtotal * 0.1, // 10% service fee
-        total_amount: data.total_amount || data.subtotal + (data.service_fee || data.subtotal * 0.1),
+        total_amount: data.total_amount,
         customer_notes: data.customer_notes,
         status: 'pending',
       })
@@ -30,7 +35,13 @@ export const orderService = {
         .insert(
           data.items.map(item => ({
             order_id: order.id,
-            ...item,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity || 1,
+            image: item.image,
+            sku: item.sku,
+            color: item.color,
+            size: item.size,
           }))
         );
 

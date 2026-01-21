@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   RefreshControl,
+  SafeAreaView,
 } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
 import { orderService } from '../services/orderService';
 import { Order } from '../types/database';
+import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 
 export default function OrdersScreen() {
   const { user } = useAuth();
@@ -45,9 +47,9 @@ export default function OrdersScreen() {
     switch (status) {
       case 'delivered': return '#4CAF50';
       case 'out_for_delivery': return '#2196F3';
-      case 'processing': return '#FF9800';
+      case 'processing': return Colors.primary;
       case 'cancelled': return '#F44336';
-      default: return '#999';
+      default: return Colors.text.light;
     }
   };
 
@@ -86,15 +88,16 @@ export default function OrdersScreen() {
   if (loading) {
     return (
       <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#000" />
+        <ActivityIndicator size="large" color={Colors.primary} />
       </View>
     );
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>My Orders</Text>
+        <Text style={styles.subtitle}>Track your Lobi orders</Text>
       </View>
 
       {orders.length === 0 ? (
@@ -115,14 +118,14 @@ export default function OrdersScreen() {
           }
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: Colors.background,
   },
   centerContainer: {
     flex: 1,
@@ -130,25 +133,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    backgroundColor: '#fff',
-    padding: 20,
-    paddingTop: 60,
+    backgroundColor: Colors.surface,
+    padding: Spacing.lg,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: Colors.border,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    marginTop: 4,
+    fontFamily: Typography.fontFamily.regular,
   },
   listContent: {
-    padding: 16,
+    padding: Spacing.md,
   },
   orderCard: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 16,
+    backgroundColor: Colors.surface,
+    borderRadius: BorderRadius.lg,
+    padding: Spacing.lg,
+    marginBottom: Spacing.md,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -159,68 +168,80 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: Spacing.sm,
   },
   orderNumber: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#333',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.semiBold,
   },
   statusBadge: {
-    paddingHorizontal: 12,
+    paddingHorizontal: Spacing.md,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: BorderRadius.full,
   },
   statusText: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 12,
     fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
   },
   orderDate: {
     fontSize: 14,
-    color: '#666',
-    marginBottom: 12,
+    color: Colors.text.secondary,
+    marginBottom: Spacing.md,
+    fontFamily: Typography.fontFamily.regular,
   },
   orderFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 8,
-    paddingTop: 12,
+    marginTop: Spacing.sm,
+    paddingTop: Spacing.md,
     borderTopWidth: 1,
-    borderTopColor: '#f0f0f0',
+    borderTopColor: Colors.borderLight,
   },
   totalAmount: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.primary,
+    fontFamily: Typography.fontFamily.bold,
   },
   viewButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    backgroundColor: '#000',
-    borderRadius: 8,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.sm,
+    backgroundColor: Colors.primary,
+    borderRadius: BorderRadius.md,
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 3,
   },
   viewButtonText: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 14,
     fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
   },
   emptyContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 40,
+    padding: Spacing.xxl,
   },
   emptyText: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#333',
-    marginBottom: 8,
+    color: Colors.text.primary,
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.semiBold,
   },
   emptySubtext: {
     fontSize: 14,
-    color: '#666',
+    color: Colors.text.secondary,
     textAlign: 'center',
+    fontFamily: Typography.fontFamily.regular,
   },
 });
