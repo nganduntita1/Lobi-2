@@ -10,6 +10,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { orderService } from '../services/orderService';
+import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
+import { useNavigation } from '@react-navigation/native';
 
 interface DashboardStats {
   total_orders: number;
@@ -22,6 +24,7 @@ export default function AdminDashboardScreen() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const navigation = useNavigation();
 
   const loadStats = async () => {
     try {
@@ -47,7 +50,7 @@ export default function AdminDashboardScreen() {
   if (loading) {
     return (
       <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#000" />
+        <ActivityIndicator size="large" color={Colors.primary} />
       </View>
     );
   }
@@ -55,8 +58,8 @@ export default function AdminDashboardScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Admin Dashboard</Text>
-        <Text style={styles.subtitle}>Business Overview</Text>
+        <Text style={styles.title}>Lobi Dashboard</Text>
+        <Text style={styles.subtitle}>Business Overview & Analytics</Text>
       </View>
 
       <ScrollView
@@ -92,22 +95,39 @@ export default function AdminDashboardScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           
-          <TouchableOpacity style={styles.actionButton}>
-            <Text style={styles.actionButtonText}>View All Orders</Text>
+          <TouchableOpacity 
+            style={styles.actionButton}
+            onPress={() => navigation.navigate('AdminOrders' as never)}
+          >
+            <Text style={styles.actionButtonText}>📦 View All Orders</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.actionButton, styles.actionButtonSecondary]}>
             <Text style={[styles.actionButtonText, styles.actionButtonTextDark]}>
-              Manage Customers
+              👥 Manage Customers
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={[styles.actionButton, styles.actionButtonSecondary]}>
+            <Text style={[styles.actionButtonText, styles.actionButtonTextDark]}>
+              ⚙️ Settings
             </Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Recent Activity</Text>
-          <Text style={styles.placeholderText}>
-            Recent orders and updates will appear here
-          </Text>
+          <Text style={styles.sectionTitle}>System Info</Text>
+          <View style={styles.infoCard}>
+            <Text style={styles.infoText}>
+              💡 Orders are automatically synced in real-time
+            </Text>
+            <Text style={styles.infoText}>
+              🔔 You'll be notified of new orders
+            </Text>
+            <Text style={styles.infoText}>
+              📊 Dashboard updates every time you refresh
+            </Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -117,7 +137,7 @@ export default function AdminDashboardScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: Colors.background,
   },
   centerContainer: {
     flex: 1,
@@ -125,20 +145,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    backgroundColor: '#fff',
-    padding: 20,
+    backgroundColor: Colors.surface,
+    padding: Spacing.lg,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: Colors.border,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.bold,
   },
   subtitle: {
     fontSize: 14,
-    color: '#666',
+    color: Colors.text.secondary,
     marginTop: 4,
+    fontFamily: Typography.fontFamily.regular,
   },
   content: {
     flex: 1,
@@ -146,14 +168,14 @@ const styles = StyleSheet.create({
   statsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    padding: 16,
-    gap: 12,
+    padding: Spacing.md,
+    gap: Spacing.md,
   },
   statCard: {
     flex: 1,
     minWidth: '47%',
-    padding: 20,
-    borderRadius: 12,
+    padding: Spacing.lg,
+    borderRadius: BorderRadius.lg,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -161,7 +183,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   statCardPrimary: {
-    backgroundColor: '#2196F3',
+    backgroundColor: Colors.primary,
   },
   statCardSuccess: {
     backgroundColor: '#4CAF50',
@@ -170,25 +192,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF9800',
   },
   statCardInfo: {
-    backgroundColor: '#9C27B0',
+    backgroundColor: '#2196F3',
   },
   statLabel: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 14,
-    marginBottom: 8,
+    marginBottom: Spacing.sm,
     opacity: 0.9,
+    fontFamily: Typography.fontFamily.medium,
   },
   statValue: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 28,
     fontWeight: 'bold',
+    fontFamily: Typography.fontFamily.bold,
   },
   section: {
-    backgroundColor: '#fff',
-    margin: 16,
+    backgroundColor: Colors.surface,
+    margin: Spacing.md,
     marginTop: 0,
-    padding: 16,
-    borderRadius: 12,
+    padding: Spacing.lg,
+    borderRadius: BorderRadius.lg,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -198,31 +222,48 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#333',
-    marginBottom: 16,
+    color: Colors.text.primary,
+    marginBottom: Spacing.md,
+    fontFamily: Typography.fontFamily.semiBold,
   },
   actionButton: {
-    backgroundColor: '#000',
-    padding: 16,
-    borderRadius: 8,
+    backgroundColor: Colors.primary,
+    padding: Spacing.lg,
+    borderRadius: BorderRadius.md,
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: Spacing.md,
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 3,
   },
   actionButtonSecondary: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: Colors.background,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    shadowColor: 'transparent',
   },
   actionButtonText: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
   },
   actionButtonTextDark: {
-    color: '#333',
+    color: Colors.text.primary,
   },
-  placeholderText: {
+  infoCard: {
+    backgroundColor: Colors.background,
+    padding: Spacing.md,
+    borderRadius: BorderRadius.md,
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.primary,
+  },
+  infoText: {
     fontSize: 14,
-    color: '#999',
-    textAlign: 'center',
-    paddingVertical: 20,
+    color: Colors.text.secondary,
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.regular,
   },
 });

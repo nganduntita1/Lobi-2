@@ -13,12 +13,15 @@ import { useAuth } from '../contexts/AuthContext';
 import { orderService } from '../services/orderService';
 import { Order } from '../types/database';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
+import OrderDetailsModal from '../components/OrderDetailsModal';
 
 export default function OrdersScreen() {
   const { user } = useAuth();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
 
   const loadOrders = async () => {
     if (!user) return;
@@ -59,6 +62,11 @@ export default function OrdersScreen() {
     ).join(' ');
   };
 
+  const handleViewDetails = (orderId: string) => {
+    setSelectedOrderId(orderId);
+    setShowDetailsModal(true);
+  };
+
   const renderOrderItem = ({ item }: { item: Order }) => (
     <View style={styles.orderCard}>
       <View style={styles.orderHeader}>
@@ -78,7 +86,10 @@ export default function OrdersScreen() {
       
       <View style={styles.orderFooter}>
         <Text style={styles.totalAmount}>R{item.total_amount.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.viewButton}>
+        <TouchableOpacity 
+          style={styles.viewButton}
+          onPress={() => handleViewDetails(item.id)}
+        >
           <Text style={styles.viewButtonText}>View Details</Text>
         </TouchableOpacity>
       </View>
@@ -116,6 +127,15 @@ export default function OrdersScreen() {
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
+        />
+      )}
+
+      {selectedOrderId && (
+        <OrderDetailsModal
+          visible={showDetailsModal}
+          orderId={selectedOrderId}
+          onClose={() => setShowDetailsModal(false)}
+          isAdmin={false}
         />
       )}
     </SafeAreaView>

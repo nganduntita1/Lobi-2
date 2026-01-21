@@ -9,14 +9,20 @@ import {
   RefreshControl,
   TextInput,
   SafeAreaView,
+  Platform,
+  Alert,
 } from 'react-native';
 import { orderService } from '../services/orderService';
 import { Order, OrderStatus } from '../types/database';
+import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
+import OrderStatusUpdateModal from '../components/OrderStatusUpdateModal';
+import OrderDetailsModal from '../components/OrderDetailsModal';
 
 const STATUS_FILTERS = [
   { label: 'All', value: null },
   { label: 'Pending', value: 'pending' },
   { label: 'Processing', value: 'processing' },
+  { label: 'Shipped', value: 'shipped' },
   { label: 'Delivered', value: 'delivered' },
 ];
 
@@ -27,14 +33,24 @@ export default function AdminOrdersScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showStatusModal, setShowStatusModal] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
   const loadOrders = async () => {
     try {
+      console.log('Loading orders...');
       const allOrders = await orderService.getAllOrders();
+      console.log('Orders loaded:', allOrders?.length || 0);
       setOrders(allOrders);
       filterOrders(allOrders, selectedFilter, searchQuery);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error loading orders:', error);
+      console.error('Error details:', error?.message, error?.details);
+      // Show alert if in app
+      if (Platform.OS !== 'web') {
+        Alert.alert('Error Loading Orders', error?.message || 'Failed to load orders. Please check your admin permissions.');
+      }
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -81,9 +97,10 @@ export default function AdminOrdersScreen() {
     switch (status) {
       case 'delivered': return '#4CAF50';
       case 'out_for_delivery': return '#2196F3';
-      case 'processing': return '#FF9800';
+      case 'shipped': return '#2196F3';
+      case 'processing': return Colors.primary;
       case 'cancelled': return '#F44336';
-      default: return '#999';
+      default: return Colors.text.light;
     }
   };
 
@@ -91,6 +108,20 @@ export default function AdminOrdersScreen() {
     return status.split('_').map(word => 
       word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
+  };
+
+  const handleManageOrder = (order: Order) => {
+    setSelectedOrder(order);
+    setShowStatusModal(true);
+  };
+
+  const handleViewDetails = (order: Order) => {
+    setSelectedOrder(order);
+    setShowDetailsModal(true);
+  };
+
+  const handleStatusUpdated = () => {
+    loadOrders();
   };
 
   const renderOrderItem = ({ item }: { item: Order }) => (
@@ -114,15 +145,32 @@ export default function AdminOrdersScreen() {
       
       {item.customer_notes && (
         <Text style={styles.notes} numberOfLines={2}>
-          Notes: {item.customer_notes}
+          📝 {item.customer_notes}
+        </Text>
+      )}
+
+      {item.shein_order_number && (
+        <Text style={styles.sheinOrder}>
+          Shein Order: {item.shein_order_number}
         </Text>
       )}
       
       <View style={styles.orderFooter}>
         <Text style={styles.totalAmount}>R{item.total_amount.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.viewButton}>
-          <Text style={styles.viewButtonText}>Manage</Text>
-        </TouchableOpacity>
+        <View style={styles.actionButtons}>
+          <TouchableOpacity 
+            style={[styles.viewButton, styles.secondaryButton]}
+            onPress={() => handleViewDetails(item)}
+          >
+            <Text style={[styles.viewButtonText, styles.secondaryButtonText]}>View</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.viewButton}
+            onPress={() => handleManageOrder(item)}
+          >
+            <Text style={styles.viewButtonText}>Manage</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -130,7 +178,7 @@ export default function AdminOrdersScreen() {
   if (loading) {
     return (
       <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#000" />
+        <ActivityIndicator size="large" color={Colors.primary} />
       </View>
     );
   }
@@ -139,7 +187,7 @@ export default function AdminOrdersScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Order Management</Text>
-        <Text style={styles.subtitle}>{filteredOrders.length} orders</Text>
+        <Text style={styles.subtitle}>{filteredOrders.length} orders • Lobi Admin</Text>
       </View>
 
       <View style={styles.searchContainer}>
@@ -191,6 +239,26 @@ export default function AdminOrdersScreen() {
           }
         />
       )}
+
+      {selectedOrder && (
+        <>
+          <OrderStatusUpdateModal
+            visible={showStatusModal}
+            orderId={selectedOrder.id}
+            orderNumber={selectedOrder.order_number}
+            currentStatus={selectedOrder.status as OrderStatus}
+            onClose={() => setShowStatusModal(false)}
+            onStatusUpdated={handleStatusUpdated}
+          />
+          
+          <OrderDetailsModal
+            visible={showDetailsModal}
+            orderId={selectedOrder.id}
+            onClose={() => setShowDetailsModal(false)}
+            isAdmin={true}
+          />
+        </>
+      )}
     </SafeAreaView>
   );
 }
@@ -198,7 +266,7 @@ export default function AdminOrdersScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: Colors.background,
   },
   centerContainer: {
     flex: 1,
@@ -206,66 +274,76 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    backgroundColor: '#fff',
-    padding: 20,
+    backgroundColor: Colors.surface,
+    padding: Spacing.lg,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: Colors.border,
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.bold,
   },
   subtitle: {
     fontSize: 14,
-    color: '#666',
+    color: Colors.text.secondary,
     marginTop: 4,
+    fontFamily: Typography.fontFamily.regular,
   },
   searchContainer: {
-    backgroundColor: '#fff',
-    padding: 16,
+    backgroundColor: Colors.surface,
+    padding: Spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    borderBottomColor: Colors.border,
   },
   searchInput: {
-    backgroundColor: '#f5f5f5',
-    borderRadius: 8,
-    padding: 12,
+    backgroundColor: Colors.background,
+    borderRadius: BorderRadius.md,
+    padding: Spacing.md,
     fontSize: 14,
+    color: Colors.text.primary,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    fontFamily: Typography.fontFamily.regular,
   },
   filtersContainer: {
     flexDirection: 'row',
-    padding: 16,
-    backgroundColor: '#fff',
+    padding: Spacing.md,
+    backgroundColor: Colors.surface,
     borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
-    gap: 8,
+    borderBottomColor: Colors.border,
+    gap: Spacing.sm,
   },
   filterChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
-    backgroundColor: '#f0f0f0',
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.sm,
+    borderRadius: BorderRadius.full,
+    backgroundColor: Colors.background,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   filterChipActive: {
-    backgroundColor: '#000',
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
   },
   filterText: {
     fontSize: 14,
-    color: '#666',
+    color: Colors.text.secondary,
     fontWeight: '500',
+    fontFamily: Typography.fontFamily.medium,
   },
   filterTextActive: {
-    color: '#fff',
+    color: Colors.text.white,
   },
   listContent: {
-    padding: 16,
+    padding: Spacing.md,
   },
   orderCard: {
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 16,
+    backgroundColor: Colors.surface,
+    borderRadius: BorderRadius.lg,
+    padding: Spacing.lg,
+    marginBottom: Spacing.md,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -276,67 +354,99 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: Spacing.sm,
   },
   orderNumber: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#333',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.semiBold,
   },
   statusBadge: {
-    paddingHorizontal: 12,
+    paddingHorizontal: Spacing.md,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: BorderRadius.full,
   },
   statusText: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 12,
     fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
   },
   orderDate: {
     fontSize: 13,
-    color: '#666',
-    marginBottom: 8,
+    color: Colors.text.secondary,
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.regular,
   },
   notes: {
     fontSize: 13,
-    color: '#666',
+    color: Colors.text.secondary,
     fontStyle: 'italic',
-    marginBottom: 8,
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  sheinOrder: {
+    fontSize: 13,
+    color: Colors.primary,
+    fontWeight: '600',
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.semiBold,
   },
   orderFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: 8,
-    paddingTop: 12,
+    marginTop: Spacing.sm,
+    paddingTop: Spacing.md,
     borderTopWidth: 1,
-    borderTopColor: '#f0f0f0',
+    borderTopColor: Colors.borderLight,
   },
   totalAmount: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    color: Colors.primary,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
   },
   viewButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    backgroundColor: '#000',
-    borderRadius: 8,
+    paddingHorizontal: Spacing.lg,
+    paddingVertical: Spacing.sm,
+    backgroundColor: Colors.primary,
+    borderRadius: BorderRadius.md,
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  secondaryButton: {
+    backgroundColor: Colors.background,
+    borderWidth: 1,
+    borderColor: Colors.primary,
+    shadowColor: 'transparent',
   },
   viewButtonText: {
-    color: '#fff',
+    color: Colors.text.white,
     fontSize: 14,
     fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  secondaryButtonText: {
+    color: Colors.primary,
   },
   emptyContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 40,
+    padding: Spacing.xxl,
   },
   emptyText: {
     fontSize: 16,
-    color: '#666',
+    color: Colors.text.secondary,
+    fontFamily: Typography.fontFamily.medium,
   },
 });
