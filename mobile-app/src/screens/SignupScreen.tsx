@@ -12,9 +12,12 @@ import {
   ScrollView,
   Image,
   SafeAreaView,
+  Dimensions,
 } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
+
+const { width } = Dimensions.get('window');
 
 export default function SignupScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
@@ -75,7 +78,7 @@ export default function SignupScreen({ navigation }: any) {
         <View style={styles.logoContainer}>
           <Image
             source={require('../../assets/Logo.png')}
-            style={{ width: 100, height: 100 }}
+            style={styles.logo}
             resizeMode="contain"
           />
         </View>
@@ -168,7 +171,7 @@ export default function SignupScreen({ navigation }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.primary,
   },
   keyboardView: {
     flex: 1,
@@ -182,6 +185,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: Spacing.xl,
   },
+  logo: {
+    width: width * 0.7,
+    height: width * 0.7,
+    maxWidth: 350,
+    maxHeight: 350,
+  },
   header: {
     marginBottom: Spacing.xxl,
     alignItems: 'center',
@@ -189,38 +198,38 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: Colors.text.primary,
+    color: '#FFFFFF',
     marginBottom: Spacing.sm,
     fontFamily: Typography.fontFamily.bold,
   },
   subtitle: {
     fontSize: 16,
-    color: Colors.text.secondary,
+    color: 'rgba(255, 255, 255, 0.8)',
     fontFamily: Typography.fontFamily.regular,
   },
   form: {
     width: '100%',
   },
   input: {
-    backgroundColor: Colors.surface,
+    backgroundColor: '#FFFFFF',
     borderRadius: BorderRadius.md,
     padding: Spacing.md,
     fontSize: 16,
     marginBottom: Spacing.md,
     borderWidth: 1,
-    borderColor: Colors.border,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
     color: Colors.text.primary,
     fontFamily: Typography.fontFamily.regular,
   },
   button: {
-    backgroundColor: Colors.primary,
+    backgroundColor: '#FFFFFF',
     borderRadius: BorderRadius.md,
     padding: Spacing.md,
     alignItems: 'center',
     marginTop: Spacing.sm,
-    shadowColor: Colors.primary,
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 4,
   },
@@ -228,7 +237,7 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   buttonText: {
-    color: Colors.text.white,
+    color: Colors.primary,
     fontSize: 16,
     fontWeight: '600',
     fontFamily: Typography.fontFamily.semiBold,
@@ -239,12 +248,12 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontSize: 14,
-    color: Colors.text.secondary,
+    color: 'rgba(255, 255, 255, 0.8)',
     fontFamily: Typography.fontFamily.regular,
   },
   linkTextBold: {
     fontWeight: '600',
-    color: Colors.primary,
+    color: '#FFFFFF',
     fontFamily: Typography.fontFamily.semiBold,
   },
 });

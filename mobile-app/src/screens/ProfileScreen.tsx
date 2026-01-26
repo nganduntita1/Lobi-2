@@ -10,6 +10,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
+import Header from '../components/Header';
 
 export default function ProfileScreen() {
   const { user, profile, signOut } = useAuth();
@@ -33,9 +34,7 @@ export default function ProfileScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Profile</Text>
-      </View>
+      <Header title="Profile" />
 
       <ScrollView style={styles.content}>
         <View style={styles.profileCard}>

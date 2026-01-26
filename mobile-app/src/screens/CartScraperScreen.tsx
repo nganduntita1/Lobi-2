@@ -16,6 +16,7 @@ import CartItemCard from '../components/CartItemCard';
 import SizeSelectionModal from '../components/SizeSelectionModal';
 import DeliveryAddressModal from '../components/DeliveryAddressModal';
 import OrderReviewModal from '../components/OrderReviewModal';
+import Header from '../components/Header';
 import { scrapeCart } from '../services/api';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 
@@ -105,9 +106,11 @@ export default function CartScraperScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Lobi</Text>
-        <Text style={styles.subtitle}>Extract items from shared cart URLs</Text>
+      <Header title="Home" />
+
+      <View style={styles.heroSection}>
+        <Text style={styles.heroTitle}>Lobi</Text>
+        <Text style={styles.heroSubtitle}>Extract items from shared cart URLs</Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -201,6 +204,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  heroSection: {
+    padding: Spacing.lg,
+    paddingTop: Spacing.xl,
+    paddingBottom: Spacing.xl,
+    backgroundColor: Colors.surface,
+  },
+  heroTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: Colors.text.primary,
+    marginBottom: 5,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  heroSubtitle: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    fontFamily: Typography.fontFamily.regular,
   },
   header: {
     padding: Spacing.lg,

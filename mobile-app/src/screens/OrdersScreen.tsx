@@ -14,6 +14,7 @@ import { orderService } from '../services/orderService';
 import { Order } from '../types/database';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 import OrderDetailsModal from '../components/OrderDetailsModal';
+import Header from '../components/Header';
 
 export default function OrdersScreen() {
   const { user } = useAuth();
@@ -106,9 +107,11 @@ export default function OrdersScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>My Orders</Text>
-        <Text style={styles.subtitle}>Track your Lobi orders</Text>
+      <Header title="Orders" />
+
+      <View style={styles.heroSection}>
+        <Text style={styles.heroTitle}>My Orders</Text>
+        <Text style={styles.heroSubtitle}>Track your Lobi orders</Text>
       </View>
 
       {orders.length === 0 ? (
@@ -146,6 +149,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  heroSection: {
+    padding: Spacing.lg,
+    paddingTop: Spacing.xl,
+    paddingBottom: Spacing.xl,
+    backgroundColor: Colors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  heroTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.text.primary,
+    marginBottom: 4,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  heroSubtitle: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    fontFamily: Typography.fontFamily.regular,
   },
   centerContainer: {
     flex: 1,

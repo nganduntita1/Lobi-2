@@ -17,6 +17,7 @@ import { Order, OrderStatus } from '../types/database';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 import OrderStatusUpdateModal from '../components/OrderStatusUpdateModal';
 import OrderDetailsModal from '../components/OrderDetailsModal';
+import Header from '../components/Header';
 
 const STATUS_FILTERS = [
   { label: 'All', value: null },
@@ -185,9 +186,11 @@ export default function AdminOrdersScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Order Management</Text>
-        <Text style={styles.subtitle}>{filteredOrders.length} orders • Lobi Admin</Text>
+      <Header title="Orders" />
+
+      <View style={styles.heroSection}>
+        <Text style={styles.heroTitle}>Order Management</Text>
+        <Text style={styles.heroSubtitle}>{filteredOrders.length} orders • Lobi Admin</Text>
       </View>
 
       <View style={styles.searchContainer}>
@@ -267,6 +270,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  heroSection: {
+    padding: Spacing.lg,
+    paddingTop: Spacing.xl,
+    paddingBottom: Spacing.xl,
+    backgroundColor: Colors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  heroTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.text.primary,
+    marginBottom: 4,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  heroSubtitle: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    fontFamily: Typography.fontFamily.regular,
   },
   centerContainer: {
     flex: 1,

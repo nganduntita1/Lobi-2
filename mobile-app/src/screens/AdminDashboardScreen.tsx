@@ -12,6 +12,7 @@ import {
 import { orderService } from '../services/orderService';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
+import Header from '../components/Header';
 
 interface DashboardStats {
   total_orders: number;
@@ -57,10 +58,7 @@ export default function AdminDashboardScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Lobi Dashboard</Text>
-        <Text style={styles.subtitle}>Business Overview & Analytics</Text>
-      </View>
+      <Header title="Dashboard" />
 
       <ScrollView
         style={styles.content}
@@ -68,6 +66,11 @@ export default function AdminDashboardScreen() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
+        <View style={styles.heroSection}>
+          <Text style={styles.heroTitle}>Lobi Dashboard</Text>
+          <Text style={styles.heroSubtitle}>Business Overview & Analytics</Text>
+        </View>
+
         <View style={styles.statsGrid}>
           <View style={[styles.statCard, styles.statCardPrimary]}>
             <Text style={styles.statLabel}>Total Orders</Text>
@@ -138,6 +141,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  heroSection: {
+    padding: Spacing.lg,
+    paddingTop: Spacing.xl,
+    paddingBottom: Spacing.xl,
+    backgroundColor: Colors.surface,
+    marginBottom: Spacing.md,
+  },
+  heroTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: Colors.text.primary,
+    marginBottom: 4,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  heroSubtitle: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    fontFamily: Typography.fontFamily.regular,
   },
   centerContainer: {
     flex: 1,

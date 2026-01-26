@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators, TransitionPresets } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Platform, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
-import { Colors, Spacing, BorderRadius } from '../theme/colors';
+import { Colors, BorderRadius } from '../theme/colors';
+import { Ionicons } from '@expo/vector-icons';
 
 // Screens
+import LandingScreen from '../screens/LandingScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import CartScraperScreen from '../screens/CartScraperScreen';
@@ -18,17 +20,40 @@ import AdminOrdersScreen from '../screens/AdminOrdersScreen';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Custom Tab Icon Component
-const TabIcon = ({ icon, label, focused }: { icon: string; label: string; focused: boolean }) => (
-  <View style={[styles.iconContainer, focused && styles.iconContainerActive]}>
-    <Text style={[styles.icon, focused && styles.iconActive]}>{icon}</Text>
-    <Text style={[styles.label, focused && styles.labelActive]}>{label}</Text>
-  </View>
-);
-
 function AuthStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator 
+      screenOptions={{ 
+        headerShown: false,
+        ...TransitionPresets.SlideFromRightIOS,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        transitionSpec: {
+          open: {
+            animation: 'spring',
+            config: {
+              stiffness: 1000,
+              damping: 500,
+              mass: 3,
+              overshootClamping: true,
+              restDisplacementThreshold: 0.01,
+              restSpeedThreshold: 0.01,
+            },
+          },
+          close: {
+            animation: 'spring',
+            config: {
+              stiffness: 1000,
+              damping: 500,
+              mass: 3,
+              overshootClamping: true,
+              restDisplacementThreshold: 0.01,
+              restSpeedThreshold: 0.01,
+            },
+          },
+        },
+      }}
+    >
+      <Stack.Screen name="Landing" component={LandingScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Signup" component={SignupScreen} />
     </Stack.Navigator>
@@ -38,10 +63,29 @@ function AuthStack() {
 function CustomerTabs() {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap;
+
+          if (route.name === 'Home') {
+            iconName = focused ? 'bag-handle' : 'bag-handle-outline';
+          } else if (route.name === 'Orders') {
+            iconName = focused ? 'cube' : 'cube-outline';
+          } else {
+            iconName = focused ? 'person' : 'person-outline';
+          }
+
+          return <Ionicons name={iconName} size={26} color={color} />;
+        },
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.text.secondary,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '500',
+          marginTop: 4,
+          marginBottom: 4,
+        },
         tabBarStyle: {
           position: 'absolute',
           bottom: 25,
@@ -55,37 +99,35 @@ function CustomerTabs() {
           shadowOffset: { width: 0, height: 10 },
           shadowOpacity: 0.15,
           shadowRadius: 20,
-          paddingBottom: 0,
+          paddingBottom: 8,
+          paddingTop: 8,
           borderTopWidth: 0,
         },
+        tabBarItemStyle: {
+          paddingVertical: 4,
+        },
         headerShown: false,
-      }}
+      })}
     >
       <Tab.Screen
         name="Home"
         component={CartScraperScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="🛍️" label="Shop" focused={focused} />
-          ),
+          tabBarLabel: 'Shop',
         }}
       />
       <Tab.Screen
         name="Orders"
         component={OrdersScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="📦" label="Orders" focused={focused} />
-          ),
+          tabBarLabel: 'Orders',
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="👤" label="Profile" focused={focused} />
-          ),
+          tabBarLabel: 'Profile',
         }}
       />
     </Tab.Navigator>
@@ -95,10 +137,29 @@ function CustomerTabs() {
 function AdminTabs() {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap;
+
+          if (route.name === 'Dashboard') {
+            iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+          } else if (route.name === 'AdminOrders') {
+            iconName = focused ? 'cube' : 'cube-outline';
+          } else {
+            iconName = focused ? 'person' : 'person-outline';
+          }
+
+          return <Ionicons name={iconName} size={26} color={color} />;
+        },
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.text.secondary,
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '500',
+          marginTop: 4,
+          marginBottom: 4,
+        },
         tabBarStyle: {
           position: 'absolute',
           bottom: 25,
@@ -112,37 +173,35 @@ function AdminTabs() {
           shadowOffset: { width: 0, height: 10 },
           shadowOpacity: 0.15,
           shadowRadius: 20,
-          paddingBottom: 0,
+          paddingBottom: 8,
+          paddingTop: 8,
           borderTopWidth: 0,
         },
+        tabBarItemStyle: {
+          paddingVertical: 4,
+        },
         headerShown: false,
-      }}
+      })}
     >
       <Tab.Screen
         name="Dashboard"
         component={AdminDashboardScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="📊" label="Dashboard" focused={focused} />
-          ),
+          tabBarLabel: 'Dashboard',
         }}
       />
       <Tab.Screen
         name="AdminOrders"
         component={AdminOrdersScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="📋" label="Orders" focused={focused} />
-          ),
+          tabBarLabel: 'Orders',
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="👤" label="Profile" focused={focused} />
-          ),
+          tabBarLabel: 'Profile',
         }}
       />
     </Tab.Navigator>
@@ -150,48 +209,13 @@ function AdminTabs() {
 }
 
 export default function AppNavigator() {
-  const { isAuthenticated, isAdmin } = useAuth();
+  const { user } = useAuth();
 
   return (
     <NavigationContainer>
-      {!isAuthenticated ? (
-        <AuthStack />
-      ) : isAdmin ? (
-        <AdminTabs />
-      ) : (
-        <CustomerTabs />
-      )}
+      {!user ? <AuthStack /> : user.is_admin ? <AdminTabs /> : <CustomerTabs />}
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  iconContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingHorizontal: 16,
-    borderRadius: BorderRadius.lg,
-    minWidth: 80,
-  },
-  iconContainerActive: {
-    backgroundColor: Colors.primaryLight,
-  },
-  icon: {
-    fontSize: 24,
-    marginBottom: 4,
-  },
-  iconActive: {
-    transform: [{ scale: 1.1 }],
-  },
-  label: {
-    fontSize: 11,
-    fontWeight: '500',
-    color: Colors.text.secondary,
-  },
-  labelActive: {
-    color: Colors.primary,
-    fontWeight: '600',
-  },
-});
+const styles = StyleSheet.create({});
