@@ -3,7 +3,7 @@ services:
     name: lobi-backend
     runtime: python
     plan: free
-    buildCommand: "bash build.sh"
+    buildCommand: "pip install -r requirements.txt && playwright install chromium && playwright install-deps chromium"
     startCommand: "python -m uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: PYTHON_VERSION
