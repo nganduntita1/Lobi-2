@@ -2,8 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet, View, Text } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
+import { Colors, Spacing, BorderRadius } from '../theme/colors';
 
 // Screens
 import LoginScreen from '../screens/LoginScreen';
@@ -16,6 +17,14 @@ import AdminOrdersScreen from '../screens/AdminOrdersScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+// Custom Tab Icon Component
+const TabIcon = ({ icon, label, focused }: { icon: string; label: string; focused: boolean }) => (
+  <View style={[styles.iconContainer, focused && styles.iconContainerActive]}>
+    <Text style={[styles.icon, focused && styles.iconActive]}>{icon}</Text>
+    <Text style={[styles.label, focused && styles.labelActive]}>{label}</Text>
+  </View>
+);
 
 function AuthStack() {
   return (
@@ -30,12 +39,24 @@ function CustomerTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: '#000',
-        tabBarInactiveTintColor: '#999',
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.text.secondary,
+        tabBarShowLabel: false,
         tabBarStyle: {
-          height: Platform.OS === 'ios' ? 85 : 60,
-          paddingBottom: Platform.OS === 'ios' ? 25 : 5,
-          paddingTop: 5,
+          position: 'absolute',
+          bottom: 25,
+          left: 20,
+          right: 20,
+          elevation: 8,
+          backgroundColor: Colors.surface,
+          borderRadius: BorderRadius.xl,
+          height: 70,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 10 },
+          shadowOpacity: 0.15,
+          shadowRadius: 20,
+          paddingBottom: 0,
+          borderTopWidth: 0,
         },
         headerShown: false,
       }}
@@ -44,40 +65,40 @@ function CustomerTabs() {
         name="Home"
         component={CartScraperScreen}
         options={{
-          tabBarLabel: 'Shop',
-          tabBarIcon: () => null,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon="🛍️" label="Shop" focused={focused} />
+          ),
         }}
       />
       <Tab.Screen
         name="Orders"
         component={OrdersScreen}
         options={{
-          tabBarLabel: 'My Orders',
-          tabBarIcon: () => null,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon="📦" label="Orders" focused={focused} />
+          ),
         }}
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarLabel: 'Profile',
-          tabBarIcon: () => null,
-        }}
-      />
-    </Tab.Navigator>
-  );
-}
-
-function AdminTabs() {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarActiveTintColor: '#000',
-        tabBarInactiveTintColor: '#999',
+        component={ProfileScreeColors.primary,
+        tabBarInactiveTintColor: Colors.text.secondary,
+        tabBarShowLabel: false,
         tabBarStyle: {
-          height: Platform.OS === 'ios' ? 85 : 60,
-          paddingBottom: Platform.OS === 'ios' ? 25 : 5,
-          paddingTop: 5,
+          position: 'absolute',
+          bottom: 25,
+          left: 20,
+          right: 20,
+          elevation: 8,
+          backgroundColor: Colors.surface,
+          borderRadius: BorderRadius.xl,
+          height: 70,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 10 },
+          shadowOpacity: 0.15,
+          shadowRadius: 20,
+          paddingBottom: 0,
+          borderTopWidth: 0,
         },
         headerShown: false,
       }}
@@ -86,9 +107,27 @@ function AdminTabs() {
         name="Dashboard"
         component={AdminDashboardScreen}
         options={{
-          tabBarLabel: 'Dashboard',
-          tabBarIcon: () => null,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon="📊" label="Dashboard" focused={focused} />
+          ),
         }}
+      />
+      <Tab.Screen
+        name="AdminOrders"
+        component={AdminOrdersScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon="📋" label="Orders" focused={focused} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabIcon icon="👤" label="Profile" focused={focused} />
+          )
       />
       <Tab.Screen
         name="AdminOrders"
@@ -110,6 +149,37 @@ function AdminTabs() {
   );
 }
 
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingHorizontal: 16,
+    borderRadius: BorderRadius.lg,
+    minWidth: 80,
+  },
+  iconContainerActive: {
+    backgroundColor: Colors.primaryLight,
+  },
+  icon: {
+    fontSize: 24,
+    marginBottom: 4,
+  },
+  iconActive: {
+    transform: [{ scale: 1.1 }],
+  },
+  label: {
+    fontSize: 11,
+    fontWeight: '500',
+    color: Colors.text.secondary,
+  },
+  labelActive: {
+    color: Colors.primary,
+    fontWeight: '600',
+  },
+});
 export default function AppNavigator() {
   const { isAuthenticated, isAdmin } = useAuth();
 
