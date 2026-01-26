@@ -7,7 +7,8 @@ export interface ScrapeResponse {
   message?: string;
 }
 
-const API_URL = 'http://localhost:8000'; // Local backend with Playwright
+// Use environment variable for API URL, fallback to localhost for development
+const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:8000';
 
 export const scrapeCart = async (url: string): Promise<ScrapeResponse> => {
   try {
