@@ -138,11 +138,9 @@ async def scrape_shein_cart(url: str) -> List[CartItem]:
             print("Waiting for content to render...")
             await asyncio.sleep(15)
             
-            # Save HTML for debugging
+            # Get HTML content for debugging (without writing to file in production)
             html = await page.content()
-            with open('debug_cart.html', 'w', encoding='utf-8') as f:
-                f.write(html)
-            print(f"Saved HTML content ({len(html)} chars)")
+            print(f"Loaded HTML content ({len(html)} chars)")
             
             # Try to extract from JavaScript (simplified)
             cart_data = await page.evaluate('''() => {
