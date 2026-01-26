@@ -27,9 +27,10 @@ export default function LandingScreen({ navigation }: LandingScreenProps) {
         <View style={styles.overlay} />
         <View style={styles.content}>
           {/* Text Section */}
-          {/* <View style={styles.textContainer}>
-            <Text style={styles.title}>Welcome to Lobi</Text>
-          </View> */}
+          <View style={styles.textContainer}>
+            <Text style={styles.tagline}>Want Shein in Congo?</Text>
+            <Text style={styles.title}>Use Lobi</Text>
+          </View>
 
           {/* Action Buttons */}
           <View style={styles.buttonContainer}>
@@ -77,8 +78,19 @@ const styles = StyleSheet.create({
   textContainer: {
     marginBottom: Spacing.xxl,
   },
+  tagline: {
+    fontSize: 22,
+    fontWeight: '500',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.medium,
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
+  },
   title: {
-    fontSize: 36,
+    fontSize: 42,
     fontWeight: 'bold',
     color: '#FFFFFF',
     textAlign: 'center',
