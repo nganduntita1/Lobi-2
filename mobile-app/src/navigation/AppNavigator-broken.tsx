@@ -81,22 +81,7 @@ function CustomerTabs() {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <TabIcon icon="👤" label="Profile" focused={focused} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
-  );
-}
-
-function AdminTabs() {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
+        component={ProfileScreeColors.primary,
         tabBarInactiveTintColor: Colors.text.secondary,
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -142,28 +127,28 @@ function AdminTabs() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabIcon icon="👤" label="Profile" focused={focused} />
-          ),
+          )
+      />
+      <Tab.Screen
+        name="AdminOrders"
+        component={AdminOrdersScreen}
+        options={{
+          tabBarLabel: 'Orders',
+          tabBarIcon: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: () => null,
         }}
       />
     </Tab.Navigator>
   );
 }
 
-export default function AppNavigator() {
-  const { isAuthenticated, isAdmin } = useAuth();
-
-  return (
-    <NavigationContainer>
-      {!isAuthenticated ? (
-        <AuthStack />
-      ) : isAdmin ? (
-        <AdminTabs />
-      ) : (
-        <CustomerTabs />
-      )}
-    </NavigationContainer>
-  );
-}
 
 const styles = StyleSheet.create({
   iconContainer: {
@@ -195,3 +180,18 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+export default function AppNavigator() {
+  const { isAuthenticated, isAdmin } = useAuth();
+
+  return (
+    <NavigationContainer>
+      {!isAuthenticated ? (
+        <AuthStack />
+      ) : isAdmin ? (
+        <AdminTabs />
+      ) : (
+        <CustomerTabs />
+      )}
+    </NavigationContainer>
+  );
+}
