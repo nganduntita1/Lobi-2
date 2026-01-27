@@ -10,8 +10,8 @@ import {
   Platform,
   Alert,
   SafeAreaView,
-  Image,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { CartItem } from '../types/cart';
 import CartItemCard from '../components/CartItemCard';
@@ -109,13 +109,23 @@ export default function CartScraperScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Home" />
+      
+      <KeyboardAvoidingView 
+        style={styles.flex}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={0}
+      >
+        <ScrollView 
+          style={styles.flex}
+          contentContainerStyle={styles.scrollContent}
+          keyboardShouldPersistTaps="handled"
+        >
+          <View style={styles.heroSection}>
+            <Text style={styles.heroTitle}>Lobi</Text>
+            <Text style={styles.heroSubtitle}>Extract items from shared cart URLs</Text>
+          </View>
 
-      <View style={styles.heroSection}>
-        <Text style={styles.heroTitle}>Lobi</Text>
-        <Text style={styles.heroSubtitle}>Extract items from shared cart URLs</Text>
-      </View>
-
-      <View style={styles.inputContainer}>
+          <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Paste Shein cart URL here..."
@@ -140,50 +150,6 @@ export default function CartScraperScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Promo Cards Section */}
-      {cartItems.length === 0 && !loading && (
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false}
-          style={styles.promoSection}
-          contentContainerStyle={styles.promoContent}
-        >
-          <View style={styles.promoCard}>
-            <Image
-              source={require('../../assets/packaging.png')}
-              style={styles.promoImage}
-              resizeMode="cover"
-            />
-            <View style={styles.promoTextContainer}>
-              <View style={styles.comingSoonBadge}>
-                <Text style={styles.comingSoonText}>Coming Soon</Text>
-              </View>
-              <Text style={styles.promoTitle}>Premium Packaging</Text>
-              <Text style={styles.promoDescription}>
-                Quality packaging for safe delivery
-              </Text>
-            </View>
-          </View>
-
-          <View style={styles.promoCard}>
-            <Image
-              source={require('../../assets/merch.png')}
-              style={styles.promoImage}
-              resizeMode="cover"
-            />
-            <View style={styles.promoTextContainer}>
-              <View style={styles.comingSoonBadge}>
-                <Text style={styles.comingSoonText}>Coming Soon</Text>
-              </View>
-              <Text style={styles.promoTitle}>Exclusive Merch</Text>
-              <Text style={styles.promoDescription}>
-                Unique Lobi branded merchandise
-              </Text>
-            </View>
-          </View>
-        </ScrollView>
-      )}
-
       {cartItems.length > 0 && (
         <View style={styles.resultsContainer}>
           <View style={styles.resultsHeader}>
@@ -198,12 +164,9 @@ export default function CartScraperScreen() {
             </TouchableOpacity>
           </View>
           
-          <FlatList
-            data={cartItems}
-            keyExtractor={(item, index) => `${item.sku || index}`}
-            renderItem={({ item }) => <CartItemCard item={item} />}
-            contentContainerStyle={styles.listContent}
-          />
+          {cartItems.map((item, index) => (
+            <CartItemCard key={`${item.sku || index}`} item={item} />
+          ))}
         </View>
       )}
 
@@ -230,6 +193,19 @@ export default function CartScraperScreen() {
           onOrderPlaced={handleOrderPlaced}
         />
       )}
+
+      {cartItems.length === 0 && !loading && (
+        <View style={styles.emptyState}>
+          <Text style={styles.emptyText}>
+            🛍️ Paste your Shein cart link above to get started
+          </Text>
+          <Text style={styles.emptySubtext}>
+            Share your Shein cart and we'll extract all items for you
+          </Text>
+        </View>
+      )}
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -238,6 +214,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  flex: {
+    flex: 1,
+  },
+  scrollContent: {
+    flexGrow: 1,
   },
   heroSection: {
     padding: Spacing.lg,
@@ -285,7 +267,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
     borderRadius: BorderRadius.md,
     padding: Spacing.md,
-    fontSize: 14,
+    fontSize: 16,
     minHeight: 80,
     textAlignVertical: 'top',
     backgroundColor: Colors.background,
@@ -314,8 +296,8 @@ const styles = StyleSheet.create({
     fontFamily: Typography.fontFamily.semiBold,
   },
   resultsContainer: {
-    flex: 1,
     marginTop: Spacing.sm,
+    paddingBottom: Spacing.lg,
   },
   resultsHeader: {
     flexDirection: 'row',
@@ -347,70 +329,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontFamily: Typography.fontFamily.semiBold,
   },
-  listContent: {
-    padding: Spacing.sm,
-  },
-  promoSection: {
-    marginTop: Spacing.sm,
-    marginBottom: Spacing.sm,
-    maxHeight: 200,
-  },
-  promoContent: {
-    paddingHorizontal: Spacing.lg,
-    gap: Spacing.md,
-  },
-  promoCard: {
-    width: 180,
-    backgroundColor: Colors.surface,
-    borderRadius: BorderRadius.lg,
-    overflow: 'hidden',
-    marginRight: Spacing.md,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
-  },
-  promoImage: {
-    width: '100%',
-    height: 100,
-  },
-  promoTextContainer: {
-    padding: Spacing.sm,
-  },
-  comingSoonBadge: {
-    backgroundColor: Colors.primary,
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: 4,
-    borderRadius: BorderRadius.sm,
-    alignSelf: 'flex-start',
-    marginBottom: Spacing.xs,
-  },
-  comingSoonText: {
-    fontSize: 10,
-    fontWeight: '600',
-    color: '#FFFFFF',
-    textTransform: 'uppercase',
-    fontFamily: Typography.fontFamily.semiBold,
-  },
-  promoTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: Colors.text.primary,
-    marginBottom: Spacing.xs,
-    fontFamily: Typography.fontFamily.semiBold,
-  },
-  promoDescription: {
-    fontSize: 12,
-    color: Colors.text.secondary,
-    lineHeight: 18,
-    fontFamily: Typography.fontFamily.regular,
-  },
   emptyState: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: Spacing.xxl,
+    marginTop: Spacing.xxl,
   },
   emptyText: {
     fontSize: 16,
