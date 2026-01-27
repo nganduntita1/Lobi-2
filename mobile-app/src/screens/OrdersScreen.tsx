@@ -119,26 +119,27 @@ export default function OrdersScreen() {
       </View>
       
       <View style={styles.orderFooter}>
-        <View>
+        <View style={styles.amountContainer}>
           <Text style={styles.totalAmount}>${item.total_amount.toFixed(2)} USD</Text>
           <Text style={styles.totalAmountSub}>≈ R{(item.total_amount / 0.056).toFixed(2)}</Text>
         </View>
-        <View style={styles.buttonGroup}>
-          {item.payment_status === 'pending' && (
-            <TouchableOpacity 
-              style={styles.uploadButton}
-              onPress={() => handleUploadPaymentProof(item)}
-            >
-              <Text style={styles.uploadButtonText}>📤 Upload Proof</Text>
-            </TouchableOpacity>
-          )}
+      </View>
+      
+      <View style={styles.buttonGroup}>
+        {item.payment_status === 'pending' && (
           <TouchableOpacity 
-            style={styles.viewButton}
-            onPress={() => handleViewDetails(item.id)}
+            style={styles.uploadButton}
+            onPress={() => handleUploadPaymentProof(item)}
           >
-            <Text style={styles.viewButtonText}>View Details</Text>
+            <Text style={styles.uploadButtonText}>📤 Upload Proof</Text>
           </TouchableOpacity>
-        </View>
+        )}
+        <TouchableOpacity 
+          style={styles.viewButton}
+          onPress={() => handleViewDetails(item.id)}
+        >
+          <Text style={styles.viewButtonText}>View Details</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -330,13 +331,18 @@ const styles = StyleSheet.create({
   },
   buttonGroup: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: Spacing.sm,
+    marginTop: Spacing.sm,
   },
   uploadButton: {
     backgroundColor: Colors.primary,
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.sm,
     borderRadius: BorderRadius.md,
+    flex: 1,
+    minWidth: 130,
+    alignItems: 'center',
   },
   uploadButtonText: {
     color: Colors.text.white,
@@ -366,6 +372,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 3,
+    flex: 1,
+    minWidth: 130,
+    alignItems: 'center',
   },
   viewButtonText: {
     color: Colors.text.white,
