@@ -85,7 +85,10 @@ export default function AdminDashboardScreen() {
           <View style={[styles.statCard, styles.statCardSuccess]}>
             <Text style={styles.statLabel}>Total Revenue</Text>
             <Text style={styles.statValue}>
-              R{stats?.total_revenue.toFixed(2) || '0.00'}
+              ${stats?.total_revenue.toFixed(2) || '0.00'}
+            </Text>
+            <Text style={styles.statSubValue}>
+              ≈ R{((stats?.total_revenue || 0) / 0.056).toFixed(2)}
             </Text>
           </View>
 

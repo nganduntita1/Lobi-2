@@ -72,23 +72,20 @@ export default function OrderDetailsModal({
     if (!order?.order_items) return 0;
     return order.order_items.reduce((sum: number, item: any) => {
       const priceMatch = item.price?.match(/[\d.]+/);
-      const price = priceMatch ? parseFloat(priceMatch[0]) : 0;
+      const priceZAR = priceMatch ? parseFloat(priceMatch[0]) : 0;
+      const priceUSD = priceZAR * 0.056; // Convert ZAR to USD
       const quantity = typeof item.quantity === 'number' ? item.quantity : parseInt(item.quantity || '1');
-      return sum + (price * quantity);
+      return sum + (priceUSD * quantity);
     }, 0);
+  };
+
+  const convertToZAR = (usd: number) => {
+    return (usd / 0.056).toFixed(2);
   };
 
   const calculateServiceFee = () => {
     const subtotal = calculateSubtotal();
     return order?.total_amount ? order.total_amount - subtotal : 0;
-  };
-
-  const getCurrency = () => {
-    if (order?.order_items?.length > 0 && order.order_items[0].price) {
-      const currencyMatch = order.order_items[0].price.match(/[R$€£¥]/);
-      return currencyMatch ? currencyMatch[0] : 'R';
-    }
-    return 'R';
   };
 
   return (
@@ -177,7 +174,14 @@ export default function OrderDetailsModal({
                       </View>
                       <View style={styles.itemPricing}>
                         <Text style={styles.itemQuantity}>Qty: {item.quantity || 1}</Text>
-                        <Text style={styles.itemPrice}>{item.price}</Text>
+                        <View>
+                          <Text style={styles.itemPrice}>
+                            ${((parseFloat(item.price?.match(/[\d.]+/)?.[0] || '0')) * 0.056).toFixed(2)} USD
+                          </Text>
+                          <Text style={styles.itemPriceSub}>
+                            ≈ R{item.price?.match(/[\d.]+/)?.[0] || '0'}
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -189,21 +193,36 @@ export default function OrderDetailsModal({
                 <Text style={styles.sectionTitle}>Price Breakdown</Text>
                 <View style={styles.priceRow}>
                   <Text style={styles.priceLabel}>Subtotal:</Text>
-                  <Text style={styles.priceValue}>
-                    {getCurrency()}{calculateSubtotal().toFixed(2)}
-                  </Text>
+                  <View>
+                    <Text style={styles.priceValue}>
+                      ${calculateSubtotal().toFixed(2)} USD
+                    </Text>
+                    <Text style={styles.priceValueSub}>
+                      ≈ R{convertToZAR(calculateSubtotal())}
+                    </Text>
+                  </View>
                 </View>
                 <View style={styles.priceRow}>
                   <Text style={styles.priceLabel}>Service Fee:</Text>
-                  <Text style={styles.priceValue}>
-                    {getCurrency()}{calculateServiceFee().toFixed(2)}
-                  </Text>
+                  <View>
+                    <Text style={styles.priceValue}>
+                      ${calculateServiceFee().toFixed(2)} USD
+                    </Text>
+                    <Text style={styles.priceValueSub}>
+                      ≈ R{convertToZAR(calculateServiceFee())}
+                    </Text>
+                  </View>
                 </View>
                 <View style={[styles.priceRow, styles.totalRow]}>
                   <Text style={styles.totalLabel}>Total:</Text>
-                  <Text style={styles.totalValue}>
-                    {getCurrency()}{order.total_amount?.toFixed(2)}
-                  </Text>
+                  <View>
+                    <Text style={styles.totalValue}>
+                      ${order.total_amount?.toFixed(2)} USD
+                    </Text>
+                    <Text style={styles.totalValueSub}>
+                      ≈ R{convertToZAR(order.total_amount || 0)}
+                    </Text>
+                  </View>
                 </View>
               </View>
 
@@ -216,6 +235,61 @@ export default function OrderDetailsModal({
                   </View>
                 </View>
               )}
+
+              {/* Payment Information Section */}
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Payment Information</Text>
+                
+                {/* Payment Status */}
+                <View style={styles.infoRow}>
+                  <Text style={styles.infoLabel}>Payment Status:</Text>
+                  <View style={[
+                    styles.paymentStatusBadge,
+                    {
+                      backgroundColor: 
+                        order.payment_status === 'verified' ? '#4CAF50' :
+                        order.payment_status === 'proof_submitted' ? '#FF9800' :
+                        order.payment_status === 'failed' ? '#F44336' :
+                        Colors.text.light
+                    }
+                  ]}>
+                    <Text style={styles.paymentStatusText}>
+                      {order.payment_status === 'verified' ? '✓ Verified' :
+                       order.payment_status === 'proof_submitted' ? '⏳ Proof Submitted' :
+                       order.payment_status === 'failed' ? '✗ Failed' :
+                       '⏸ Pending'}
+                    </Text>
+                  </View>
+                </View>
+
+                {/* WhatsApp Number */}
+                {order.whatsapp_number && (
+                  <View style={styles.infoRow}>
+                    <Text style={styles.infoLabel}>WhatsApp:</Text>
+                    <Text style={styles.infoValue}>{order.whatsapp_number}</Text>
+                  </View>
+                )}
+
+                {/* Payment Reference */}
+                {order.payment_reference && (
+                  <View style={styles.infoRow}>
+                    <Text style={styles.infoLabel}>Payment Ref:</Text>
+                    <Text style={styles.infoValue}>{order.payment_reference}</Text>
+                  </View>
+                )}
+
+                {/* Payment Proof Image */}
+                {order.payment_proof_url && (
+                  <View style={styles.paymentProofContainer}>
+                    <Text style={styles.infoLabel}>Payment Proof:</Text>
+                    <Image 
+                      source={{ uri: order.payment_proof_url }} 
+                      style={styles.paymentProofImage}
+                      resizeMode="contain"
+                    />
+                  </View>
+                )}
+              </View>
 
               {/* Admin-only sections */}
               {isAdmin && (
@@ -441,6 +515,12 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontFamily: Typography.fontFamily.semiBold,
   },
+  itemPriceSub: {
+    fontSize: 11,
+    color: Colors.text.secondary,
+    marginTop: 2,
+    fontFamily: Typography.fontFamily.regular,
+  },
   priceRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -456,6 +536,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.text.primary,
     fontFamily: Typography.fontFamily.semiBold,
+  },
+  priceValueSub: {
+    fontSize: 11,
+    color: Colors.text.secondary,
+    marginTop: 2,
+    fontFamily: Typography.fontFamily.regular,
   },
   totalRow: {
     borderTopWidth: 2,
@@ -474,6 +560,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.primary,
     fontFamily: Typography.fontFamily.bold,
+  },
+  totalValueSub: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginTop: 2,
+    fontFamily: Typography.fontFamily.regular,
   },
   notesBox: {
     backgroundColor: Colors.background,
@@ -498,6 +590,46 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.text.secondary,
     fontFamily: Typography.fontFamily.regular,
+  },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: Spacing.md,
+  },
+  infoLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.text.secondary,
+    marginRight: Spacing.md,
+    minWidth: 120,
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  infoValue: {
+    fontSize: 14,
+    color: Colors.text.primary,
+    flex: 1,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  paymentStatusBadge: {
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs,
+    borderRadius: BorderRadius.md,
+  },
+  paymentStatusText: {
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  paymentProofContainer: {
+    marginTop: Spacing.md,
+  },
+  paymentProofImage: {
+    width: '100%',
+    height: 300,
+    borderRadius: BorderRadius.md,
+    marginTop: Spacing.sm,
+    backgroundColor: Colors.background,
   },
   historyItem: {
     flexDirection: 'row',

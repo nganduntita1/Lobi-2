@@ -15,6 +15,7 @@ import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 import { CartItem } from '../types/cart';
 import { supabase } from '../config/supabase';
 import { orderService } from '../services/orderService';
+import { currencyService } from '../services/currencyService';
 
 interface DeliveryAddress {
   id: string;
@@ -43,12 +44,21 @@ export default function OrderReviewModal({
   onOrderPlaced,
 }: OrderReviewModalProps) {
   const [serviceFeePercentage, setServiceFeePercentage] = useState(15);
+  const [deliveryFee, setDeliveryFee] = useState(15); // $15 USD fixed
   const [customerNotes, setCustomerNotes] = useState('');
+  const [whatsappNumber, setWhatsappNumber] = useState('');
   const [placing, setPlacing] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
+  const [paymentNumbers, setPaymentNumbers] = useState({
+    mpesa: '+243 XXX XXX XXX',
+    orange: '+243 YYY YYY YYY',
+    airtel: '+243 ZZZ ZZZ ZZZ',
+  });
 
   useEffect(() => {
     loadServiceFee();
+    loadDeliveryFee();
+    loadPaymentNumbers();
     calculateSubtotal();
   }, [items]);
 
@@ -68,13 +78,54 @@ export default function OrderReviewModal({
     }
   };
 
+  const loadDeliveryFee = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('settings')
+        .select('value')
+        .eq('key', 'delivery_fee_usd')
+        .single();
+
+      if (!error && data) {
+        setDeliveryFee(parseFloat(data.value));
+      }
+    } catch (error) {
+      console.error('Error loading delivery fee:', error);
+    }
+  };
+
+  const loadPaymentNumbers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('settings')
+        .select('key, value')
+        .in('key', ['mpesa_number', 'orange_money_number', 'airtel_money_number']);
+
+      if (!error && data) {
+        const numbers: any = { mpesa: '+243 XXX XXX XXX', orange: '+243 YYY YYY YYY', airtel: '+243 ZZZ ZZZ ZZZ' };
+        data.forEach(setting => {
+          if (setting.key === 'mpesa_number') numbers.mpesa = setting.value;
+          if (setting.key === 'orange_money_number') numbers.orange = setting.value;
+          if (setting.key === 'airtel_money_number') numbers.airtel = setting.value;
+        });
+        setPaymentNumbers(numbers);
+      }
+    } catch (error) {
+      console.error('Error loading payment numbers:', error);
+    }
+  };
+
   const calculateSubtotal = () => {
     let total = 0;
     items.forEach(item => {
       // Extract numeric value from price string (e.g., "R148" -> 148)
       const priceMatch = item.price?.match(/[\d.]+/);
       if (priceMatch) {
-        const price = parseFloat(priceMatch[0]);
+        let price = parseFloat(priceMatch[0]);
+        // Convert ZAR to USD if price is in Rands (R)
+        if (item.price?.includes('R')) {
+          price = price * 0.056; // ZAR to USD conversion
+        }
         const quantity = typeof item.quantity === 'string' ? parseInt(item.quantity) : (item.quantity || 1);
         total += price * quantity;
       }
@@ -87,7 +138,7 @@ export default function OrderReviewModal({
   };
 
   const calculateTotal = () => {
-    return subtotal + calculateServiceFee();
+    return subtotal + calculateServiceFee() + deliveryFee;
   };
 
   const handlePlaceOrder = async () => {
@@ -105,6 +156,13 @@ export default function OrderReviewModal({
       return;
     }
 
+    if (!whatsappNumber.trim()) {
+      if (Platform.OS !== 'web') {
+        Alert.alert('Error', 'Please enter your WhatsApp number for order updates');
+      }
+      return;
+    }
+
     try {
       setPlacing(true);
       const { data: { user } } = await supabase.auth.getUser();
@@ -118,10 +176,15 @@ export default function OrderReviewModal({
         delivery_address_id: deliveryAddress.id,
         cart_url: cartUrl,
         total_amount: calculateTotal(),
+        subtotal_usd: subtotal,
+        delivery_fee: deliveryFee,
         customer_notes: customerNotes || undefined,
+        whatsapp_number: whatsappNumber,
+        payment_reference: `LB-${Date.now()}`,
+        currency: 'USD',
         items: items.map(item => ({
           name: item.name || 'Unknown Item',
-          price: item.price || 'R0',
+          price: item.price || '$0',
           quantity: item.quantity || 1,
           image: item.image,
           sku: item.sku,
@@ -156,12 +219,8 @@ export default function OrderReviewModal({
   };
 
   const getCurrency = () => {
-    // Extract currency from first item price
-    if (items.length > 0 && items[0].price) {
-      const currencyMatch = items[0].price.match(/[R$€£¥]/);
-      return currencyMatch ? currencyMatch[0] : 'R';
-    }
-    return 'R';
+    // Always use USD for consistency
+    return '$';
   };
 
   return (
@@ -234,12 +293,43 @@ export default function OrderReviewModal({
                   {getCurrency()}{calculateServiceFee().toFixed(2)}
                 </Text>
               </View>
+              <View style={styles.summaryRow}>
+                <Text style={styles.summaryLabel}>Delivery Fee (SA → Congo):</Text>
+                <Text style={styles.summaryValue}>
+                  ${deliveryFee.toFixed(2)} USD
+                </Text>
+              </View>
               <View style={[styles.summaryRow, styles.totalRow]}>
                 <Text style={styles.totalLabel}>Total:</Text>
                 <Text style={styles.totalValue}>
                   {getCurrency()}{calculateTotal().toFixed(2)}
                 </Text>
               </View>
+              
+              {/* Currency Conversion Display */}
+              <View style={styles.conversionBox}>
+                <Text style={styles.conversionTitle}>💱 Amount in Congolese Francs:</Text>
+                <Text style={styles.conversionText}>
+                  ${calculateTotal().toFixed(2)} USD ≈ {(calculateTotal() * 2500).toLocaleString('fr-CD')} CDF
+                </Text>
+                <Text style={styles.conversionNote}>
+                  *Approximate rate: 1 USD = 2,500 CDF
+                </Text>
+              </View>
+            </View>
+
+            {/* WhatsApp Number Section */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>WhatsApp Number *</Text>
+              <Text style={styles.helperText}>We'll send order updates via WhatsApp</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="+243 XXX XXX XXX"
+                placeholderTextColor={Colors.text.light}
+                value={whatsappNumber}
+                onChangeText={setWhatsappNumber}
+                keyboardType="phone-pad"
+              />
             </View>
 
             {/* Customer Notes Section */}
@@ -255,6 +345,40 @@ export default function OrderReviewModal({
                 numberOfLines={3}
                 textAlignVertical="top"
               />
+            </View>
+
+            {/* Payment Instructions */}
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>💳 Payment Instructions</Text>
+              <View style={styles.paymentBox}>
+                <Text style={styles.paymentTitle}>Send payment to any of these numbers:</Text>
+                
+                <View style={styles.paymentMethod}>
+                  <Text style={styles.paymentLabel}>📱 M-Pesa:</Text>
+                  <Text style={styles.paymentNumber}>{paymentNumbers.mpesa}</Text>
+                </View>
+                
+                <View style={styles.paymentMethod}>
+                  <Text style={styles.paymentLabel}>🟠 Orange Money:</Text>
+                  <Text style={styles.paymentNumber}>{paymentNumbers.orange}</Text>
+                </View>
+                
+                <View style={styles.paymentMethod}>
+                  <Text style={styles.paymentLabel}>🔴 Airtel Money:</Text>
+                  <Text style={styles.paymentNumber}>{paymentNumbers.airtel}</Text>
+                </View>
+                
+                <View style={styles.paymentAmountBox}>
+                  <Text style={styles.paymentAmountLabel}>Amount to Send:</Text>
+                  <Text style={styles.paymentAmountValue}>
+                    ${calculateTotal().toFixed(2)} USD
+                  </Text>
+                </View>
+                
+                <Text style={styles.paymentNote}>
+                  ⚠️ After payment, you can upload proof in your Orders section
+                </Text>
+              </View>
             </View>
 
             {/* Info Box */}
@@ -420,6 +544,33 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontFamily: Typography.fontFamily.bold,
   },
+  conversionBox: {
+    marginTop: Spacing.md,
+    padding: Spacing.md,
+    backgroundColor: Colors.background,
+    borderRadius: BorderRadius.sm,
+    borderWidth: 1,
+    borderColor: Colors.borderLight,
+  },
+  conversionTitle: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: Colors.text.primary,
+    marginBottom: Spacing.xs,
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  conversionText: {
+    fontSize: 14,
+    color: Colors.text.primary,
+    marginBottom: Spacing.xs,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  conversionNote: {
+    fontSize: 11,
+    color: Colors.text.secondary,
+    fontStyle: 'italic',
+    fontFamily: Typography.fontFamily.regular,
+  },
   notesInput: {
     borderWidth: 1,
     borderColor: Colors.border,
@@ -429,6 +580,83 @@ const styles = StyleSheet.create({
     color: Colors.text.primary,
     backgroundColor: Colors.background,
     minHeight: 80,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: Colors.border,
+    borderRadius: BorderRadius.md,
+    padding: Spacing.md,
+    fontSize: 16,
+    color: Colors.text.primary,
+    backgroundColor: Colors.background,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  helperText: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginBottom: Spacing.sm,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  paymentBox: {
+    backgroundColor: Colors.background,
+    padding: Spacing.md,
+    borderRadius: BorderRadius.md,
+    borderWidth: 2,
+    borderColor: Colors.primary,
+  },
+  paymentTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.text.primary,
+    marginBottom: Spacing.md,
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  paymentMethod: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: Spacing.sm,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.borderLight,
+  },
+  paymentLabel: {
+    fontSize: 14,
+    color: Colors.text.secondary,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  paymentNumber: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  paymentAmountBox: {
+    backgroundColor: Colors.primary + '15',
+    padding: Spacing.md,
+    borderRadius: BorderRadius.sm,
+    marginTop: Spacing.md,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  paymentAmountLabel: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.text.primary,
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  paymentAmountValue: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: Colors.primary,
+    fontFamily: Typography.fontFamily.bold,
+  },
+  paymentNote: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginTop: Spacing.md,
+    textAlign: 'center',
     fontFamily: Typography.fontFamily.regular,
   },
   infoBox: {

@@ -14,6 +14,7 @@ import { orderService } from '../services/orderService';
 import { Order } from '../types/database';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 import OrderDetailsModal from '../components/OrderDetailsModal';
+import PaymentProofUploadModal from '../components/PaymentProofUploadModal';
 import Header from '../components/Header';
 
 export default function OrdersScreen() {
@@ -22,7 +23,9 @@ export default function OrdersScreen() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
   const loadOrders = async () => {
     if (!user) return;
@@ -68,6 +71,26 @@ export default function OrdersScreen() {
     setShowDetailsModal(true);
   };
 
+  const handleUploadPaymentProof = (order: Order) => {
+    setSelectedOrder(order);
+    setShowPaymentModal(true);
+  };
+
+  const getPaymentStatusColor = (status: string) => {
+    switch (status) {
+      case 'verified': return Colors.success;
+      case 'proof_submitted': return Colors.info;
+      case 'failed': return Colors.error;
+      default: return Colors.warning;
+    }
+  };
+
+  const getPaymentStatusLabel = (status: string) => {
+    return status.split('_').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  };
+
   const renderOrderItem = ({ item }: { item: Order }) => (
     <View style={styles.orderCard}>
       <View style={styles.orderHeader}>
@@ -85,14 +108,37 @@ export default function OrdersScreen() {
         })}
       </Text>
       
+      {/* Payment Status */}
+      <View style={styles.paymentStatusRow}>
+        <Text style={styles.paymentLabel}>Payment:</Text>
+        <View style={[styles.paymentBadge, { backgroundColor: getPaymentStatusColor(item.payment_status) + '20' }]}>
+          <Text style={[styles.paymentStatusText, { color: getPaymentStatusColor(item.payment_status) }]}>
+            {getPaymentStatusLabel(item.payment_status)}
+          </Text>
+        </View>
+      </View>
+      
       <View style={styles.orderFooter}>
-        <Text style={styles.totalAmount}>R{item.total_amount.toFixed(2)}</Text>
-        <TouchableOpacity 
-          style={styles.viewButton}
-          onPress={() => handleViewDetails(item.id)}
-        >
-          <Text style={styles.viewButtonText}>View Details</Text>
-        </TouchableOpacity>
+        <View>
+          <Text style={styles.totalAmount}>${item.total_amount.toFixed(2)} USD</Text>
+          <Text style={styles.totalAmountSub}>≈ R{(item.total_amount / 0.056).toFixed(2)}</Text>
+        </View>
+        <View style={styles.buttonGroup}>
+          {item.payment_status === 'pending' && (
+            <TouchableOpacity 
+              style={styles.uploadButton}
+              onPress={() => handleUploadPaymentProof(item)}
+            >
+              <Text style={styles.uploadButtonText}>📤 Upload Proof</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity 
+            style={styles.viewButton}
+            onPress={() => handleViewDetails(item.id)}
+          >
+            <Text style={styles.viewButtonText}>View Details</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -139,6 +185,22 @@ export default function OrdersScreen() {
           orderId={selectedOrderId}
           onClose={() => setShowDetailsModal(false)}
           isAdmin={false}
+        />
+      )}
+
+      {selectedOrder && (
+        <PaymentProofUploadModal
+          visible={showPaymentModal}
+          orderId={selectedOrder.id}
+          orderNumber={selectedOrder.order_number}
+          totalAmount={selectedOrder.total_amount}
+          onClose={() => {
+            setShowPaymentModal(false);
+            setSelectedOrder(null);
+          }}
+          onUploadSuccess={() => {
+            loadOrders();
+          }}
         />
       )}
     </SafeAreaView>
@@ -245,11 +307,54 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: Colors.borderLight,
   },
+  paymentStatusRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: Spacing.sm,
+  },
+  paymentLabel: {
+    fontSize: 13,
+    color: Colors.text.secondary,
+    marginRight: Spacing.sm,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  paymentBadge: {
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: 4,
+    borderRadius: BorderRadius.sm,
+  },
+  paymentStatusText: {
+    fontSize: 11,
+    fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  buttonGroup: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+  },
+  uploadButton: {
+    backgroundColor: Colors.primary,
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.sm,
+    borderRadius: BorderRadius.md,
+  },
+  uploadButtonText: {
+    color: Colors.text.white,
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: Typography.fontFamily.semiBold,
+  },
   totalAmount: {
     fontSize: 18,
     fontWeight: 'bold',
     color: Colors.primary,
     fontFamily: Typography.fontFamily.bold,
+  },
+  totalAmountSub: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginTop: 2,
+    fontFamily: Typography.fontFamily.regular,
   },
   viewButton: {
     paddingHorizontal: Spacing.lg,

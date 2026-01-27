@@ -10,6 +10,8 @@ import {
   Platform,
   Alert,
   SafeAreaView,
+  Image,
+  ScrollView,
 } from 'react-native';
 import { CartItem } from '../types/cart';
 import CartItemCard from '../components/CartItemCard';
@@ -138,6 +140,50 @@ export default function CartScraperScreen() {
         </TouchableOpacity>
       </View>
 
+      {/* Promo Cards Section */}
+      {cartItems.length === 0 && !loading && (
+        <ScrollView 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          style={styles.promoSection}
+          contentContainerStyle={styles.promoContent}
+        >
+          <View style={styles.promoCard}>
+            <Image
+              source={require('../../assets/packaging.png')}
+              style={styles.promoImage}
+              resizeMode="cover"
+            />
+            <View style={styles.promoTextContainer}>
+              <View style={styles.comingSoonBadge}>
+                <Text style={styles.comingSoonText}>Coming Soon</Text>
+              </View>
+              <Text style={styles.promoTitle}>Premium Packaging</Text>
+              <Text style={styles.promoDescription}>
+                Quality packaging for safe delivery
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.promoCard}>
+            <Image
+              source={require('../../assets/merch.png')}
+              style={styles.promoImage}
+              resizeMode="cover"
+            />
+            <View style={styles.promoTextContainer}>
+              <View style={styles.comingSoonBadge}>
+                <Text style={styles.comingSoonText}>Coming Soon</Text>
+              </View>
+              <Text style={styles.promoTitle}>Exclusive Merch</Text>
+              <Text style={styles.promoDescription}>
+                Unique Lobi branded merchandise
+              </Text>
+            </View>
+          </View>
+        </ScrollView>
+      )}
+
       {cartItems.length > 0 && (
         <View style={styles.resultsContainer}>
           <View style={styles.resultsHeader}>
@@ -183,18 +229,6 @@ export default function CartScraperScreen() {
           onClose={() => setShowReviewModal(false)}
           onOrderPlaced={handleOrderPlaced}
         />
-      )}
-
-      {cartItems.length === 0 && !loading && (
-        <View style={styles.emptyState}>
-          <Text style={styles.emptyText}>
-            Enter a Shein cart URL to get started
-          </Text>
-          <Text style={styles.emptySubtext}>
-            Example:{'\n'}
-            https://api-shein.shein.com/h5/sharejump/...
-          </Text>
-        </View>
       )}
     </SafeAreaView>
   );
@@ -315,6 +349,62 @@ const styles = StyleSheet.create({
   },
   listContent: {
     padding: Spacing.sm,
+  },
+  promoSection: {
+    marginTop: Spacing.sm,
+    marginBottom: Spacing.sm,
+    maxHeight: 200,
+  },
+  promoContent: {
+    paddingHorizontal: Spacing.lg,
+    gap: Spacing.md,
+  },
+  promoCard: {
+    width: 180,
+    backgroundColor: Colors.surface,
+    borderRadius: BorderRadius.lg,
+    overflow: 'hidden',
+    marginRight: Spacing.md,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  promoImage: {
+    width: '100%',
+    height: 100,
+  },
+  promoTextContainer: {
+    padding: Spacing.sm,
+  },
+  comingSoonBadge: {
+    backgroundColor: Colors.primary,
+    paddingHorizontal: Spacing.sm,
+    paddingVertical: 4,
+    borderRadius: BorderRadius.sm,
+    alignSelf: 'flex-start',
+    marginBottom: Spacing.xs,
+  },
+  comingSoonText: {
+    fontSize: 10,
+    fontWeight: '600',
+    color: '#FFFFFF',
+    textTransform: 'uppercase',
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  promoTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: Colors.text.primary,
+    marginBottom: Spacing.xs,
+    fontFamily: Typography.fontFamily.semiBold,
+  },
+  promoDescription: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    lineHeight: 18,
+    fontFamily: Typography.fontFamily.regular,
   },
   emptyState: {
     flex: 1,

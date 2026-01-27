@@ -26,7 +26,14 @@ export const orderService = {
             delivery_address_id: data.delivery_address_id,
             cart_url: data.cart_url,
             total_amount: data.total_amount,
+            subtotal_usd: data.subtotal_usd,
+            delivery_fee: data.delivery_fee,
             customer_notes: data.customer_notes,
+            whatsapp_number: data.whatsapp_number,
+            payment_reference: data.payment_reference,
+            payment_status: 'pending',
+            currency: 'USD',
+            exchange_rate_usd_to_cdf: 2500,
             status: 'pending',
           })
           .select()
@@ -193,5 +200,89 @@ export const orderService = {
    */
   async cancelOrder(orderId: string, reason?: string): Promise<void> {
     await this.updateOrderStatus(orderId, 'cancelled', reason);
+  },
+
+  /**
+   * Upload payment proof
+   */
+  async uploadPaymentProof(orderId: string, fileUri: string): Promise<void> {
+    try {
+      // Get the file blob from URI
+      const response = await fetch(fileUri);
+      const blob = await response.blob();
+      
+      // Create unique filename (simpler path)
+      const fileExt = fileUri.split('.').pop() || 'jpg';
+      const fileName = `${orderId}_${Date.now()}.${fileExt}`;
+      const filePath = fileName; // Use root level, no subfolder
+
+      // Upload to Supabase storage
+      const { error: uploadError } = await supabase.storage
+        .from('order-documents')
+        .upload(filePath, blob, {
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get public URL
+      const { data: urlData } = supabase.storage
+        .from('order-documents')
+        .getPublicUrl(filePath);
+
+      // Update order with payment proof URL and status
+      const { error: updateError } = await supabase
+        .from('orders')
+        .update({ 
+          payment_proof_url: urlData.publicUrl,
+          payment_status: 'proof_submitted'
+        })
+        .eq('id', orderId);
+
+      if (updateError) throw updateError;
+    } catch (error) {
+      console.error('Error uploading payment proof:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Update payment status (admin only)
+   */
+  async updatePaymentStatus(orderId: string, paymentStatus: 'verified' | 'failed', adminNotes?: string): Promise<void> {
+    const { error } = await supabase
+      .from('orders')
+      .update({ 
+        payment_status: paymentStatus,
+        admin_notes: adminNotes 
+      })
+      .eq('id', orderId);
+
+    if (error) throw error;
+
+    // If payment verified, update order status to confirmed
+    if (paymentStatus === 'verified') {
+      await this.updateOrderStatus(orderId, 'confirmed', 'Payment verified by admin');
+    }
+  },
+
+  /**
+   * Get orders by payment status (admin only)
+   */
+  async getOrdersByPaymentStatus(paymentStatus?: string): Promise<Order[]> {
+    let query = supabase
+      .from('orders')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (paymentStatus) {
+      query = query.eq('payment_status', paymentStatus);
+    }
+
+    const { data, error } = await query;
+
+    if (error) throw error;
+    return data || [];
   },
 };

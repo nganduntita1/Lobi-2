@@ -157,7 +157,10 @@ export default function AdminOrdersScreen() {
       )}
       
       <View style={styles.orderFooter}>
-        <Text style={styles.totalAmount}>R{item.total_amount.toFixed(2)}</Text>
+        <View>
+          <Text style={styles.totalAmount}>${item.total_amount.toFixed(2)} USD</Text>
+          <Text style={styles.totalAmountSub}>≈ R{(item.total_amount / 0.056).toFixed(2)}</Text>
+        </View>
         <View style={styles.actionButtons}>
           <TouchableOpacity 
             style={[styles.viewButton, styles.secondaryButton]}
@@ -430,6 +433,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.primary,
     fontFamily: Typography.fontFamily.bold,
+  },
+  totalAmountSub: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginTop: 2,
+    fontFamily: Typography.fontFamily.regular,
   },
   actionButtons: {
     flexDirection: 'row',

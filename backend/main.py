@@ -97,7 +97,7 @@ async def scrape_cart(request: ScrapeRequest):
 
 
 async def scrape_shein_cart(url: str) -> List[CartItem]:
-    """Scrape cart using Playwright"""
+    """Scrape cart using Playwright with optimizations"""
     items = []
     
     async with async_playwright() as p:
@@ -106,7 +106,10 @@ async def scrape_shein_cart(url: str) -> List[CartItem]:
             args=[
                 '--disable-blink-features=AutomationControlled',
                 '--disable-dev-shm-usage',
-                '--no-sandbox'
+                '--no-sandbox',
+                '--disable-gpu',
+                '--disable-software-rasterizer',
+                '--disable-extensions'
             ]
         )
         
@@ -115,6 +118,9 @@ async def scrape_shein_cart(url: str) -> List[CartItem]:
             viewport={'width': 375, 'height': 812},
             locale='en-US'
         )
+        
+        # Block unnecessary resources to speed up loading
+        await context.route("**/*", lambda route: route.abort() if route.request.resource_type in ["image", "stylesheet", "font", "media"] else route.continue_())
         
         # Anti-detection
         await context.add_init_script("""
@@ -126,19 +132,19 @@ async def scrape_shein_cart(url: str) -> List[CartItem]:
         page = await context.new_page()
         
         try:
-            # Load page with increased timeout
+            # Load page with optimized timeout
             print(f"Loading URL: {url}")
             try:
-                await page.goto(url, wait_until='load', timeout=90000)
+                await page.goto(url, wait_until='domcontentloaded', timeout=30000)
             except Exception as e:
                 print(f"Page load warning: {e}")
                 # Try to continue anyway if partially loaded
             
-            # Wait longer for dynamic content to fully render
+            # Wait for content with reduced time
             print("Waiting for content to render...")
-            await asyncio.sleep(15)
+            await asyncio.sleep(5)
             
-            # Get HTML content for debugging (without writing to file in production)
+            # Get HTML content for debugging
             html = await page.content()
             print(f"Loaded HTML content ({len(html)} chars)")
             
