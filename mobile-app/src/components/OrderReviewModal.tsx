@@ -10,6 +10,7 @@ import {
   ActivityIndicator,
   Alert,
   Platform,
+  Image,
 } from 'react-native';
 import { Colors, Spacing, BorderRadius, Typography } from '../theme/colors';
 import { CartItem } from '../types/cart';
@@ -29,6 +30,7 @@ interface OrderReviewModalProps {
   visible: boolean;
   items: CartItem[];
   cartUrl: string;
+  cartScreenshotUri?: string | null;
   deliveryAddress: DeliveryAddress;
   onClose: () => void;
   onOrderPlaced: () => void;
@@ -38,12 +40,16 @@ export default function OrderReviewModal({
   visible,
   items,
   cartUrl,
+  cartScreenshotUri,
   deliveryAddress,
   onClose,
   onOrderPlaced,
 }: OrderReviewModalProps) {
   const [serviceFeePercentage, setServiceFeePercentage] = useState(15);
   const [customerNotes, setCustomerNotes] = useState('');
+  const [cartLinkInput, setCartLinkInput] = useState(
+    cartUrl && cartUrl !== 'manual-entry' ? cartUrl : ''
+  );
   const [placing, setPlacing] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
 
@@ -105,6 +111,13 @@ export default function OrderReviewModal({
       return;
     }
 
+    if (!cartScreenshotUri) {
+      if (Platform.OS !== 'web') {
+        Alert.alert('Missing Screenshot', 'Please upload a screenshot of your cart.');
+      }
+      return;
+    }
+
     try {
       setPlacing(true);
       const { data: { user } } = await supabase.auth.getUser();
@@ -113,10 +126,16 @@ export default function OrderReviewModal({
         throw new Error('User not authenticated');
       }
 
+      const cartScreenshotUrl = cartScreenshotUri
+        ? await orderService.uploadCartScreenshot(user.id, cartScreenshotUri)
+        : undefined;
+
       const orderData = {
         user_id: user.id,
         delivery_address_id: deliveryAddress.id,
-        cart_url: cartUrl,
+        cart_url:
+          cartLinkInput.trim() || (cartUrl && cartUrl !== 'manual-entry' ? cartUrl : 'manual-entry'),
+        cart_screenshot_url: cartScreenshotUrl,
         total_amount: calculateTotal(),
         customer_notes: customerNotes || undefined,
         items: items.map(item => ({
@@ -217,6 +236,20 @@ export default function OrderReviewModal({
               ))}
             </View>
 
+            {cartScreenshotUri && (
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Cart Screenshot</Text>
+                <Image
+                  source={{ uri: cartScreenshotUri }}
+                  style={styles.screenshotImage}
+                  resizeMode="cover"
+                />
+                <Text style={styles.helperText}>
+                  We will use this to verify your cart items.
+                </Text>
+              </View>
+            )}
+
             {/* Order Summary Section */}
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Order Summary</Text>
@@ -254,6 +287,16 @@ export default function OrderReviewModal({
                 multiline
                 numberOfLines={3}
                 textAlignVertical="top"
+              />
+              <Text style={styles.inputLabel}>Cart Link (Optional)</Text>
+              <TextInput
+                style={styles.singleLineInput}
+                placeholder="https://m.shein.com/..."
+                placeholderTextColor={Colors.text.light}
+                value={cartLinkInput}
+                onChangeText={setCartLinkInput}
+                autoCapitalize="none"
+                autoCorrect={false}
               />
             </View>
 
@@ -386,6 +429,18 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontFamily: Typography.fontFamily.semiBold,
   },
+  screenshotImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: BorderRadius.md,
+    backgroundColor: Colors.background,
+  },
+  helperText: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginTop: Spacing.sm,
+    fontFamily: Typography.fontFamily.regular,
+  },
   summaryRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -429,6 +484,23 @@ const styles = StyleSheet.create({
     color: Colors.text.primary,
     backgroundColor: Colors.background,
     minHeight: 80,
+    fontFamily: Typography.fontFamily.regular,
+  },
+  inputLabel: {
+    fontSize: 12,
+    color: Colors.text.secondary,
+    marginTop: Spacing.md,
+    marginBottom: Spacing.xs,
+    fontFamily: Typography.fontFamily.medium,
+  },
+  singleLineInput: {
+    borderWidth: 1,
+    borderColor: Colors.border,
+    borderRadius: BorderRadius.md,
+    padding: Spacing.md,
+    fontSize: 14,
+    color: Colors.text.primary,
+    backgroundColor: Colors.background,
     fontFamily: Typography.fontFamily.regular,
   },
   infoBox: {

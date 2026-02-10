@@ -217,6 +217,17 @@ export default function OrderDetailsModal({
                 </View>
               )}
 
+              {order.cart_screenshot_url && (
+                <View style={styles.section}>
+                  <Text style={styles.sectionTitle}>Cart Screenshot</Text>
+                  <Image
+                    source={{ uri: order.cart_screenshot_url }}
+                    style={styles.cartScreenshot}
+                    resizeMode="cover"
+                  />
+                </View>
+              )}
+
               {/* Admin-only sections */}
               {isAdmin && (
                 <>
@@ -405,6 +416,12 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: BorderRadius.md,
     marginRight: Spacing.md,
+  },
+  cartScreenshot: {
+    width: '100%',
+    height: 220,
+    borderRadius: BorderRadius.md,
+    backgroundColor: Colors.background,
   },
   itemDetails: {
     flex: 1,

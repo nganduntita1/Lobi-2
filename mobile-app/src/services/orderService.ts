@@ -2,6 +2,38 @@ import { supabase } from '../config/supabase';
 import { Order, CreateOrderData, OrderStatus } from '../types/database';
 
 export const orderService = {
+  async uploadCartScreenshot(userId: string, uri: string): Promise<string> {
+    const response = await fetch(uri);
+    const blob = await response.blob();
+
+    const uriWithoutQuery = uri.split('?')[0];
+    const uriParts = uriWithoutQuery.split('.');
+    const fallbackExtension = uriParts.length > 1 ? uriParts.pop() : undefined;
+    const contentType = blob.type || 'image/jpeg';
+    const contentExtension = contentType.split('/')[1];
+    const fileExtension = (contentExtension || fallbackExtension || 'jpg').toLowerCase();
+    const randomSuffix = Math.random().toString(36).slice(2, 10);
+    const filePath = `${userId}/${Date.now()}-${randomSuffix}.${fileExtension}`;
+
+    const { error } = await supabase.storage
+      .from('cart-screenshots')
+      .upload(filePath, blob, {
+        contentType,
+        upsert: true,
+      });
+
+    if (error) throw error;
+
+    const { data } = supabase.storage
+      .from('cart-screenshots')
+      .getPublicUrl(filePath);
+
+    if (!data?.publicUrl) {
+      throw new Error('Failed to get cart screenshot URL');
+    }
+
+    return data.publicUrl;
+  },
   /**
    * Create a new order
    */
@@ -25,6 +57,7 @@ export const orderService = {
             user_id: data.user_id,
             delivery_address_id: data.delivery_address_id,
             cart_url: data.cart_url,
+            cart_screenshot_url: data.cart_screenshot_url,
             total_amount: data.total_amount,
             customer_notes: data.customer_notes,
             status: 'pending',

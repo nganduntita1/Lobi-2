@@ -1,0 +1,1534 @@
+{
+  "code": "0",
+  "msg": "ok",
+  "info": {
+    "uid": null,
+    "cid": "F7CB4C98_A698_CFA4_12A9_8225439C63BB",
+    "pos": {
+      "Cartcouponadd": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_coupon_add_switch": "on",
+          "coupon_interception": "off",
+          "cart_coupon_entrance_log": "off"
+        },
+        "child": []
+      },
+      "TradeQuickship": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": "conceal_QuickShipping",
+        "version": null,
+        "param": null,
+        "child": []
+      },
+      "frequenttag": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "frequentnew_use": "off"
+        },
+        "child": []
+      },
+      "orderCouponNewUser": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "orderCoupon_newUser": "old"
+        },
+        "child": []
+      },
+      "EstimatedDetailSwitch": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "estimated_detail_guidance_switch": "off",
+          "estimated_detail_switch": "on"
+        },
+        "child": []
+      },
+      "BannerDistrictimage": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "BannerDistrictShow": "Show",
+          "hj04test1009": "Show"
+        },
+        "child": []
+      },
+      "CartShare": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ControlCartShare": "on",
+          "ControlBesharedsytle": "off",
+          "cart_manage_share": "off",
+          "uxstyle": "whole_icon",
+          "ControlBesharedstyle": "off",
+          "cart_screenshot_share": "off",
+          "ControlCartshareH5": "off",
+          "Newttttest": ""
+        },
+        "child": []
+      },
+      "CartPriceNote": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cashcoupon_pricemax_changepopup": "SHEIN_TIP_B2C_25558",
+          "cart_price_note": "planD",
+          "coupon_pricemax_changepopup": "SHEIN_TIP_B2C_25786"
+        },
+        "child": []
+      },
+      "CartGetCoupons": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": "request=no&show=no",
+        "version": null,
+        "param": null,
+        "child": []
+      },
+      "CartrowWishlistIcon": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartrow_wishlist_icon": "off"
+        },
+        "child": []
+      },
+      "CartInfiniteScrolling": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_infinite_scrolling": ""
+        },
+        "child": []
+      },
+      "promotionCouponMixPop": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "promotionCouponMixPop": "PopStyleB"
+        },
+        "child": []
+      },
+      "Discountlogo": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "add_discount_logo_switch": "off"
+        },
+        "child": []
+      },
+      "cartRightsFreereturn": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_rights_freereturn": "off"
+        },
+        "child": []
+      },
+      "NewCartrowVision": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "new_cartrow_vision": "on"
+        },
+        "child": []
+      },
+      "cartLabels": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_shein_tab": "off",
+          "cart_additems_tab": "A",
+          "cart_local_tab": "off",
+          "cart_frequent_tab": "off",
+          "cart_wishlist_tab": "off",
+          "cart_label_priority": "flashsale,markdown,xleft,additems,frequent,local,wishlist",
+          "cart_all_tab": "on"
+        },
+        "child": []
+      },
+      "addupnewstyle": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "add_balance": "30",
+          "addup_newstyle": "off"
+        },
+        "child": []
+      },
+      "ShopLineRetention": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ControlBatchDelete": "off",
+          "ControlRetentionShow": "off"
+        },
+        "child": []
+      },
+      "CartrowEstimatedCountdown": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartrow_estimated_countdown": "on"
+        },
+        "child": []
+      },
+      "cartPriceStyle": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_price_style": "",
+          "cart_best_coupon_price": "off"
+        },
+        "child": []
+      },
+      "TrendWordReverse": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "TrendWordReverse": ""
+        },
+        "child": []
+      },
+      "cartShowBrand": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_show_brand": "off"
+        },
+        "child": []
+      },
+      "cartBottomStyle": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_bottom_style": "on"
+        },
+        "child": []
+      },
+      "IncentiveInform": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartfloorInformSelected": "off",
+          "CartfloorInform": "on",
+          "IncentiveButton": "oos,mark_down,flash_sale,coupon",
+          "NewButtonText": "off",
+          "IncentiveInformPop": "oos,mark_down,flash_sale,coupon,lowest_price_30days",
+          "NewButtonText_type": "shortstock,lowestprice,mark_down,flash_sale,coupon,points,wallet"
+        },
+        "child": []
+      },
+      "storeiconchange": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "storeiconchange": "new"
+        },
+        "child": []
+      },
+      "CouponAddToCartToast": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "coupon_add_to_cart_toast": "off"
+        },
+        "child": []
+      },
+      "CartGoodsLabel": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_goods_label": "NO"
+        },
+        "child": []
+      },
+      "componentswitch": {
+        "type": "expgroup",
+        "bid": "101993241",
+        "eid": "100765981",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "favoriteListPage": "1",
+          "couponPage": "",
+          "shopbagrecstyle": "1",
+          "favoriteListEmptyPage": "1",
+          "messagePage": "1",
+          "searchListEmptyPage": "0",
+          "repeatPurchasePage": "1",
+          "otherListPage": "1",
+          "pageServiceProgressDetail": "0",
+          "orderCommentPage": "",
+          "comfirmDeliveryPage": "1",
+          "cancelPartialOrderPage": "1",
+          "pointsPage": "1",
+          "FindSimilarRecommend": "1",
+          "returnSuccessfulPage": "",
+          "trailCenterPage": "",
+          "personalCenterPage": "1",
+          "collectionBoardsPage": "1",
+          "page_payment_successful": "",
+          "selectListEmptyPage": "1",
+          "pageWalletBlock": "1",
+          "selectListPage": "1",
+          "realListPage": "1",
+          "unpaidorderCancelPage": "1",
+          "orderDetailPage": "1",
+          "pageOrderSearchBlock": "",
+          "pageBeshared": "1",
+          "refundDetailPage": "",
+          "paymentSuccessfulPage": "1",
+          "signInPage": "1",
+          "collectionBoardsEmptyPage": "1",
+          "otherListEmptyPage": "1",
+          "searchListPage": "0",
+          "saverPage": "1",
+          "LogisticTrackPage": "1",
+          "realListEmptyPage": "1",
+          "orderListPage": "1",
+          "pageFindSimilar": "",
+          "pageCart": "",
+          "FindSimilarPage": "1"
+        },
+        "child": [
+          {
+            "bid": "101993241",
+            "eid": "100765981"
+          },
+          {
+            "bid": "101993106",
+            "eid": "100765936"
+          }
+        ]
+      },
+      "CartaddGoodsdetailSwitch": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartadd_trade_goodsdetail_switch": "off",
+          "cartadd_goodsdetail_switch": "on"
+        },
+        "child": []
+      },
+      "cartPromotions": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_promotions_detail": "on"
+        },
+        "child": []
+      },
+      "CartBottomCopy": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_bottom_copy": "new2"
+        },
+        "child": []
+      },
+      "CartBottomRecommendations": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ymltab": "hide",
+          "cartpromotion": "hide",
+          "cartbar": "show",
+          "carthead": "hide"
+        },
+        "child": []
+      },
+      "CartNotCheckedEstimate": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_notChecked_estimate": "on"
+        },
+        "child": []
+      },
+      "Discountlistshowlimitexceededtip": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": "off",
+        "version": null,
+        "param": null,
+        "child": []
+      },
+      "SHEINcomplianceswitch": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "compliancetype": "",
+          "cart_normal_priceStyle": "A"
+        },
+        "child": []
+      },
+      "LowpriceUser": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ControlCheckoutname": "off",
+          "ControlForcedInterception": "off",
+          "ControlLowpriceUser": "off",
+          "grouping": "on"
+        },
+        "child": []
+      },
+      "CartNewCouponlist": {
+        "type": "expgroup",
+        "bid": "101994556",
+        "eid": "100766526",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_new_couponlist": "on"
+        },
+        "child": []
+      },
+      "benefitTips": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "checkout_pop": "on",
+          "labels_tips": "on"
+        },
+        "child": []
+      },
+      "cartshippingaddpriority": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_shipping_add_priority": "C"
+        },
+        "child": []
+      },
+      "cartStoreFreeGift": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_store_freegift": "on"
+        },
+        "child": []
+      },
+      "TradeEventAtmosphere": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "trade_event_atmosphere": "NO"
+        },
+        "child": []
+      },
+      "recSwitch": {
+        "type": "expgroup",
+        "bid": "100059316",
+        "eid": "100024276",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "recSwitch": "53|93|156"
+        },
+        "child": []
+      },
+      "CartBehaviorPriority": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_behavior_priority": "off"
+        },
+        "child": []
+      },
+      "CartCountdownDisplay": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartCountdownVisibility": "show",
+          "CartCountdownFormat": "off"
+        },
+        "child": []
+      },
+      "OrderPageCouponTest": {
+        "type": "expgroup",
+        "bid": "101994556",
+        "eid": "100766526",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "OrderCouponPromotion": "",
+          "OrderCouponMarket": "",
+          "RecommendCouponShow": "Show"
+        },
+        "child": []
+      },
+      "PaymentSafetyExperiment": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "PaymentSecurity": "Default",
+          "PaymentSafetyCart": "Hide",
+          "PaymentSafetyCheckout": "Show1",
+          "PaymentSafetyFlow": "Show"
+        },
+        "child": []
+      },
+      "replacesku": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "addskutocart": "0",
+          "hideqty": "noshow",
+          "replacesku": "0"
+        },
+        "child": []
+      },
+      "defaultlocalsize": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "localstrong": "off",
+          "onlyonelocalsize": "off",
+          "defaultlocalsize": "old",
+          "size_tab_sort": "old"
+        },
+        "child": []
+      },
+      "CccEmptyCart": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": "",
+        "version": null,
+        "param": null,
+        "child": []
+      },
+      "ActivityOver": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ControlActivityOver": "new"
+        },
+        "child": []
+      },
+      "Cartstoreinrow": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_store_inrow_switch": "off"
+        },
+        "child": []
+      },
+      "CartCheckOutAnimation": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_checkout_animation": "on"
+        },
+        "child": []
+      },
+      "ReturnCouponShow": {
+        "type": "expgroup",
+        "bid": "101994556",
+        "eid": "100766526",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ControlReturnCouponShow": "A",
+          "returncoupon_lfbold_C": "",
+          "returncouponmarket_old": "",
+          "returncoupon_lfbold": "",
+          "returncoupon_lfbold_lf": ""
+        },
+        "child": []
+      },
+      "Cartshowcoupon": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_show_coupon_switch": "on"
+        },
+        "child": []
+      },
+      "UserBehaviorTips": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartBehaviorShow": "fivestar,adds,sales2,buyagain,lowestprice",
+          "NewCheckoutHeadline": "secure,freereturn,checkoutbehavior",
+          "CheckoutBehaviorShow": "fivestar,adds,sales2,buyagain,lowestprice",
+          "CheckoutClubShow": "Show",
+          "CheckoutAlmostSoldout": "Show",
+          "CartBehaviorLive": "buytime",
+          "CheckoutHeadlineShow": "Hide",
+          "CartshareBehaviorShow": "fivestar,adds,sales2,buyagain,lowestprice",
+          "PaymentSecureShow": "Hide",
+          "NoneBehaviorTips": "0",
+          "CartBehaviorAction": "Show"
+        },
+        "child": []
+      },
+      "detailPriceCountDown": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "detailPrice_countDown": "on"
+        },
+        "child": []
+      },
+      "CartOtherCountdown": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartOtherCountdown": "1"
+        },
+        "child": []
+      },
+      "addnewhotJson": {
+        "type": "expgroup",
+        "bid": "101993241",
+        "eid": "100765981",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "flow_ctrl_shop": "",
+          "rec_tf_model_item_country_mapping_country": "",
+          "flow_ctrl_original_duizhao": "scc_rule:v12497",
+          "rec_flow_enable_152": "1",
+          "tj_rec_ver_s152": "scc_rule:v6642",
+          "tj_changwei_similar_2": "",
+          "flow_ctrl_D_failed": "scc_rule:v6750",
+          "fc_group_21": "",
+          "tj_rec_ver_s275_rank_model1": "scc_rule:v17368",
+          "fc_group_20": "scc_rule:v30477",
+          "flow_ctrl_new": "scc_rule:v19384",
+          "flow_ctrl_groups": "scc_rule:v12493",
+          "fc_group_22": "scc_rule:v30502",
+          "hp_new_lowgoods_filter": "",
+          "flow_ctrl_D1": "scc_rule:v6748",
+          "flow_ctrl_D2": "scc_rule:v6749",
+          "tj_rec_ver_s152_ranknum": "scc_rule:v14173",
+          "flow_ctrl_strict": "scc_rule:v28611",
+          "flow_ctrl_expA": "",
+          "fc_group_18": "scc_rule:v30475",
+          "fc_group_17": "",
+          "hp_lowgoods_filter": "",
+          "fc_group_19": "",
+          "flow_ctrl_Others": "scc_rule:v6745",
+          "tj_high_efficiency_long_tail": "",
+          "tj_all_negative_feedback": "",
+          "flow_ctrl_C2": "scc_rule:v6747",
+          "flow_ctrl_expC": "",
+          "fc_group_16": "",
+          "flow_ctrl_original": "scc_rule:v12494",
+          "flow_ctrl_expB": "",
+          "flow_ctrl_C1": "scc_rule:v6746"
+        },
+        "child": [
+          {
+            "bid": "101993241",
+            "eid": "100765981"
+          },
+          {
+            "bid": "101993106",
+            "eid": "100765936"
+          },
+          {
+            "bid": "101989071",
+            "eid": "100764511"
+          },
+          {
+            "bid": "102062596",
+            "eid": "100792341"
+          },
+          {
+            "bid": "101989001",
+            "eid": "100764476"
+          },
+          {
+            "bid": "102084551",
+            "eid": "100800836"
+          },
+          {
+            "bid": "102082171",
+            "eid": "100799941"
+          },
+          {
+            "bid": "102082181",
+            "eid": "100799946"
+          },
+          {
+            "bid": "102084631",
+            "eid": "100800866"
+          }
+        ]
+      },
+      "cartDiscountStyle": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_discount_style": "new"
+        },
+        "child": []
+      },
+      "CartMallUi": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartMallUi": "off"
+        },
+        "child": []
+      },
+      "promotionCouponMix": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "promotion_one_style": "off",
+          "promotion_coupon_mix": "couponExpress"
+        },
+        "child": []
+      },
+      "CheckOutLeftBenefit": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CheckOutLeftBenefit": "CartDiscount,FlashSale,SHEINCLUB,LimeTime,Coupon",
+          "CheckOutCrossedStyle": "typeA"
+        },
+        "child": []
+      },
+      "LowestPriceDays": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "lowest_price_days": "old"
+        },
+        "child": []
+      },
+      "PayinCart": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "PayShow": "off"
+        },
+        "child": []
+      },
+      "TaxSwitch": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "TaxSwitchValue": "off"
+        },
+        "child": []
+      },
+      "detailgoodsCard": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "detailGoods": "A"
+        },
+        "child": []
+      },
+      "CartAddress": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_address": "on"
+        },
+        "child": []
+      },
+      "Quickshiprecommendthreshold": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "quickship_recommend_threshold": "0"
+        },
+        "child": []
+      },
+      "recmultiCard": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "recmultiCard": "B"
+        },
+        "child": []
+      },
+      "addJson": {
+        "type": "expgroup",
+        "bid": "101993241",
+        "eid": "100765981",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "flow_ctrl_expA": "",
+          "hp_lowgoods_filter": "",
+          "rec_ver_s30": "rec_ver:S30V2.11",
+          "cart_rec_ver_scc": "",
+          "hp_new_lowgoods_filter": ""
+        },
+        "child": [
+          {
+            "bid": "101993241",
+            "eid": "100765981"
+          },
+          {
+            "bid": "101993106",
+            "eid": "100765936"
+          },
+          {
+            "bid": "102062596",
+            "eid": "100792341"
+          }
+        ]
+      },
+      "CartAddressComponent": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartAddressComponent": "off"
+        },
+        "child": []
+      },
+      "QSinformation": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "QSaddinformation": "off",
+          "QSlocation": "down"
+        },
+        "child": []
+      },
+      "CancelledorderTip": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartcancelled_tip": "1"
+        },
+        "child": []
+      },
+      "couponShine": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "bottom_coupon_shine_number": "unlimited",
+          "bottom_coupon_shine": "off"
+        },
+        "child": []
+      },
+      "CartRecommendTab": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_recommend_tab": "off"
+        },
+        "child": []
+      },
+      "CartOrderSFSVisual": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "visual_tabs": "",
+          "visual_benefit_point": ""
+        },
+        "child": []
+      },
+      "CartCheckOutOrder": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_checkout_order": "off"
+        },
+        "child": []
+      },
+      "addnewhot": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {},
+        "child": []
+      },
+      "paypalCartSwitch": {
+        "type": "expgroup",
+        "bid": "101994556",
+        "eid": "100766526",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "paypalCartSwitchStatus": "0"
+        },
+        "child": []
+      },
+      "orderblock": {
+        "type": "expgroup",
+        "bid": "101993241",
+        "eid": "100765981",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "flow_ctrl_shop": "",
+          "rec_tf_model_item_country_mapping_country": "",
+          "flow_ctrl_original_duizhao": "scc_rule:v12497",
+          "tj_rec_ver_s152": "scc_rule:v6642",
+          "tj_changwei_similar_2": "",
+          "flow_ctrl_D_failed": "scc_rule:v6750",
+          "fc_group_21": "",
+          "tj_rec_ver_s275_rank_model1": "scc_rule:v17368",
+          "fc_group_20": "scc_rule:v30477",
+          "flow_ctrl_new": "scc_rule:v19384",
+          "flow_ctrl_groups": "scc_rule:v12493",
+          "fc_group_22": "scc_rule:v30502",
+          "hp_new_lowgoods_filter": "",
+          "flow_ctrl_D1": "scc_rule:v6748",
+          "flow_ctrl_D2": "scc_rule:v6749",
+          "tj_rec_ver_s152_ranknum": "scc_rule:v14173",
+          "flow_ctrl_strict": "scc_rule:v28611",
+          "fc_group_18": "scc_rule:v30475",
+          "fc_group_17": "",
+          "hp_lowgoods_filter": "",
+          "fc_group_19": "",
+          "flow_ctrl_Others": "scc_rule:v6745",
+          "tj_high_efficiency_long_tail": "",
+          "tj_all_negative_feedback": "",
+          "flow_ctrl_C2": "scc_rule:v6747",
+          "flow_ctrl_expC": "",
+          "fc_group_16": "",
+          "flow_ctrl_original": "scc_rule:v12494",
+          "flow_ctrl_expB": "",
+          "flow_ctrl_C1": "scc_rule:v6746"
+        },
+        "child": [
+          {
+            "bid": "101993241",
+            "eid": "100765981"
+          },
+          {
+            "bid": "101993106",
+            "eid": "100765936"
+          },
+          {
+            "bid": "101989071",
+            "eid": "100764511"
+          },
+          {
+            "bid": "102062596",
+            "eid": "100792341"
+          },
+          {
+            "bid": "101989001",
+            "eid": "100764476"
+          },
+          {
+            "bid": "102084551",
+            "eid": "100800836"
+          },
+          {
+            "bid": "102082171",
+            "eid": "100799941"
+          },
+          {
+            "bid": "102082181",
+            "eid": "100799946"
+          },
+          {
+            "bid": "102084631",
+            "eid": "100800866"
+          }
+        ]
+      },
+      "ShowPromotion": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "ShowPromotion": "YES"
+        },
+        "child": []
+      },
+      "evoluSHEINShow": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "evoluSHEIN_show": "off"
+        },
+        "child": []
+      },
+      "Couponaddall": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "coupon_add_all_switch": "on"
+        },
+        "child": []
+      },
+      "UnderPrice": {
+        "type": "expgroup",
+        "bid": "101993241",
+        "eid": "100765981",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "UnderPriceFeeds": "off",
+          "UnderPriceShow": "B"
+        },
+        "child": [
+          {
+            "bid": "101993241",
+            "eid": "100765981"
+          },
+          {
+            "bid": "101993106",
+            "eid": "100765936"
+          }
+        ]
+      },
+      "EstimatedPrice": {
+        "type": "expgroup",
+        "bid": "101994556",
+        "eid": "100766526",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "E_Coupon_Rang": "Withaccount",
+          "E_PriceCouponLFBold": "",
+          "E_Price_AutoClaim": "AutoClaim",
+          "E_PriceCoupon_Market": "",
+          "DetailEstimatedPrice": "",
+          "S3newprice": "",
+          "E_PriceCoupon3650": "",
+          "E_Price_AddOnItem": "AddOnItem",
+          "isCouponBoundEstimatedPrice": "YES",
+          "E_PriceCoupon": "",
+          "E_Price_Cal": "Non_Threshold",
+          "E_Time_Limit": "Show",
+          "E_Price_Gather": "show"
+        },
+        "child": []
+      },
+      "outofstocktips": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "onlynleft": "10",
+          "almostsoldout": "14",
+          "detailsalmostsoldout": "14",
+          "showonly": "show",
+          "lowinventory": "on",
+          "attrlowstocktips": "B",
+          "detailsonlynleft": "10",
+          "addtocarttoastlowstocktips": "off"
+        },
+        "child": []
+      },
+      "CartCouponHelpernew": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": "CouponHelperTypenew=show&style=new&apply=yes",
+        "version": null,
+        "param": null,
+        "child": []
+      },
+      "cartCountdown": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_limited_time": "off",
+          "cart_countdown": "on",
+          "cart_countdown_time": "off",
+          "cart_restore_price": "off",
+          "cart_millisecond_time": "off",
+          "cart_last_threshold": "off"
+        },
+        "child": []
+      },
+      "Aod": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": "",
+        "version": null,
+        "param": null,
+        "child": [
+          {
+            "bid": "101991876",
+            "eid": "100765486",
+            "p": ""
+          },
+          {
+            "bid": "101991731",
+            "eid": "100765431",
+            "p": ""
+          }
+        ]
+      },
+      "DiscountInfoSwitch": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "discount_info_switch": "on",
+          "discount_info_countdown_switch": "on"
+        },
+        "child": []
+      },
+      "cartGoodsAddPromos": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_goods_addpromos": "on"
+        },
+        "child": []
+      },
+      "CartEnhancedServiceInterest": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartenhancedservice": "freeshipping,freeturn,ontimedelivery",
+          "addaddress": "off"
+        },
+        "child": []
+      },
+      "CouponHelperAddMultiple": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "coupon_helper_add_multiple": "off"
+        },
+        "child": []
+      },
+      "DoubleConfirmPop": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "wishlist_confirm_pop": "on",
+          "delete_confirm_pop": "on"
+        },
+        "child": []
+      },
+      "CartAddressToRefreshRecommend": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartAddressToRefreshRecommend": "off"
+        },
+        "child": []
+      },
+      "CartVisualRedesign": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "MasterSwitch": "on",
+          "TagStraterySwitch": "on",
+          "BeforeTitleTag": "localwarehouse,blackfriday,newonly,liveflash,flashsale,brandsale,limitdeal,pricedrop,branddeals,extrasavings,brand",
+          "CartRowFeatures": "on",
+          "ItemDesignSwitch": "planB",
+          "CartTopFeatures": "planA",
+          "ItemPictureSwitch": "planA",
+          "CartStickySwitch": "off"
+        },
+        "child": []
+      },
+      "CartQuickshipVisual": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_quickship_visual": "None"
+        },
+        "child": []
+      },
+      "SameSellersInfo": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "same_sellers_info": "off",
+          "on": "off"
+        },
+        "child": []
+      },
+      "cartListAddPopupQueue": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartListAddPopupQueue": ""
+        },
+        "child": []
+      },
+      "CartAddTechnicalSwitch": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartAddTechnicalSwitch": "on"
+        },
+        "child": []
+      },
+      "OpenCartCouponHelpernew": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": "OpenCouponHelpernew",
+        "version": null,
+        "param": null,
+        "child": []
+      },
+      "CartOOSGoodsPosition": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cart_mall_switch_goods": "off",
+          "cart_saleattr_switch_goods": "off"
+        },
+        "child": []
+      },
+      "SheinFindSimilar": {
+        "type": "",
+        "bid": "",
+        "eid": "0",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "OnsaleSimilarShow": "Show",
+          "FindSimilarShow": "Hide"
+        },
+        "child": []
+      },
+      "EmptyCartTransformation": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "channel_display": "off",
+          "promotions_display": "off",
+          "button_display": "off",
+          "yml_trends": "off",
+          "other_module_display": "off",
+          "empty_cart_display_priority": "othermodule,promotion,channel",
+          "ymal_trend_display": "off",
+          "promotions_display_priority": "cartcoupon,freegift,percentsave,abssave"
+        },
+        "child": []
+      },
+      "DyCheckoutWidth": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "DyCheckoutWidthStatus": "off"
+        },
+        "child": []
+      },
+      "cartAdditemsLabellink": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "tippop_rule": "everytime",
+          "cart_additems_labellink": "off"
+        },
+        "child": []
+      },
+      "cartmanage": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "cartmanage_bubble": "off",
+          "deleteditem_manage": "off",
+          "threshold_z": "0.3",
+          "threshold_x": "118",
+          "cart_manger_type": "off",
+          "threshold_y": "100"
+        },
+        "child": []
+      },
+      "CartRecommendRequestTiming": {
+        "type": "expgroup",
+        "bid": "101991876",
+        "eid": "100765486",
+        "p": null,
+        "version": "v4",
+        "param": {
+          "CartRecommendRequestTiming": "off"
+        },
+        "child": []
+      },
+      "Cartnoteligibleforcoupons": {
+        "type": "expgroup",
+        "bid": "100145376",
+        "eid": "100059346",
+        "p": "on",
+        "version": null,
+        "param": null,
+        "child": [
+          {
+            "bid": "100145376",
+            "eid": "100059346",
+            "p": "on"
+          }
+        ]
+      }
+    },
+    "url_branch_ids": {}
+  }
+}

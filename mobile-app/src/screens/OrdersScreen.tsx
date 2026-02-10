@@ -118,7 +118,7 @@ export default function OrdersScreen() {
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>No orders yet</Text>
           <Text style={styles.emptySubtext}>
-            Start shopping by scraping a Shein cart
+            Upload a cart screenshot and add items to place an order
           </Text>
         </View>
       ) : (
