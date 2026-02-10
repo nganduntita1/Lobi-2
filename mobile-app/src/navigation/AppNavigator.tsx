@@ -16,6 +16,7 @@ import OrdersScreen from '../screens/OrdersScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import AdminDashboardScreen from '../screens/AdminDashboardScreen';
 import AdminOrdersScreen from '../screens/AdminOrdersScreen';
+import AdminPaymentVerificationScreen from '../screens/AdminPaymentVerificationScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -145,17 +146,19 @@ function AdminTabs() {
             iconName = focused ? 'stats-chart' : 'stats-chart-outline';
           } else if (route.name === 'AdminOrders') {
             iconName = focused ? 'cube' : 'cube-outline';
+          } else if (route.name === 'Payments') {
+            iconName = focused ? 'card' : 'card-outline';
           } else {
             iconName = focused ? 'person' : 'person-outline';
           }
 
-          return <Ionicons name={iconName} size={26} color={color} />;
+          return <Ionicons name={iconName} size={24} color={color} />;
         },
         tabBarActiveTintColor: Colors.primary,
         tabBarInactiveTintColor: Colors.text.secondary,
         tabBarShowLabel: true,
         tabBarLabelStyle: {
-          fontSize: 11,
+          fontSize: 10,
           fontWeight: '500',
           marginTop: 4,
           marginBottom: 4,
@@ -198,6 +201,13 @@ function AdminTabs() {
         }}
       />
       <Tab.Screen
+        name="Payments"
+        component={AdminPaymentVerificationScreen}
+        options={{
+          tabBarLabel: 'Payments',
+        }}
+      />
+      <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
@@ -209,11 +219,16 @@ function AdminTabs() {
 }
 
 export default function AppNavigator() {
-  const { user } = useAuth();
+  const { user, isAdmin, isLoading } = useAuth();
+
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return null; // Or a loading spinner component
+  }
 
   return (
     <NavigationContainer>
-      {!user ? <AuthStack /> : user.is_admin ? <AdminTabs /> : <CustomerTabs />}
+      {!user ? <AuthStack /> : isAdmin ? <AdminTabs /> : <CustomerTabs />}
     </NavigationContainer>
   );
 }
